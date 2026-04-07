@@ -1,0 +1,81 @@
+# --- OS / editor clutter ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*.tmp
+*.bak
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+*.local
+*.secret
+
+# --- Dependencies ---
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+vendor/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.venv/
+venv/
+env/
+dist/
+build/
+site/
+*.egg-info/
+
+# --- JavaScript / TypeScript build outputs ---
+coverage/
+.next/
+.nuxt/
+.svelte-kit/
+.parcel-cache/
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# --- Java / JVM ---
+.gradle/
+out/
+target/
+*.class
+
+# --- .NET / C# ---
+bin/
+obj/
+
+# --- Archives / generated assets ---
+*.zip
+*.tar
+*.gz
+*.rar

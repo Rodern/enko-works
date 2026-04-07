@@ -1287,43 +1287,54 @@ Find 15:
 5. Find 15</pre>
             <div class="callout">If the list is not in order, the method breaks down. Always check the list is sorted before using a binary search.</div>
             <div class="diagram-card">
-              <svg viewBox="0 0 590 270" role="img" aria-label="Binary search flowchart">
+              <svg viewBox="0 0 700 320" role="img" aria-label="Improved binary search flowchart">
                 <defs>
                   <marker id="arrow-search" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                     <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
                   </marker>
                 </defs>
-                <ellipse cx="85" cy="28" rx="44" ry="18" fill="#eaf3ff" stroke="#155eef" stroke-width="2"></ellipse>
-                <text x="85" y="33" text-anchor="middle" font-size="13">Start</text>
-                <polygon points="85,62 160,108 85,154 10,108" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
-                <text x="85" y="102" text-anchor="middle" font-size="13">List sorted?</text>
-                <text x="162" y="98" font-size="12">Yes</text>
-                <text x="40" y="165" font-size="12">No</text>
 
-                <rect x="205" y="87" width="120" height="42" rx="9" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
-                <text x="265" y="112" text-anchor="middle" font-size="13">Check middle item</text>
+                <ellipse cx="90" cy="30" rx="48" ry="20" fill="#eaf3ff" stroke="#155eef" stroke-width="2"></ellipse>
+                <text x="90" y="35" text-anchor="middle" font-size="14">Start</text>
 
-                <polygon points="380,62 455,108 380,154 305,108" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
-                <text x="380" y="103" text-anchor="middle" font-size="13">Target found?</text>
-                <text x="458" y="98" font-size="12">Yes</text>
-                <text x="355" y="165" font-size="12">No</text>
+                <polygon points="90,68 175,120 90,172 5,120" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="90" y="115" text-anchor="middle" font-size="14">List sorted?</text>
+                <text x="182" y="111" font-size="12">Yes</text>
+                <text x="32" y="186" font-size="12">No</text>
 
-                <rect x="485" y="88" width="88" height="40" rx="10" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></rect>
-                <text x="529" y="113" text-anchor="middle" font-size="13">Found</text>
+                <rect x="18" y="225" width="145" height="42" rx="10" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></rect>
+                <text x="90" y="250" text-anchor="middle" font-size="13">Sort list first / stop</text>
 
-                <rect x="320" y="188" width="120" height="42" rx="9" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
-                <text x="380" y="205" text-anchor="middle" font-size="13">Smaller? go left</text>
-                <text x="380" y="221" text-anchor="middle" font-size="13">Larger? go right</text>
+                <rect x="220" y="99" width="145" height="42" rx="10" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
+                <text x="292" y="124" text-anchor="middle" font-size="13">Check middle item</text>
 
-                <line x1="85" y1="46" x2="85" y2="62" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
-                <line x1="160" y1="108" x2="205" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
-                <line x1="325" y1="108" x2="305" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
-                <line x1="455" y1="108" x2="485" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
-                <line x1="380" y1="154" x2="380" y2="188" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
-                <path d="M 380 230 L 380 248 L 265 248 L 265 129" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></path>
-                <path d="M 50 145 L 50 215 L 20 215" fill="none" stroke="#4b6cb7" stroke-width="2.5"></path>
+                <polygon points="445,68 530,120 445,172 360,120" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="445" y="115" text-anchor="middle" font-size="14">Target found?</text>
+                <text x="538" y="111" font-size="12">Yes</text>
+                <text x="412" y="186" font-size="12">No</text>
+
+                <rect x="570" y="99" width="100" height="42" rx="12" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></rect>
+                <text x="620" y="124" text-anchor="middle" font-size="13">Found</text>
+
+                <rect x="385" y="210" width="150" height="54" rx="10" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
+                <text x="460" y="230" text-anchor="middle" font-size="13">Smaller? search left</text>
+                <text x="460" y="248" text-anchor="middle" font-size="13">Larger? search right</text>
+                <text x="460" y="263" text-anchor="middle" font-size="12">update range</text>
+
+                <rect x="220" y="225" width="120" height="42" rx="10" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></rect>
+                <text x="280" y="250" text-anchor="middle" font-size="13">Check new middle</text>
+
+                <line x1="90" y1="50" x2="90" y2="68" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="175" y1="120" x2="220" y2="120" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="365" y1="120" x2="360" y2="120" stroke="#4b6cb7" stroke-width="2.5"></line>
+                <line x1="530" y1="120" x2="570" y2="120" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="445" y1="172" x2="445" y2="210" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="385" y1="237" x2="340" y2="237" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="280" y1="225" x2="280" y2="141" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <polyline points="90,172 90,225" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></polyline>
+                <line x1="340" y1="120" x2="360" y2="120" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
               </svg>
-              <p class="diagram-caption">Visual flowchart: binary search only begins once the list is sorted, then the middle item is checked and half the search area is removed each time.</p>
+              <p class="diagram-caption">Improved flowchart: if the list is not sorted, the process must stop or sort it first. If the target is not found, the search range is updated and the new middle item is checked again.</p>
             </div>
           </section>
 

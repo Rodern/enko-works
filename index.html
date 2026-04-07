@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form 3 Unit 9.1 - Algorithms & Data Study Workbook</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #5b6474;
+      --primary: #155eef;
+      --primary-soft: #dbe7ff;
+      --accent: #0f766e;
+      --accent-soft: #dff7f3;
+      --warn: #b54708;
+      --warn-soft: #fff3e0;
+      --border: #d6deeb;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 2rem 0 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .objective {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.4rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 2.6vw, 2.8rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    button,
+    .pill {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      background: white;
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    button:hover { filter: brightness(0.98); }
+
+    .progress-wrap {
+      margin-top: 1rem;
+    }
+
+    .progress-bar {
+      height: 12px;
+      width: 100%;
+      background: #e7edf8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), #46b2ff);
+      transition: width 0.2s ease;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .top-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .card {
+      padding: 1rem 1.1rem;
+    }
+
+    .card h2 {
+      margin-bottom: 0.65rem;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .quick-links a {
+      text-decoration: none;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .mini-checklist {
+      padding-left: 1.15rem;
+      margin-bottom: 0;
+    }
+
+    .mini-checklist li { margin-bottom: 0.35rem; }
+
+    .note-box,
+    .response-box {
+      width: 100%;
+      min-height: 88px;
+      border: 1px dashed #a9b7d0;
+      border-radius: 12px;
+      padding: 0.75rem;
+      font: inherit;
+      resize: vertical;
+      background: #fbfdff;
+    }
+
+    .knowledge-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 0.55rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f7fe;
+    }
+
+    .objective-list {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .objective {
+      padding: 1rem;
+    }
+
+    .objective-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .objective-title {
+      margin: 0;
+    }
+
+    .code {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .status-label {
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .status-label input {
+      transform: translateY(1px);
+      margin-right: 0.35rem;
+    }
+
+    .objective-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+    }
+
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.9rem;
+      background: #fcfdff;
+    }
+
+    .subcard h4 {
+      margin-bottom: 0.45rem;
+    }
+
+    .memorize { background: #f5f8ff; }
+    .understand { background: #f4fffd; }
+    .demonstrate { background: #fffaf3; }
+    .practice { background: #fff7fb; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 12px;
+      background: #101828;
+      color: #eff6ff;
+      font-size: 0.9rem;
+      overflow: auto;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 0.6rem;
+      padding: 0.7rem;
+      background: var(--accent-soft);
+      border: 1px solid #9fddd5;
+      border-radius: 12px;
+    }
+
+    body.show-all-answers .answer {
+      display: block;
+    }
+
+    .toggle-answer {
+      margin-top: 0.5rem;
+      background: white;
+      color: var(--accent);
+      border-color: #9fddd5;
+    }
+
+    .callout {
+      background: var(--warn-soft);
+      border-left: 4px solid var(--warn);
+      padding: 0.7rem 0.85rem;
+      border-radius: 10px;
+      margin: 0.8rem 0;
+    }
+
+    .footer-card {
+      margin-bottom: 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .line-list {
+      padding-left: 1.1rem;
+    }
+
+    .line-list li { margin-bottom: 0.3rem; }
+
+    @media (max-width: 980px) {
+      .top-grid,
+      .knowledge-grid,
+      .objective-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page { size: A4; margin: 12mm; }
+
+      body {
+        background: white;
+        font-size: 11pt;
+      }
+
+      .toolbar,
+      .interactive-only {
+        display: none !important;
+      }
+
+      .hero,
+      .objective-list,
+      .knowledge-grid {
+        margin: 0 0 1rem;
+      }
+
+      .hero-card,
+      .card,
+      .objective,
+      .subcard {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .answer {
+        display: block !important;
+      }
+
+      .note-box,
+      .response-box {
+        border: 1px solid #888;
+        min-height: 70px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <p class="eyebrow">Enko Education • Form 3 • Unit 9.1</p>
+        <h1>Algorithms & Data Interactive Study Workbook</h1>
+        <p>
+          This single-page workbook is built around the learning objectives from <strong>Unit 9 - Form 3</strong>.
+          It is designed for both <strong>screen study</strong> and <strong>paper printing</strong> so students can memorize,
+          understand, demonstrate, and practise each target skill.
+        </p>
+
+        <div class="toolbar interactive-only">
+          <button class="primary" id="printBtn">🖨️ Print / Save PDF</button>
+          <button id="toggleAnswersBtn">👀 Show all answers</button>
+          <button id="resetBtn">♻️ Reset progress</button>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-bar"><span id="progressBar"></span></div>
+          <p id="progressText"><strong>0 / 8 objectives completed</strong></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid top-grid">
+      <article class="card">
+        <h2>✅ Learning objectives covered</h2>
+        <ul class="mini-checklist">
+          <li><strong>9CT.01</strong> Follow, understand, edit and correct algorithms in pseudocode.</li>
+          <li><strong>9CT.02</strong> Follow flowchart or pseudocode algorithms that use loops.</li>
+          <li><strong>9CT.07</strong> Predict the outcome of algorithms that use iteration.</li>
+          <li><strong>9CT.08</strong> Compare algorithms for the same task and decide which is best suited.</li>
+          <li><strong>9CS.06</strong> Convert between storage units.</li>
+          <li><strong>9CS.07</strong> Draw logic circuits for Boolean expressions.</li>
+          <li><strong>9CS.05</strong> Describe how analogue sound is digitised.</li>
+          <li><strong>9CT.05</strong> Describe and use binary searches.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>📌 How students should use this page</h2>
+        <ol class="line-list">
+          <li>Read the <strong>Memorize</strong> box first.</li>
+          <li>Use the <strong>Understand</strong> box to explain the idea in your own words.</li>
+          <li>Try the <strong>Demonstrate</strong> task without looking at the answer.</li>
+          <li>Finish the <strong>Practice</strong> prompts and tick the objective when confident.</li>
+        </ol>
+        <textarea class="note-box" data-key="unit-summary" placeholder="Write your big summary of this unit here..."></textarea>
+      </article>
+    </section>
+
+    <section class="grid knowledge-grid">
+      <article class="card">
+        <h2>🧠 Key vocabulary</h2>
+        <table>
+          <tr><th>Word</th><th>Meaning</th></tr>
+          <tr><td>Algorithm</td><td>A step-by-step method to solve a problem.</td></tr>
+          <tr><td>Pseudocode</td><td>Structured, readable instructions written like code.</td></tr>
+          <tr><td>Iteration</td><td>Repeating a block of instructions.</td></tr>
+          <tr><td>Count-controlled loop</td><td>A loop that runs a fixed number of times.</td></tr>
+          <tr><td>Array</td><td>A structure that stores multiple values under one name.</td></tr>
+          <tr><td>Character</td><td>A single symbol, letter, number, or punctuation mark.</td></tr>
+          <tr><td>Binary search</td><td>A search that keeps halving a sorted list.</td></tr>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>💾 Storage facts</h2>
+        <table>
+          <tr><th>Unit</th><th>Value</th></tr>
+          <tr><td>1 nibble</td><td>4 bits</td></tr>
+          <tr><td>1 byte</td><td>8 bits</td></tr>
+          <tr><td>1 KB</td><td>1024 bytes</td></tr>
+          <tr><td>1 MB</td><td>1024 KB</td></tr>
+          <tr><td>1 GB</td><td>1024 MB</td></tr>
+          <tr><td>1 TB</td><td>1024 GB</td></tr>
+        </table>
+        <p><strong>Exam tip:</strong> Always check whether your class is using <strong>1024</strong> or <strong>1000</strong> for conversions.</p>
+      </article>
+
+      <article class="card">
+        <h2>🔍 Success routine</h2>
+        <ul class="mini-checklist">
+          <li>Trace one line at a time.</li>
+          <li>Underline inputs, processes, and outputs.</li>
+          <li>For loops, track the counter value.</li>
+          <li>For logic, use a truth table.</li>
+          <li>For searches, check that the list is sorted.</li>
+          <li>For sound, remember: <strong>sample → quantise → encode</strong>.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="objective-list">
+      <article class="objective" id="obj-9ct01">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CT.01</div>
+            <h3 class="objective-title">Follow, understand, edit and correct algorithms presented as pseudocode</h3>
+            <div class="tag-row">
+              <span class="tag">inputs</span>
+              <span class="tag">outputs</span>
+              <span class="tag">variables</span>
+              <span class="tag">selection</span>
+              <span class="tag">debugging</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CT.01"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>Find the <strong>inputs</strong>, <strong>process</strong>, and <strong>output</strong>.</li>
+              <li>A <strong>variable</strong> stores a value.</li>
+              <li><strong>if / elseif / else</strong> is used for decisions.</li>
+              <li>Correct algorithms by changing only the step that is wrong.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>When reading pseudocode, ask:</p>
+            <ol class="line-list">
+              <li>What is the user asked to enter?</li>
+              <li>What calculation or decision is made?</li>
+              <li>What result is shown?</li>
+              <li>Does the algorithm match the problem exactly?</li>
+            </ol>
+            <div class="callout">Common correction types: changing an operator, changing a condition, adding an output, or changing the whole purpose of the algorithm.</div>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Edit this algorithm so it multiplies the two numbers instead of adding them:</p>
+            <pre>number1 = input("Enter a number")
+number2 = input("Enter a number")
+result = number1 + number2
+print(result)</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <pre>number1 = input("Enter a number")
+number2 = input("Enter a number")
+result = number1 * number2
+print(result)</pre>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Change an algorithm so it says: <em>Hello Sam, you are 14 years old.</em></li>
+              <li>Fix a condition so <code>Valid</code> is shown only when the number is greater than 0.</li>
+              <li>Rewrite an algorithm so input directions change <code>x</code> and <code>y</code>.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CT.01" placeholder="Explain how you decided what to change..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-9ct02">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CT.02</div>
+            <h3 class="objective-title">Follow flowchart or pseudocode algorithms that use loops</h3>
+            <div class="tag-row">
+              <span class="tag">for loop</span>
+              <span class="tag">counter</span>
+              <span class="tag">start value</span>
+              <span class="tag">end value</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CT.02"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>A loop repeats code.</li>
+              <li>A <strong>count-controlled loop</strong> runs a set number of times.</li>
+              <li>A <code>for count in range(start, end)</code> loop uses a counter variable.</li>
+              <li>In flowcharts, the counter must be declared, checked, and incremented.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>To follow a loop correctly, track these four things:</p>
+            <ol class="line-list">
+              <li>The counter name</li>
+              <li>The start value</li>
+              <li>The end/check condition</li>
+              <li>The increment each time through the loop</li>
+            </ol>
+            <pre>for count in range(0, 10):
+  print(count)</pre>
+            <p>This prints numbers from <strong>0</strong> to <strong>9</strong>.</p>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>What does this output?</p>
+            <pre>for count in range(0, 5):
+  print(count + 1)</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>It prints:</p>
+              <pre>1
+2
+3
+4
+5</pre>
+              <p>The loop values are 0, 1, 2, 3, 4, but the program outputs each value plus 1.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Write a loop that outputs the 5 times table.</li>
+              <li>Write a loop that asks for 10 numbers and adds them together.</li>
+              <li>Sketch the flowchart steps for a counter that goes from 1 to 20.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CT.02" placeholder="Write your loop or flowchart plan here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-9ct07">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CT.07</div>
+            <h3 class="objective-title">Predict the outcome of algorithms that use iteration</h3>
+            <div class="tag-row">
+              <span class="tag">trace table</span>
+              <span class="tag">prediction</span>
+              <span class="tag">loop output</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CT.07"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li><strong>Predict first, then test.</strong></li>
+              <li>Use a <strong>trace table</strong> to track changing values.</li>
+              <li>Focus on what is printed on each loop cycle.</li>
+              <li>Check whether the variable in the output is the same one used in the loop.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Strong prediction means you can explain <em>why</em> each line is printed. Do not guess. Walk through the loop line by line.</p>
+            <table>
+              <tr><th>Counter</th><th>Calculation</th><th>Output</th></tr>
+              <tr><td>0</td><td>0 + 2</td><td>2</td></tr>
+              <tr><td>1</td><td>1 + 2</td><td>3</td></tr>
+              <tr><td>2</td><td>2 + 2</td><td>4</td></tr>
+            </table>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Predict the output:</p>
+            <pre>total = 0
+for count in range(1, 4):
+  total = total + count
+  print(total)</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <pre>1
+3
+6</pre>
+              <p>Explanation: <code>total</code> becomes 1, then 3, then 6.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Predict the output of a loop from 5 to 9.</li>
+              <li>Explain what changes if the start value changes from 0 to 1.</li>
+              <li>Create your own loop and ask a partner to predict the result.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CT.07" placeholder="Write your prediction strategy here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-9ct08">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CT.08</div>
+            <h3 class="objective-title">Compare and contrast algorithms for the same task</h3>
+            <div class="tag-row">
+              <span class="tag">requirements</span>
+              <span class="tag">accuracy</span>
+              <span class="tag">efficiency</span>
+              <span class="tag">variables</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CT.08"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>First ask: <strong>Does the algorithm meet the task?</strong></li>
+              <li>Then compare number of lines and number of variables used.</li>
+              <li>Less code can mean a smaller file and less memory use.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>At this stage, the most important test is whether the algorithm gives the <strong>correct result</strong>. If both work, choose the one that is clearer and more efficient.</p>
+            <div class="callout">Do not call a program “better” if it does not actually solve the problem correctly.</div>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Which algorithm is correct for Celsius to Fahrenheit?</p>
+            <pre>Algorithm A:
+Fahrenheit = Temperature + 32 * 1.8
+
+Algorithm B:
+Fahrenheit = Temperature * 1.8 + 32</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>Algorithm B</strong> is correct because the temperature must be multiplied by 1.8 first, then 32 is added.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Compare two ways to add 3 numbers together.</li>
+              <li>Circle the algorithm that uses fewer variables.</li>
+              <li>Explain why an incorrect result means the algorithm is not suited to the task.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CT.08" placeholder="Write how you compare two algorithms here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-9cs06">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CS.06</div>
+            <h3 class="objective-title">Know how to convert between storage units</h3>
+            <div class="tag-row">
+              <span class="tag">bit</span>
+              <span class="tag">byte</span>
+              <span class="tag">KB-MB-GB-TB</span>
+              <span class="tag">conversion</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CS.06"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>1 byte = 8 bits</li>
+              <li>1 nibble = 4 bits</li>
+              <li>To go to a larger unit, divide.</li>
+              <li>To go to a smaller unit, multiply.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Storage units are used because bits alone are too small for real computer memory and storage sizes.</p>
+            <table>
+              <tr><th>Example</th><th>Method</th><th>Answer</th></tr>
+              <tr><td>3 KB to bytes</td><td>3 × 1024</td><td>3072 bytes</td></tr>
+              <tr><td>2048 MB to GB</td><td>2048 ÷ 1024</td><td>2 GB</td></tr>
+            </table>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Convert <strong>5 MB</strong> into <strong>KB</strong>.</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>5 × 1024 = 5120 KB</strong></p>
+            </div>
+            <p>Convert <strong>8192 bytes</strong> into <strong>KB</strong>.</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>8192 ÷ 1024 = 8 KB</strong></p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Rank devices from largest RAM to smallest.</li>
+              <li>Create three conversion questions for a partner.</li>
+              <li>Try a challenge conversion like <code>5 bits → bytes</code>.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CS.06" placeholder="Show your working for a few conversions here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-9cs07">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CS.07</div>
+            <h3 class="objective-title">Know how to draw logic circuits for Boolean expressions</h3>
+            <div class="tag-row">
+              <span class="tag">AND</span>
+              <span class="tag">OR</span>
+              <span class="tag">NOT</span>
+              <span class="tag">truth table</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CS.07"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li><strong>AND</strong> = both inputs must be 1.</li>
+              <li><strong>OR</strong> = at least one input must be 1.</li>
+              <li><strong>NOT</strong> = flips the input.</li>
+            </ul>
+            <table>
+              <tr><th>A</th><th>B</th><th>A AND B</th><th>A OR B</th></tr>
+              <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+            </table>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>To draw a logic circuit from an expression:</p>
+            <ol class="line-list">
+              <li>Write the Boolean expression clearly.</li>
+              <li>Identify the inputs (A, B, C...).</li>
+              <li>Draw the first gate that must happen.</li>
+              <li>Connect the output of one gate into the next gate if needed.</li>
+            </ol>
+            <p>Example: <code>(A AND B) OR NOT C</code></p>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>What happens to the output of <code>NOT A</code> when <code>A = 1</code>?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>NOT 1 = 0</strong>. The NOT gate flips the value.</p>
+            </div>
+            <p>For <code>A AND B</code>, what is the output when <code>A = 1</code> and <code>B = 0</code>?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>0</strong>, because both inputs must be 1 for AND.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Draw a circuit for <code>A AND B</code>.</li>
+              <li>Draw a circuit for <code>A OR (NOT B)</code>.</li>
+              <li>Make a truth table before deciding the final output.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CS.07" placeholder="Describe or sketch your circuit steps here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-9cs05">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CS.05</div>
+            <h3 class="objective-title">Describe how analogue sound is digitised</h3>
+            <div class="tag-row">
+              <span class="tag">analogue</span>
+              <span class="tag">digital</span>
+              <span class="tag">sampling</span>
+              <span class="tag">bit depth</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CS.05"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li><strong>Analogue</strong> data is continuous.</li>
+              <li><strong>Digital</strong> data is stored as binary.</li>
+              <li><strong>Sampling</strong> measures the sound wave at regular intervals.</li>
+              <li><strong>Bit depth</strong> affects how many possible values each sample can have.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Digitising sound usually follows this order:</p>
+            <ol class="line-list">
+              <li>A microphone captures the analogue sound wave.</li>
+              <li>The wave is sampled many times per second.</li>
+              <li>Each sample is rounded to the nearest available value (quantisation).</li>
+              <li>The values are encoded into binary and stored.</li>
+            </ol>
+            <div class="callout">Higher sample rate and higher bit depth normally mean better sound quality, but also a larger file size.</div>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Why does a higher sample rate usually improve sound quality?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>Because the system captures the sound wave more often, so the digital version is closer to the original analogue sound.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Explain the difference between analogue and digital sound in one sentence each.</li>
+              <li>Put these words in order: <em>binary, sampling, microphone, stored file</em>.</li>
+              <li>Explain why better quality sound usually needs more storage.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CS.05" placeholder="Write the digitising steps in your own words here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-9ct05">
+        <div class="objective-header">
+          <div>
+            <div class="code">9CT.05</div>
+            <h3 class="objective-title">Describe and use binary searches</h3>
+            <div class="tag-row">
+              <span class="tag">sorted list</span>
+              <span class="tag">middle value</span>
+              <span class="tag">halve the search</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="9CT.05"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>A binary search only works on a <strong>sorted</strong> list.</li>
+              <li>Check the <strong>middle</strong> item first.</li>
+              <li>If the target is smaller, search the left half.</li>
+              <li>If the target is larger, search the right half.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Binary search is efficient because it removes half of the remaining items each step.</p>
+            <pre>Sorted list: 3, 6, 9, 12, 15, 18, 21
+Find 15:
+1. Check middle = 12
+2. 15 is bigger, so ignore the left half
+3. Check middle of the right half = 18
+4. 15 is smaller, so move left
+5. Find 15</pre>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Can you use a binary search on this list?</p>
+            <pre>12, 4, 19, 7, 25, 10</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>No.</strong> The list is not sorted, so a binary search would not work correctly.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Sort a list of 8 numbers, then search for one number using the middle each time.</li>
+              <li>Explain why binary search is usually faster than checking one item at a time.</li>
+              <li>Describe the first three steps of a binary search in your own words.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-9CT.05" placeholder="Write your own binary search explanation here..."></textarea>
+          </section>
+        </div>
+      </article>
+    </section>
+
+    <section class="card footer-card">
+      <h2>🎯 Final self-check</h2>
+      <div class="two-col">
+        <div>
+          <h3>Before the test, I can...</h3>
+          <ul class="mini-checklist">
+            <li>trace and correct pseudocode</li>
+            <li>follow and predict loop behaviour</li>
+            <li>compare algorithms for correctness and simplicity</li>
+            <li>convert storage units accurately</li>
+            <li>use AND, OR, and NOT in truth tables and circuits</li>
+            <li>explain how sound becomes digital</li>
+            <li>carry out a binary search on a sorted list</li>
+          </ul>
+        </div>
+        <div>
+          <h3>My weakest area is...</h3>
+          <textarea class="note-box" data-key="final-reflection" placeholder="Write what you still need to revise and how you will practise it..."></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'enko-unit9-study-workbook-v1';
+
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const checks = [...document.querySelectorAll('.objective-check')];
+    const textareas = [...document.querySelectorAll('textarea[data-key]')];
+    const toggleButtons = [...document.querySelectorAll('.toggle-answer')];
+
+    function loadState() {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+      checks.forEach((check) => {
+        check.checked = Boolean(saved[check.dataset.key]);
+        check.addEventListener('change', () => {
+          saved[check.dataset.key] = check.checked;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+          updateProgress();
+        });
+      });
+
+      textareas.forEach((box) => {
+        box.value = saved[box.dataset.key] || '';
+        box.addEventListener('input', () => {
+          saved[box.dataset.key] = box.value;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const completed = checks.filter((check) => check.checked).length;
+      const total = checks.length;
+      const percent = (completed / total) * 100;
+      progressBar.style.width = `${percent}%`;
+      progressText.innerHTML = `<strong>${completed} / ${total} objectives completed</strong>`;
+    }
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const isVisible = answer.style.display === 'block';
+        answer.style.display = isVisible ? 'none' : 'block';
+        button.textContent = isVisible ? 'Show answer' : 'Hide answer';
+      });
+    });
+
+    document.getElementById('toggleAnswersBtn').addEventListener('click', () => {
+      document.body.classList.toggle('show-all-answers');
+      const showing = document.body.classList.contains('show-all-answers');
+      document.getElementById('toggleAnswersBtn').textContent = showing ? '🙈 Hide all answers' : '👀 Show all answers';
+    });
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      if (!confirm('Reset all saved notes and progress for this workbook?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    });
+
+    loadState();
+  </script>
+</body>
+</html>

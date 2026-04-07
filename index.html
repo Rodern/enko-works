@@ -47,12 +47,14 @@
     .objective {
       background: var(--card);
       border: 1px solid var(--border);
+      border-top: 4px solid #cfe0ff;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
     .hero-card {
       padding: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
     }
 
     .eyebrow {
@@ -174,7 +176,13 @@
       padding: 0.75rem;
       font: inherit;
       resize: vertical;
-      background: #fbfdff;
+      background-color: #fbfdff;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #fbfdff 0,
+        #fbfdff 27px,
+        #dfe8f7 28px
+      );
     }
 
     .knowledge-grid {
@@ -247,7 +255,7 @@
 
     .objective-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.85rem;
     }
 
@@ -339,11 +347,56 @@
 
     .line-list li { margin-bottom: 0.3rem; }
 
+    .worksheet-meta {
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #fffefb 0%, #ffffff 100%);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .field {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .field-line {
+      display: block;
+      margin-top: 0.45rem;
+      min-height: 1.6rem;
+      border-bottom: 2px solid #a9b7d0;
+    }
+
+    .diagram-card {
+      margin: 0.8rem 0;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .diagram-card svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .diagram-caption {
+      margin: 0.55rem 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
     @media (max-width: 980px) {
       .top-grid,
       .knowledge-grid,
       .objective-grid,
-      .two-col {
+      .two-col,
+      .meta-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -367,10 +420,27 @@
         margin: 0 0 1rem;
       }
 
+      .top-grid,
+      .knowledge-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .objective-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem;
+      }
+
+      .meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .hero-card,
       .card,
       .objective,
-      .subcard {
+      .subcard,
+      .worksheet-meta,
+      .diagram-card {
         box-shadow: none;
         break-inside: avoid;
         page-break-inside: avoid;
@@ -420,50 +490,79 @@
   </header>
 
   <main class="container">
+    <section class="card worksheet-meta">
+      <h2>📄 Student worksheet details</h2>
+      <p>Use this sheet for revision, classwork, or homework. Complete the examples, write your own answers in the lined spaces, and tick the objectives when you can solve similar problems independently.</p>
+      <div class="meta-grid">
+        <div class="field"><strong>Name</strong><span class="field-line"></span></div>
+        <div class="field"><strong>Class</strong><span class="field-line"></span></div>
+        <div class="field"><strong>Date</strong><span class="field-line"></span></div>
+        <div class="field"><strong>Teacher comment</strong><span class="field-line"></span></div>
+      </div>
+    </section>
+
     <section class="grid top-grid">
       <article class="card">
         <h2>✅ Learning objectives covered</h2>
+        <p>
+          By the end of this unit, a strong Form 3 learner should be able to <strong>trace</strong>, <strong>explain</strong>,
+          <strong>correct</strong>, <strong>compare</strong>, and <strong>apply</strong> the main computing ideas below in both classwork and written responses.
+        </p>
         <ul class="mini-checklist">
           <li><strong>9CT.01</strong> Follow, understand, edit and correct algorithms in pseudocode.</li>
           <li><strong>9CT.02</strong> Follow flowchart or pseudocode algorithms that use loops.</li>
           <li><strong>9CT.07</strong> Predict the outcome of algorithms that use iteration.</li>
           <li><strong>9CT.08</strong> Compare algorithms for the same task and decide which is best suited.</li>
-          <li><strong>9CS.06</strong> Convert between storage units.</li>
-          <li><strong>9CS.07</strong> Draw logic circuits for Boolean expressions.</li>
-          <li><strong>9CS.05</strong> Describe how analogue sound is digitised.</li>
-          <li><strong>9CT.05</strong> Describe and use binary searches.</li>
+          <li><strong>9CS.06</strong> Convert between storage units accurately and show the working.</li>
+          <li><strong>9CS.07</strong> Draw and interpret logic circuits for Boolean expressions.</li>
+          <li><strong>9CS.05</strong> Describe clearly how analogue sound is digitised.</li>
+          <li><strong>9CT.05</strong> Describe and use binary searches on sorted data.</li>
         </ul>
       </article>
 
       <article class="card">
         <h2>📌 How students should use this page</h2>
         <ol class="line-list">
-          <li>Read the <strong>Memorize</strong> box first.</li>
-          <li>Use the <strong>Understand</strong> box to explain the idea in your own words.</li>
-          <li>Try the <strong>Demonstrate</strong> task without looking at the answer.</li>
-          <li>Finish the <strong>Practice</strong> prompts and tick the objective when confident.</li>
+          <li>Start with the <strong>Memorize</strong> box and learn the key words exactly.</li>
+          <li>Read the <strong>Understand</strong> box and explain the idea in your own words.</li>
+          <li>Complete the <strong>Demonstrate</strong> task before looking at the answer.</li>
+          <li>Finish the <strong>Practice</strong> activities in full sentences or short code steps.</li>
+          <li>Tick the objective only when you can explain it without help and solve a similar question alone.</li>
         </ol>
-        <textarea class="note-box" data-key="unit-summary" placeholder="Write your big summary of this unit here..."></textarea>
+        <div class="callout">Cambridge-style tip: do not just give the final answer. Show the method, use the correct vocabulary, and justify your reasoning clearly.</div>
+        <textarea class="note-box" data-key="unit-summary" placeholder="Write a full revision summary here: key definitions, worked examples, and any area you still need to review..."></textarea>
       </article>
     </section>
 
     <section class="grid knowledge-grid">
       <article class="card">
-        <h2>🧠 Key vocabulary</h2>
+        <h2>🧠 Key vocabulary & language of the unit</h2>
         <table>
           <tr><th>Word</th><th>Meaning</th></tr>
-          <tr><td>Algorithm</td><td>A step-by-step method to solve a problem.</td></tr>
-          <tr><td>Pseudocode</td><td>Structured, readable instructions written like code.</td></tr>
-          <tr><td>Iteration</td><td>Repeating a block of instructions.</td></tr>
-          <tr><td>Count-controlled loop</td><td>A loop that runs a fixed number of times.</td></tr>
-          <tr><td>Array</td><td>A structure that stores multiple values under one name.</td></tr>
-          <tr><td>Character</td><td>A single symbol, letter, number, or punctuation mark.</td></tr>
-          <tr><td>Binary search</td><td>A search that keeps halving a sorted list.</td></tr>
+          <tr><td>Algorithm</td><td>A logical, step-by-step set of instructions designed to solve a problem or complete a task.</td></tr>
+          <tr><td>Pseudocode</td><td>A structured way of writing an algorithm in plain language so humans can read it easily before coding it.</td></tr>
+          <tr><td>Flowchart</td><td>A diagram that uses standard shapes and arrows to show the order of steps in an algorithm.</td></tr>
+          <tr><td>Iteration</td><td>The repetition of one or more instructions inside a program.</td></tr>
+          <tr><td>Count-controlled</td><td>A task that is repeated a known number of times using a counter.</td></tr>
+          <tr><td>Character</td><td>A single letter, digit, symbol, or space stored as one item of data.</td></tr>
+          <tr><td>Array</td><td>A data structure used to store several related values under one identifier.</td></tr>
+          <tr><td>1-dimensional array</td><td>A simple list of values arranged in one line and accessed by position.</td></tr>
+          <tr><td>Identifier</td><td>The name given to a variable or array in a program.</td></tr>
+          <tr><td>Index / indices</td><td>The position number used to access an item in an array.</td></tr>
+          <tr><td>Logic circuit</td><td>A diagram made from logic gates such as AND, OR, and NOT.</td></tr>
+          <tr><td>Analogue / digital / digitised</td><td>Analogue is continuous, digital is stored in binary, and digitised means converted from analogue to digital form.</td></tr>
+          <tr><td>Binary search</td><td>A searching method that checks the middle item of a sorted list and repeatedly halves the remaining search area.</td></tr>
         </table>
       </article>
 
       <article class="card">
-        <h2>💾 Storage facts</h2>
+        <h2>💾 Prior knowledge & storage facts</h2>
+        <ul class="mini-checklist">
+          <li>Follow a simple algorithm written as pseudocode or a flowchart.</li>
+          <li>Identify data types such as <strong>integer</strong>, <strong>real</strong>, and <strong>Boolean</strong>.</li>
+          <li>Convert between <strong>binary</strong> and <strong>denary</strong>.</li>
+          <li>Know that computers use logic gates and binary values.</li>
+        </ul>
         <table>
           <tr><th>Unit</th><th>Value</th></tr>
           <tr><td>1 nibble</td><td>4 bits</td></tr>
@@ -473,19 +572,26 @@
           <tr><td>1 GB</td><td>1024 MB</td></tr>
           <tr><td>1 TB</td><td>1024 GB</td></tr>
         </table>
-        <p><strong>Exam tip:</strong> Always check whether your class is using <strong>1024</strong> or <strong>1000</strong> for conversions.</p>
+        <p><strong>Exam tip:</strong> Move to a smaller unit by multiplying, and to a larger unit by dividing. Always write the unit name in your working.</p>
       </article>
 
       <article class="card">
-        <h2>🔍 Success routine</h2>
+        <h2>🔍 Revision method & warm-up</h2>
         <ul class="mini-checklist">
-          <li>Trace one line at a time.</li>
-          <li>Underline inputs, processes, and outputs.</li>
-          <li>For loops, track the counter value.</li>
-          <li>For logic, use a truth table.</li>
-          <li>For searches, check that the list is sorted.</li>
-          <li>For sound, remember: <strong>sample → quantise → encode</strong>.</li>
+          <li>Trace one line at a time and do not skip steps.</li>
+          <li>Label the <strong>input</strong>, <strong>process</strong>, decision, and <strong>output</strong>.</li>
+          <li>For loops, track the counter and totals in a trace table.</li>
+          <li>For logic, make a truth table before deciding the circuit output.</li>
+          <li>For searches, check first that the list is sorted.</li>
+          <li>For sound, remember: <strong>capture → sample → quantise → encode → store</strong>.</li>
         </ul>
+        <h3>Quick warm-up questions</h3>
+        <ol class="line-list">
+          <li>What is repetition in a program?</li>
+          <li>Why do computers use binary?</li>
+          <li>What is the difference between analogue and digital data?</li>
+          <li>When is a binary search useful?</li>
+        </ol>
       </article>
     </section>
 
@@ -510,28 +616,30 @@
           <section class="subcard memorize">
             <h4>Memorize</h4>
             <ul class="line-list">
-              <li>Find the <strong>inputs</strong>, <strong>process</strong>, and <strong>output</strong>.</li>
-              <li>A <strong>variable</strong> stores a value.</li>
-              <li><strong>if / elseif / else</strong> is used for decisions.</li>
-              <li>Correct algorithms by changing only the step that is wrong.</li>
+              <li>Find the <strong>input(s)</strong>, <strong>process</strong>, decision(s), and <strong>output</strong>.</li>
+              <li>A <strong>variable</strong> stores data that may change while the program runs.</li>
+              <li><strong>if / elseif / else</strong> is used for selection and decision-making.</li>
+              <li>Pseudocode is not tied to one programming language, but it must still be clear and logical.</li>
+              <li>When correcting an algorithm, change the exact step that is causing the wrong result.</li>
             </ul>
           </section>
 
           <section class="subcard understand">
             <h4>Understand</h4>
+            <p>For Cambridge Form 3, students should be able to read pseudocode as a logical set of instructions and explain what each part is doing. A strong response does more than say “it is wrong” — it explains <em>why</em> it is wrong and what should be changed.</p>
             <p>When reading pseudocode, ask:</p>
             <ol class="line-list">
-              <li>What is the user asked to enter?</li>
-              <li>What calculation or decision is made?</li>
-              <li>What result is shown?</li>
-              <li>Does the algorithm match the problem exactly?</li>
+              <li>What information is the user asked to enter?</li>
+              <li>What calculation, comparison, or decision is made with that information?</li>
+              <li>What result or message is displayed at the end?</li>
+              <li>Does the algorithm match the task exactly, or is an operator / condition / output wrong?</li>
             </ol>
-            <div class="callout">Common correction types: changing an operator, changing a condition, adding an output, or changing the whole purpose of the algorithm.</div>
+            <div class="callout">Common correction types include changing an operator, fixing a condition, adding a missing output, or rewriting a section so the algorithm actually matches the purpose of the task.</div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>Edit this algorithm so it multiplies the two numbers instead of adding them:</p>
+            <p><strong>Worked example 1:</strong> Edit this algorithm so it multiplies the two numbers instead of adding them:</p>
             <pre>number1 = input("Enter a number")
 number2 = input("Enter a number")
 result = number1 + number2
@@ -543,16 +651,40 @@ number2 = input("Enter a number")
 result = number1 * number2
 print(result)</pre>
             </div>
+
+            <p><strong>Worked example 2:</strong> Change this algorithm so it outputs the name and age in one sentence:</p>
+            <pre>name = input("Enter your name")
+age = input("Enter your age")
+print("Hello ", name)</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <pre>name = input("Enter your name")
+age = input("Enter your age")
+print("Hello ", name, " you are ", age, " years old")</pre>
+            </div>
+
+            <p><strong>Worked example 3:</strong> Fix the condition so <code>Valid</code> is printed only when the number is greater than 0.</p>
+            <pre>value = input("Enter a number")
+if(value > 10):
+  print("Valid")</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <pre>value = input("Enter a number")
+if(value > 0):
+  print("Valid")</pre>
+            </div>
           </section>
 
           <section class="subcard practice">
             <h4>Practice</h4>
             <ul class="line-list">
-              <li>Change an algorithm so it says: <em>Hello Sam, you are 14 years old.</em></li>
-              <li>Fix a condition so <code>Valid</code> is shown only when the number is greater than 0.</li>
-              <li>Rewrite an algorithm so input directions change <code>x</code> and <code>y</code>.</li>
+              <li>Correct an algorithm that divides when it should subtract the second number from the first, then multiply by the first.</li>
+              <li>Add another rule so a value is only valid if it is between <code>10</code> and <code>1000</code>.</li>
+              <li>Extend an algorithm so <code>+</code> adds and <code>*</code> multiplies.</li>
+              <li>Rewrite an algorithm so the user enters <em>up, down, left, right</em> to change <code>x</code> and <code>y</code>.</li>
+              <li>For each correction, explain exactly which line changed and why.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CT.01" placeholder="Explain how you decided what to change..."></textarea>
+            <textarea class="response-box" data-key="notes-9CT.01" placeholder="Write your corrected pseudocode and explain your changes here..."></textarea>
           </section>
         </div>
       </article>
@@ -576,30 +708,68 @@ print(result)</pre>
           <section class="subcard memorize">
             <h4>Memorize</h4>
             <ul class="line-list">
-              <li>A loop repeats code.</li>
-              <li>A <strong>count-controlled loop</strong> runs a set number of times.</li>
-              <li>A <code>for count in range(start, end)</code> loop uses a counter variable.</li>
-              <li>In flowcharts, the counter must be declared, checked, and incremented.</li>
+              <li>A loop repeats a section of code more than once.</li>
+              <li>A <strong>count-controlled loop</strong> runs a known number of times.</li>
+              <li>A <code>for count in range(start, end)</code> loop uses a counter variable that changes automatically.</li>
+              <li>In Python-style pseudocode, the <strong>end value is not included</strong>.</li>
+              <li>In flowcharts, the counter is usually declared, checked, and incremented in separate steps.</li>
             </ul>
           </section>
 
           <section class="subcard understand">
             <h4>Understand</h4>
+            <p>When following loop algorithms, the key idea is that the same instruction block is repeated. Students should be able to identify what the counter starts at, when the repetition stops, and what is produced on each cycle.</p>
             <p>To follow a loop correctly, track these four things:</p>
             <ol class="line-list">
               <li>The counter name</li>
               <li>The start value</li>
-              <li>The end/check condition</li>
+              <li>The end / stopping condition</li>
               <li>The increment each time through the loop</li>
             </ol>
             <pre>for count in range(0, 10):
   print(count)</pre>
-            <p>This prints numbers from <strong>0</strong> to <strong>9</strong>.</p>
+            <p>This prints numbers from <strong>0</strong> to <strong>9</strong>, not 10, because the end number in <code>range()</code> is excluded.</p>
+            <div class="diagram-card">
+              <svg viewBox="0 0 560 290" role="img" aria-label="Flowchart of a count-controlled loop">
+                <defs>
+                  <marker id="arrow-loop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <ellipse cx="90" cy="30" rx="48" ry="20" fill="#eaf3ff" stroke="#155eef" stroke-width="2"></ellipse>
+                <text x="90" y="35" text-anchor="middle" font-size="14">Start</text>
+
+                <rect x="40" y="65" width="100" height="38" rx="8" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
+                <text x="90" y="89" text-anchor="middle" font-size="13">count = 1</text>
+
+                <polygon points="90,118 155,165 90,212 25,165" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="90" y="160" text-anchor="middle" font-size="13">count ≤ 5?</text>
+                <text x="164" y="154" font-size="12">Yes</text>
+                <text x="22" y="228" font-size="12">No</text>
+
+                <polygon points="190,140 300,140 284,185 174,185" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="238" y="167" text-anchor="middle" font-size="13">output count</text>
+
+                <rect x="345" y="144" width="128" height="38" rx="8" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
+                <text x="409" y="168" text-anchor="middle" font-size="12">count = count + 1</text>
+
+                <ellipse cx="90" cy="255" rx="48" ry="20" fill="#eaf3ff" stroke="#155eef" stroke-width="2"></ellipse>
+                <text x="90" y="260" text-anchor="middle" font-size="14">Stop</text>
+
+                <line x1="90" y1="50" x2="90" y2="65" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-loop)"></line>
+                <line x1="90" y1="103" x2="90" y2="118" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-loop)"></line>
+                <line x1="155" y1="165" x2="190" y2="165" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-loop)"></line>
+                <line x1="300" y1="165" x2="345" y2="165" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-loop)"></line>
+                <path d="M 473 165 L 500 165 L 500 84 L 140 84" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-loop)"></path>
+                <line x1="90" y1="212" x2="90" y2="235" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-loop)"></line>
+              </svg>
+              <p class="diagram-caption">Visual flowchart: the counter starts at 1, is checked against the end value, outputs the current count, increases by 1, and repeats until the condition is no longer true.</p>
+            </div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>What does this output?</p>
+            <p><strong>Worked example 1:</strong> What does this output?</p>
             <pre>for count in range(0, 5):
   print(count + 1)</pre>
             <button class="toggle-answer">Show answer</button>
@@ -612,6 +782,24 @@ print(result)</pre>
 5</pre>
               <p>The loop values are 0, 1, 2, 3, 4, but the program outputs each value plus 1.</p>
             </div>
+
+            <p><strong>Worked example 2:</strong> How many times does this loop run, and what does it print?</p>
+            <pre>for x in range(1, 11):
+  print(x - 1)</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>It runs <strong>10 times</strong> and prints:</p>
+              <pre>0
+1
+2
+3
+4
+5
+6
+7
+8
+9</pre>
+            </div>
           </section>
 
           <section class="subcard practice">
@@ -619,9 +807,11 @@ print(result)</pre>
             <ul class="line-list">
               <li>Write a loop that outputs the 5 times table.</li>
               <li>Write a loop that asks for 10 numbers and adds them together.</li>
+              <li>Write an algorithm that asks the user how many numbers they want to enter, then calculates the average.</li>
               <li>Sketch the flowchart steps for a counter that goes from 1 to 20.</li>
+              <li>For one loop, identify the <strong>counter</strong>, <strong>start value</strong>, <strong>end value</strong>, and <strong>increment</strong>.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CT.02" placeholder="Write your loop or flowchart plan here..."></textarea>
+            <textarea class="response-box" data-key="notes-9CT.02" placeholder="Write your loop, trace table, or flowchart plan here..."></textarea>
           </section>
         </div>
       </article>
@@ -645,26 +835,28 @@ print(result)</pre>
             <h4>Memorize</h4>
             <ul class="line-list">
               <li><strong>Predict first, then test.</strong></li>
-              <li>Use a <strong>trace table</strong> to track changing values.</li>
-              <li>Focus on what is printed on each loop cycle.</li>
-              <li>Check whether the variable in the output is the same one used in the loop.</li>
+              <li>Use a <strong>trace table</strong> to track all values that change.</li>
+              <li>Focus on what is printed during each loop cycle, not just the final line.</li>
+              <li>Check carefully whether the value being output is the counter, a total, or another variable.</li>
             </ul>
           </section>
 
           <section class="subcard understand">
             <h4>Understand</h4>
-            <p>Strong prediction means you can explain <em>why</em> each line is printed. Do not guess. Walk through the loop line by line.</p>
+            <p>Prediction is not guessing. It is a reasoned explanation based on tracing the algorithm step by step. A good student should be able to say what the program outputs and explain how the variable values changed to produce that output.</p>
+            <p>One helpful method is to build a trace table like this:</p>
             <table>
               <tr><th>Counter</th><th>Calculation</th><th>Output</th></tr>
               <tr><td>0</td><td>0 + 2</td><td>2</td></tr>
               <tr><td>1</td><td>1 + 2</td><td>3</td></tr>
               <tr><td>2</td><td>2 + 2</td><td>4</td></tr>
             </table>
+            <div class="callout">Common mistake: students often confuse the counter variable with the value that is actually being printed or stored in the total.</div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>Predict the output:</p>
+            <p><strong>Worked example 1:</strong> Predict the output:</p>
             <pre>total = 0
 for count in range(1, 4):
   total = total + count
@@ -676,16 +868,30 @@ for count in range(1, 4):
 6</pre>
               <p>Explanation: <code>total</code> becomes 1, then 3, then 6.</p>
             </div>
+
+            <p><strong>Worked example 2:</strong> Predict the output:</p>
+            <pre>for x in range(3, 7):
+  print(x - 1)</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <pre>2
+3
+4
+5</pre>
+              <p>The loop uses <code>3, 4, 5, 6</code>, and each value is reduced by 1 before printing.</p>
+            </div>
           </section>
 
           <section class="subcard practice">
             <h4>Practice</h4>
             <ul class="line-list">
-              <li>Predict the output of a loop from 5 to 9.</li>
+              <li>Predict the output of a loop that runs from 5 to 9.</li>
               <li>Explain what changes if the start value changes from 0 to 1.</li>
-              <li>Create your own loop and ask a partner to predict the result.</li>
+              <li>Create a trace table for a loop that updates a running total.</li>
+              <li>Write your own short loop and ask a partner to predict the result.</li>
+              <li>Check whether the output shows the <strong>counter</strong> or a different variable.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CT.07" placeholder="Write your prediction strategy here..."></textarea>
+            <textarea class="response-box" data-key="notes-9CT.07" placeholder="Write your trace table and prediction strategy here..."></textarea>
           </section>
         </div>
       </article>
@@ -709,21 +915,23 @@ for count in range(1, 4):
           <section class="subcard memorize">
             <h4>Memorize</h4>
             <ul class="line-list">
-              <li>First ask: <strong>Does the algorithm meet the task?</strong></li>
-              <li>Then compare number of lines and number of variables used.</li>
-              <li>Less code can mean a smaller file and less memory use.</li>
+              <li>First ask: <strong>Does the algorithm meet the task correctly?</strong></li>
+              <li>Then compare the number of lines, the number of variables, and how easy it is to follow.</li>
+              <li>Less code can mean a smaller file and less memory use, but only if the answer is still correct.</li>
+              <li>A good algorithm should be accurate, clear, and sensible for the task.</li>
             </ul>
           </section>
 
           <section class="subcard understand">
             <h4>Understand</h4>
-            <p>At this stage, the most important test is whether the algorithm gives the <strong>correct result</strong>. If both work, choose the one that is clearer and more efficient.</p>
-            <div class="callout">Do not call a program “better” if it does not actually solve the problem correctly.</div>
+            <p>At this stage, the most important test is whether the algorithm produces the <strong>correct result</strong>. If two algorithms both work, students can then compare which one is clearer, uses fewer unnecessary variables, or is easier to debug.</p>
+            <p>For Cambridge Form 3, this comparison is mainly about <strong>fitness for purpose</strong>, not advanced analysis of run time or complex memory theory.</p>
+            <div class="callout">Do not call a program “better” if it does not actually solve the problem correctly. Correctness comes before efficiency.</div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>Which algorithm is correct for Celsius to Fahrenheit?</p>
+            <p><strong>Worked example 1:</strong> Which algorithm is correct for Celsius to Fahrenheit?</p>
             <pre>Algorithm A:
 Fahrenheit = Temperature + 32 * 1.8
 
@@ -733,16 +941,37 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
             <div class="answer">
               <p><strong>Algorithm B</strong> is correct because the temperature must be multiplied by 1.8 first, then 32 is added.</p>
             </div>
+
+            <p><strong>Worked example 2:</strong> Which algorithm is better for adding 3 numbers together?</p>
+            <pre>Algorithm 1:
+number1 = input("Enter a number")
+number2 = input("Enter a number")
+number3 = input("Enter a number")
+value1 = number1 + number2
+total = number3 + value1
+print(total)
+
+Algorithm 2:
+number1 = input("Enter a number")
+number2 = input("Enter a number")
+number3 = input("Enter a number")
+print(number1 + number2 + number3)</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>Algorithm 2</strong> is better because it gives the same result using fewer lines and fewer variables, so it is simpler and more efficient.</p>
+            </div>
           </section>
 
           <section class="subcard practice">
             <h4>Practice</h4>
             <ul class="line-list">
-              <li>Compare two ways to add 3 numbers together.</li>
-              <li>Circle the algorithm that uses fewer variables.</li>
-              <li>Explain why an incorrect result means the algorithm is not suited to the task.</li>
+              <li>Check whether an algorithm really meets the task requirements before calling it “good”.</li>
+              <li>Compare two solutions to the same problem and count the number of variables used.</li>
+              <li>Fix a faulty temperature-conversion algorithm.</li>
+              <li>Explain why a shorter algorithm is only better if it is still correct.</li>
+              <li>Write one sentence saying which algorithm is <strong>best suited to the purpose</strong> and why.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CT.08" placeholder="Write how you compare two algorithms here..."></textarea>
+            <textarea class="response-box" data-key="notes-9CT.08" placeholder="Write your comparison and justification here..."></textarea>
           </section>
         </div>
       </article>
@@ -766,45 +995,63 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
           <section class="subcard memorize">
             <h4>Memorize</h4>
             <ul class="line-list">
-              <li>1 byte = 8 bits</li>
               <li>1 nibble = 4 bits</li>
-              <li>To go to a larger unit, divide.</li>
-              <li>To go to a smaller unit, multiply.</li>
+              <li>1 byte = 8 bits</li>
+              <li>1 KB = 1024 bytes, 1 MB = 1024 KB, 1 GB = 1024 MB, 1 TB = 1024 GB</li>
+              <li>To go to a larger unit, divide; to go to a smaller unit, multiply.</li>
+              <li>Always keep track of the unit name as you work.</li>
             </ul>
           </section>
 
           <section class="subcard understand">
             <h4>Understand</h4>
-            <p>Storage units are used because bits alone are too small for real computer memory and storage sizes.</p>
+            <p>Storage units are used because bits are too small for most real computer specifications. Instead of saying a hard drive stores billions of bits, we use grouped units such as bytes, kilobytes, megabytes, gigabytes, and terabytes.</p>
+            <p>A good method is to move one step at a time through the unit ladder and show the calculation clearly.</p>
             <table>
               <tr><th>Example</th><th>Method</th><th>Answer</th></tr>
               <tr><td>3 KB to bytes</td><td>3 × 1024</td><td>3072 bytes</td></tr>
               <tr><td>2048 MB to GB</td><td>2048 ÷ 1024</td><td>2 GB</td></tr>
             </table>
+            <div class="callout">If the question skips units, move step by step. For example, MB → KB → bytes, rather than trying to guess in one jump.</div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>Convert <strong>5 MB</strong> into <strong>KB</strong>.</p>
+            <p><strong>Worked example 1:</strong> Convert <strong>5 MB</strong> into <strong>KB</strong>.</p>
             <button class="toggle-answer">Show answer</button>
             <div class="answer">
               <p><strong>5 × 1024 = 5120 KB</strong></p>
             </div>
-            <p>Convert <strong>8192 bytes</strong> into <strong>KB</strong>.</p>
+
+            <p><strong>Worked example 2:</strong> Convert <strong>8192 bytes</strong> into <strong>KB</strong>.</p>
             <button class="toggle-answer">Show answer</button>
             <div class="answer">
               <p><strong>8192 ÷ 1024 = 8 KB</strong></p>
+            </div>
+
+            <p><strong>Worked example 3:</strong> Convert <strong>24 bits</strong> into <strong>bytes</strong>.</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>24 ÷ 8 = 3 bytes</strong></p>
+            </div>
+
+            <p><strong>Concept check:</strong> Why do we use units such as KB, MB, and GB instead of only bits and bytes?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>Because real storage sizes are very large, and these units make them easier to read, compare, and calculate with.</p>
             </div>
           </section>
 
           <section class="subcard practice">
             <h4>Practice</h4>
             <ul class="line-list">
-              <li>Rank devices from largest RAM to smallest.</li>
-              <li>Create three conversion questions for a partner.</li>
-              <li>Try a challenge conversion like <code>5 bits → bytes</code>.</li>
+              <li>Rank devices from the largest RAM size to the smallest.</li>
+              <li>Create three conversion questions for a partner and mark the answers.</li>
+              <li>Convert values that skip units, such as <code>3 GB → KB</code>.</li>
+              <li>Explain the difference between a <strong>bit</strong>, <strong>nibble</strong>, and <strong>byte</strong>.</li>
+              <li>Try a challenge conversion such as <code>5 bits → bytes</code> and explain the method.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CS.06" placeholder="Show your working for a few conversions here..."></textarea>
+            <textarea class="response-box" data-key="notes-9CS.06" placeholder="Show your working for several conversions here..."></textarea>
           </section>
         </div>
       </article>
@@ -828,9 +1075,10 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
           <section class="subcard memorize">
             <h4>Memorize</h4>
             <ul class="line-list">
-              <li><strong>AND</strong> = both inputs must be 1.</li>
-              <li><strong>OR</strong> = at least one input must be 1.</li>
-              <li><strong>NOT</strong> = flips the input.</li>
+              <li><strong>AND</strong> = the output is 1 only if both inputs are 1.</li>
+              <li><strong>OR</strong> = the output is 1 if at least one input is 1.</li>
+              <li><strong>NOT</strong> = flips the input, so 1 becomes 0 and 0 becomes 1.</li>
+              <li>A <strong>Boolean expression</strong> always gives a true/false or 1/0 result.</li>
             </ul>
             <table>
               <tr><th>A</th><th>B</th><th>A AND B</th><th>A OR B</th></tr>
@@ -843,27 +1091,74 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
 
           <section class="subcard understand">
             <h4>Understand</h4>
-            <p>To draw a logic circuit from an expression:</p>
+            <p>To draw a logic circuit from a Boolean expression, students must first understand which operation happens first. Brackets help to show the order clearly.</p>
             <ol class="line-list">
               <li>Write the Boolean expression clearly.</li>
               <li>Identify the inputs (A, B, C...).</li>
-              <li>Draw the first gate that must happen.</li>
-              <li>Connect the output of one gate into the next gate if needed.</li>
+              <li>Draw the first gate or gates needed by the expression.</li>
+              <li>If one gate produces an output that is used again, connect that output into the next gate.</li>
+              <li>Use a truth table to check that the final output is correct.</li>
             </ol>
-            <p>Example: <code>(A AND B) OR NOT C</code></p>
+            <p>Example: <code>(A AND B) OR NOT C</code> means you calculate <code>A AND B</code>, calculate <code>NOT C</code>, and then join those results with an <code>OR</code> gate.</p>
+            <div class="diagram-card">
+              <svg viewBox="0 0 620 240" role="img" aria-label="Logic gate diagram for A AND B OR NOT C">
+                <defs>
+                  <marker id="arrow-logic" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#475467"></path>
+                  </marker>
+                </defs>
+                <text x="20" y="52" font-size="15" font-weight="bold">A</text>
+                <text x="20" y="92" font-size="15" font-weight="bold">B</text>
+                <text x="20" y="172" font-size="15" font-weight="bold">C</text>
+
+                <line x1="40" y1="48" x2="150" y2="48" stroke="#475467" stroke-width="3"></line>
+                <line x1="40" y1="88" x2="150" y2="88" stroke="#475467" stroke-width="3"></line>
+                <line x1="40" y1="168" x2="170" y2="168" stroke="#475467" stroke-width="3"></line>
+
+                <rect x="150" y="28" width="110" height="80" rx="28" fill="#eef4ff" stroke="#155eef" stroke-width="2"></rect>
+                <text x="205" y="74" text-anchor="middle" font-size="18" font-weight="bold">AND</text>
+
+                <polygon points="170,145 170,191 220,168" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <circle cx="228" cy="168" r="7" fill="#fff" stroke="#c77700" stroke-width="2"></circle>
+                <text x="184" y="205" font-size="15" font-weight="bold">NOT</text>
+
+                <line x1="260" y1="68" x2="365" y2="68" stroke="#475467" stroke-width="3"></line>
+                <line x1="235" y1="168" x2="365" y2="168" stroke="#475467" stroke-width="3"></line>
+
+                <rect x="365" y="86" width="110" height="64" rx="28" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></rect>
+                <text x="420" y="124" text-anchor="middle" font-size="18" font-weight="bold">OR</text>
+
+                <line x1="475" y1="118" x2="560" y2="118" stroke="#475467" stroke-width="3" marker-end="url(#arrow-logic)"></line>
+                <text x="570" y="123" font-size="15" font-weight="bold">Output Q</text>
+              </svg>
+              <p class="diagram-caption">Visual logic diagram for the Boolean expression <code>(A AND B) OR NOT C</code>.</p>
+            </div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>What happens to the output of <code>NOT A</code> when <code>A = 1</code>?</p>
+            <p><strong>Worked example 1:</strong> What happens to the output of <code>NOT A</code> when <code>A = 1</code>?</p>
             <button class="toggle-answer">Show answer</button>
             <div class="answer">
               <p><strong>NOT 1 = 0</strong>. The NOT gate flips the value.</p>
             </div>
-            <p>For <code>A AND B</code>, what is the output when <code>A = 1</code> and <code>B = 0</code>?</p>
+
+            <p><strong>Worked example 2:</strong> For <code>A AND B</code>, what is the output when <code>A = 1</code> and <code>B = 0</code>?</p>
             <button class="toggle-answer">Show answer</button>
             <div class="answer">
               <p><strong>0</strong>, because both inputs must be 1 for AND.</p>
+            </div>
+
+            <p><strong>Worked example 3:</strong> Complete the truth table for <code>A OR NOT B</code>.</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <table>
+                <tr><th>A</th><th>B</th><th>NOT B</th><th>A OR NOT B</th></tr>
+                <tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+              </table>
             </div>
           </section>
 
@@ -872,9 +1167,11 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
             <ul class="line-list">
               <li>Draw a circuit for <code>A AND B</code>.</li>
               <li>Draw a circuit for <code>A OR (NOT B)</code>.</li>
+              <li>Draw a circuit for <code>(A AND B) OR C</code>.</li>
               <li>Make a truth table before deciding the final output.</li>
+              <li>Identify exactly when the output becomes 1.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CS.07" placeholder="Describe or sketch your circuit steps here..."></textarea>
+            <textarea class="response-box" data-key="notes-9CS.07" placeholder="Describe or sketch your circuit steps and truth table here..."></textarea>
           </section>
         </div>
       </article>
@@ -898,31 +1195,44 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
           <section class="subcard memorize">
             <h4>Memorize</h4>
             <ul class="line-list">
-              <li><strong>Analogue</strong> data is continuous.</li>
-              <li><strong>Digital</strong> data is stored as binary.</li>
+              <li><strong>Analogue</strong> data is continuous and can change smoothly over time.</li>
+              <li><strong>Digital</strong> data is stored using binary values that computers can process.</li>
               <li><strong>Sampling</strong> measures the sound wave at regular intervals.</li>
-              <li><strong>Bit depth</strong> affects how many possible values each sample can have.</li>
+              <li><strong>Bit depth</strong> controls how many possible values each sample can store.</li>
+              <li>Higher quality sound usually needs more storage space.</li>
             </ul>
           </section>
 
           <section class="subcard understand">
             <h4>Understand</h4>
-            <p>Digitising sound usually follows this order:</p>
+            <p>Digitising sound means converting a real-world analogue wave into binary so that a computer can store and play it back. Students should understand both the order of the process and the effect on quality and file size.</p>
             <ol class="line-list">
               <li>A microphone captures the analogue sound wave.</li>
-              <li>The wave is sampled many times per second.</li>
+              <li>An analogue-to-digital system samples the wave many times per second.</li>
               <li>Each sample is rounded to the nearest available value (quantisation).</li>
-              <li>The values are encoded into binary and stored.</li>
+              <li>The values are encoded into binary and saved as a digital file.</li>
             </ol>
-            <div class="callout">Higher sample rate and higher bit depth normally mean better sound quality, but also a larger file size.</div>
+            <div class="callout">Higher sample rate and higher bit depth usually mean better sound quality because the digital copy is closer to the original sound wave, but the file also becomes larger.</div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>Why does a higher sample rate usually improve sound quality?</p>
+            <p><strong>Worked example 1:</strong> Why does a higher sample rate usually improve sound quality?</p>
             <button class="toggle-answer">Show answer</button>
             <div class="answer">
               <p>Because the system captures the sound wave more often, so the digital version is closer to the original analogue sound.</p>
+            </div>
+
+            <p><strong>Worked example 2:</strong> Put these steps in the correct order: <em>quantisation, microphone captures sound, binary encoding, sampling</em>.</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p><strong>Correct order:</strong> microphone captures sound → sampling → quantisation → binary encoding / storage.</p>
+            </div>
+
+            <p><strong>Worked example 3:</strong> Why does a higher bit depth usually improve sound quality?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>Because each sample can store more possible values, so the digital sound represents the original wave more accurately.</p>
             </div>
           </section>
 
@@ -932,8 +1242,10 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
               <li>Explain the difference between analogue and digital sound in one sentence each.</li>
               <li>Put these words in order: <em>binary, sampling, microphone, stored file</em>.</li>
               <li>Explain why better quality sound usually needs more storage.</li>
+              <li>State what sample rate measures and what bit depth controls.</li>
+              <li>Write the full digitising process in four clear steps.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CS.05" placeholder="Write the digitising steps in your own words here..."></textarea>
+            <textarea class="response-box" data-key="notes-9CS.05" placeholder="Write the digitising steps and quality explanation in your own words here..."></textarea>
           </section>
         </div>
       </article>
@@ -957,15 +1269,15 @@ Fahrenheit = Temperature * 1.8 + 32</pre>
             <h4>Memorize</h4>
             <ul class="line-list">
               <li>A binary search only works on a <strong>sorted</strong> list.</li>
-              <li>Check the <strong>middle</strong> item first.</li>
-              <li>If the target is smaller, search the left half.</li>
-              <li>If the target is larger, search the right half.</li>
+              <li>Check the <strong>middle</strong> item first, not the first item.</li>
+              <li>If the target is smaller, search the left half; if it is larger, search the right half.</li>
+              <li>Repeat the process until the item is found or there is nothing left to check.</li>
             </ul>
           </section>
 
           <section class="subcard understand">
             <h4>Understand</h4>
-            <p>Binary search is efficient because it removes half of the remaining items each step.</p>
+            <p>Binary search is efficient because it removes half of the remaining items at each step. This makes it much faster than checking every item one by one, especially in long sorted lists.</p>
             <pre>Sorted list: 3, 6, 9, 12, 15, 18, 21
 Find 15:
 1. Check middle = 12
@@ -973,15 +1285,68 @@ Find 15:
 3. Check middle of the right half = 18
 4. 15 is smaller, so move left
 5. Find 15</pre>
+            <div class="callout">If the list is not in order, the method breaks down. Always check the list is sorted before using a binary search.</div>
+            <div class="diagram-card">
+              <svg viewBox="0 0 590 270" role="img" aria-label="Binary search flowchart">
+                <defs>
+                  <marker id="arrow-search" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <ellipse cx="85" cy="28" rx="44" ry="18" fill="#eaf3ff" stroke="#155eef" stroke-width="2"></ellipse>
+                <text x="85" y="33" text-anchor="middle" font-size="13">Start</text>
+                <polygon points="85,62 160,108 85,154 10,108" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="85" y="102" text-anchor="middle" font-size="13">List sorted?</text>
+                <text x="162" y="98" font-size="12">Yes</text>
+                <text x="40" y="165" font-size="12">No</text>
+
+                <rect x="205" y="87" width="120" height="42" rx="9" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
+                <text x="265" y="112" text-anchor="middle" font-size="13">Check middle item</text>
+
+                <polygon points="380,62 455,108 380,154 305,108" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="380" y="103" text-anchor="middle" font-size="13">Target found?</text>
+                <text x="458" y="98" font-size="12">Yes</text>
+                <text x="355" y="165" font-size="12">No</text>
+
+                <rect x="485" y="88" width="88" height="40" rx="10" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></rect>
+                <text x="529" y="113" text-anchor="middle" font-size="13">Found</text>
+
+                <rect x="320" y="188" width="120" height="42" rx="9" fill="#f5f8ff" stroke="#155eef" stroke-width="2"></rect>
+                <text x="380" y="205" text-anchor="middle" font-size="13">Smaller? go left</text>
+                <text x="380" y="221" text-anchor="middle" font-size="13">Larger? go right</text>
+
+                <line x1="85" y1="46" x2="85" y2="62" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="160" y1="108" x2="205" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="325" y1="108" x2="305" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="455" y1="108" x2="485" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <line x1="380" y1="154" x2="380" y2="188" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></line>
+                <path d="M 380 230 L 380 248 L 265 248 L 265 129" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-search)"></path>
+                <path d="M 50 145 L 50 215 L 20 215" fill="none" stroke="#4b6cb7" stroke-width="2.5"></path>
+              </svg>
+              <p class="diagram-caption">Visual flowchart: binary search only begins once the list is sorted, then the middle item is checked and half the search area is removed each time.</p>
+            </div>
           </section>
 
           <section class="subcard demonstrate">
             <h4>Demonstrate</h4>
-            <p>Can you use a binary search on this list?</p>
+            <p><strong>Worked example 1:</strong> Can you use a binary search on this list?</p>
             <pre>12, 4, 19, 7, 25, 10</pre>
             <button class="toggle-answer">Show answer</button>
             <div class="answer">
               <p><strong>No.</strong> The list is not sorted, so a binary search would not work correctly.</p>
+            </div>
+
+            <p><strong>Worked example 2:</strong> Search for <strong>14</strong> in this sorted list:</p>
+            <pre>2, 4, 6, 8, 10, 12, 14, 16</pre>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>Check the middle values step by step:</p>
+              <ol class="line-list">
+                <li>Middle is 8 or 10 depending on how the middle is chosen.</li>
+                <li>14 is larger, so ignore the left half.</li>
+                <li>Check the middle of the remaining right half.</li>
+                <li>Continue until 14 is found.</li>
+              </ol>
             </div>
           </section>
 
@@ -991,11 +1356,40 @@ Find 15:
               <li>Sort a list of 8 numbers, then search for one number using the middle each time.</li>
               <li>Explain why binary search is usually faster than checking one item at a time.</li>
               <li>Describe the first three steps of a binary search in your own words.</li>
+              <li>Explain why the list must be sorted before the search starts.</li>
+              <li>Compare a binary search with checking every item one by one.</li>
             </ul>
-            <textarea class="response-box" data-key="notes-9CT.05" placeholder="Write your own binary search explanation here..."></textarea>
+            <textarea class="response-box" data-key="notes-9CT.05" placeholder="Write your binary search steps and explanation here..."></textarea>
           </section>
         </div>
       </article>
+    </section>
+
+    <section class="card footer-card">
+      <h2>📝 Mixed mastery practice</h2>
+      <div class="two-col">
+        <div>
+          <ol class="line-list">
+            <li>Correct a pseudocode algorithm so it matches the task exactly.</li>
+            <li>Predict the output of a loop and show the trace table.</li>
+            <li>Explain whether one algorithm is better than another and justify your answer.</li>
+            <li>Convert between bits, bytes, KB, MB, and GB with full working.</li>
+            <li>Draw a logic circuit for a Boolean expression and complete the truth table.</li>
+            <li>Describe the full process of digitising sound in the correct order.</li>
+            <li>Use a binary search on a sorted list and explain each step.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>How to answer well</h3>
+          <ul class="mini-checklist">
+            <li>Use the correct technical vocabulary.</li>
+            <li>Show each stage of your method.</li>
+            <li>Give a reason, not just the final answer.</li>
+            <li>Check whether the question wants a definition, an explanation, or a worked solution.</li>
+          </ul>
+          <textarea class="note-box" data-key="mixed-practice" placeholder="Use this box for your mixed exam-style practice answers..."></textarea>
+        </div>
+      </div>
     </section>
 
     <section class="card footer-card">

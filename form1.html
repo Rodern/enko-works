@@ -374,6 +374,20 @@
 
     .footer-card { margin-bottom: 2rem; }
 
+    .scheme-gallery {
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-card {
+      background: #ffffff;
+    }
+
     @media (max-width: 980px) {
       .top-grid,
       .knowledge-grid,
@@ -586,6 +600,362 @@
             <li>How can you spot a repeated pattern in an algorithm?</li>
           </ol>
         </div>
+      </div>
+    </section>
+
+    <section class="card scheme-gallery">
+      <h2>🖼️ Complete scheme-of-work flowchart gallery</h2>
+      <p>
+        The cards below complete the set of <strong>flowcharts used or suggested in the Stage 7 scheme of work</strong>.
+        They are designed for students to follow, correct, compare, and redraw accurately.
+      </p>
+
+      <div class="gallery-grid">
+        <article class="card gallery-card">
+          <h3>1) Movement and sequence flowcharts</h3>
+          <div class="two-col">
+            <div class="diagram-card">
+              <h4>Movement actions example</h4>
+              <svg viewBox="0 0 280 470" role="img" aria-label="Movement actions flowchart">
+                <defs>
+                  <marker id="arrow-move" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <ellipse cx="140" cy="24" rx="54" ry="18" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></ellipse>
+                <text x="140" y="29" text-anchor="middle" font-size="12">Start facing front</text>
+                <rect x="90" y="56" width="100" height="34" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="140" y="77" text-anchor="middle" font-size="12">Turn right 90°</text>
+                <rect x="90" y="106" width="100" height="40" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="140" y="124" text-anchor="middle" font-size="12">Move forward</text>
+                <text x="140" y="138" text-anchor="middle" font-size="12">15 steps</text>
+                <rect x="90" y="162" width="100" height="34" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="140" y="183" text-anchor="middle" font-size="12">Turn right 90°</text>
+                <rect x="90" y="212" width="100" height="40" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="140" y="230" text-anchor="middle" font-size="12">Move forward</text>
+                <text x="140" y="244" text-anchor="middle" font-size="12">15 steps</text>
+                <rect x="90" y="268" width="100" height="34" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="140" y="289" text-anchor="middle" font-size="12">Turn left 90°</text>
+                <rect x="90" y="318" width="100" height="40" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="140" y="336" text-anchor="middle" font-size="12">Move forward</text>
+                <text x="140" y="350" text-anchor="middle" font-size="12">5 steps</text>
+                <ellipse cx="140" cy="392" rx="42" ry="18" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></ellipse>
+                <text x="140" y="397" text-anchor="middle" font-size="12">Stop</text>
+                <line x1="140" y1="42" x2="140" y2="56" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-move)"></line>
+                <line x1="140" y1="90" x2="140" y2="106" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-move)"></line>
+                <line x1="140" y1="146" x2="140" y2="162" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-move)"></line>
+                <line x1="140" y1="196" x2="140" y2="212" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-move)"></line>
+                <line x1="140" y1="252" x2="140" y2="268" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-move)"></line>
+                <line x1="140" y1="302" x2="140" y2="318" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-move)"></line>
+                <line x1="140" y1="358" x2="140" y2="374" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-move)"></line>
+              </svg>
+              <p class="diagram-caption">This matches the practical movement example from the scheme: students can follow each action in order.</p>
+            </div>
+
+            <div>
+              <div class="diagram-card">
+                <h4>Three-number sum example</h4>
+                <svg viewBox="0 0 300 360" role="img" aria-label="Sum three numbers flowchart">
+                  <defs>
+                    <marker id="arrow-sum3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                    </marker>
+                  </defs>
+                  <rect x="100" y="10" width="100" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                  <text x="150" y="30" text-anchor="middle" font-size="12">Start</text>
+                  <polygon points="90,56 210,56 192,94 72,94" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="140" y="80" text-anchor="middle" font-size="12">INPUT number 1</text>
+                  <polygon points="90,106 210,106 192,144 72,144" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="140" y="130" text-anchor="middle" font-size="12">INPUT number 2</text>
+                  <polygon points="90,156 210,156 192,194 72,194" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="140" y="180" text-anchor="middle" font-size="12">INPUT number 3</text>
+                  <rect x="82" y="208" width="136" height="44" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                  <text x="150" y="226" text-anchor="middle" font-size="11">result = number 1 +</text>
+                  <text x="150" y="240" text-anchor="middle" font-size="11">number 2 + number 3</text>
+                  <polygon points="92,268 212,268 194,306 74,306" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="142" y="292" text-anchor="middle" font-size="12">OUTPUT result</text>
+                  <rect x="100" y="320" width="100" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                  <text x="150" y="340" text-anchor="middle" font-size="12">Stop</text>
+                  <line x1="150" y1="42" x2="150" y2="56" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sum3)"></line>
+                  <line x1="140" y1="94" x2="140" y2="106" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sum3)"></line>
+                  <line x1="140" y1="144" x2="140" y2="156" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sum3)"></line>
+                  <line x1="150" y1="194" x2="150" y2="208" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sum3)"></line>
+                  <line x1="150" y1="252" x2="150" y2="268" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sum3)"></line>
+                  <line x1="150" y1="306" x2="150" y2="320" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sum3)"></line>
+                </svg>
+                <p class="diagram-caption">This is the correct flowchart for the task: input three numbers, add them, and output the result.</p>
+              </div>
+              <div class="exercise-box">
+                <h4>Extension from the scheme</h4>
+                <p>Students can now improve this flowchart so the output includes the full message, for example: <strong>“1 + 2 + 2 = 5”</strong>.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card gallery-card">
+          <h3>2) Error-spotting and correction flowcharts</h3>
+          <div class="two-col">
+            <div class="diagram-card">
+              <h4>Wrong operator example</h4>
+              <svg viewBox="0 0 300 340" role="img" aria-label="Faulty subtraction flowchart">
+                <defs>
+                  <marker id="arrow-fault1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <rect x="100" y="10" width="100" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="150" y="30" text-anchor="middle" font-size="12">Start</text>
+                <polygon points="90,56 210,56 192,94 72,94" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="140" y="80" text-anchor="middle" font-size="12">INPUT first</text>
+                <polygon points="90,106 210,106 192,144 72,144" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="140" y="130" text-anchor="middle" font-size="12">INPUT second</text>
+                <rect x="88" y="156" width="124" height="42" rx="8" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></rect>
+                <text x="150" y="175" text-anchor="middle" font-size="11">result = first</text>
+                <text x="150" y="189" text-anchor="middle" font-size="11">- second</text>
+                <polygon points="90,214 210,214 192,252 72,252" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="140" y="238" text-anchor="middle" font-size="12">OUTPUT result</text>
+                <rect x="100" y="268" width="100" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="150" y="288" text-anchor="middle" font-size="12">Stop</text>
+                <line x1="150" y1="42" x2="150" y2="56" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault1)"></line>
+                <line x1="140" y1="94" x2="140" y2="106" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault1)"></line>
+                <line x1="140" y1="144" x2="140" y2="156" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault1)"></line>
+                <line x1="150" y1="198" x2="150" y2="214" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault1)"></line>
+                <line x1="150" y1="252" x2="150" y2="268" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault1)"></line>
+              </svg>
+              <p class="diagram-caption">The scheme asks students to notice that this flowchart subtracts instead of multiplying.</p>
+              <div class="callout">Correction: the process box should read <code>result = first * second</code>.</div>
+            </div>
+
+            <div>
+              <div class="diagram-card">
+                <h4>Mismatched output label</h4>
+                <svg viewBox="0 0 300 320" role="img" aria-label="Average result mismatch flowchart">
+                  <defs>
+                    <marker id="arrow-fault2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                    </marker>
+                  </defs>
+                  <rect x="100" y="10" width="100" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                  <text x="150" y="30" text-anchor="middle" font-size="12">Start</text>
+                  <polygon points="90,56 210,56 192,94 72,94" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="140" y="80" text-anchor="middle" font-size="12">INPUT first</text>
+                  <polygon points="90,106 210,106 192,144 72,144" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="140" y="130" text-anchor="middle" font-size="12">INPUT second</text>
+                  <rect x="84" y="156" width="132" height="42" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                  <text x="150" y="175" text-anchor="middle" font-size="11">average = (first +</text>
+                  <text x="150" y="189" text-anchor="middle" font-size="11">second) / 2</text>
+                  <polygon points="90,214 210,214 192,252 72,252" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                  <text x="140" y="238" text-anchor="middle" font-size="12">OUTPUT result</text>
+                  <line x1="150" y1="42" x2="150" y2="56" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault2)"></line>
+                  <line x1="140" y1="94" x2="140" y2="106" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault2)"></line>
+                  <line x1="140" y1="144" x2="140" y2="156" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault2)"></line>
+                  <line x1="150" y1="198" x2="150" y2="214" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-fault2)"></line>
+                </svg>
+                <p class="diagram-caption">Students should notice that the chart calculates <strong>average</strong> but outputs <strong>result</strong>.</p>
+              </div>
+              <div class="diagram-card">
+                <h4>Missing input example</h4>
+                <svg viewBox="0 0 300 310" role="img" aria-label="Missing input colour flowchart">
+                  <rect x="100" y="10" width="100" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                  <text x="150" y="30" text-anchor="middle" font-size="12">Start</text>
+                  <polygon points="90,56 210,56 192,94 72,94" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="140" y="80" text-anchor="middle" font-size="12">INPUT Age</text>
+                  <polygon points="90,106 210,106 192,144 72,144" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                  <text x="140" y="130" text-anchor="middle" font-size="12">INPUT Name</text>
+                  <polygon points="58,160 242,160 220,236 36,236" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                  <text x="140" y="183" text-anchor="middle" font-size="11">OUTPUT name + age +</text>
+                  <text x="140" y="197" text-anchor="middle" font-size="11">favourite colour</text>
+                  <text x="140" y="211" text-anchor="middle" font-size="11">(but colour was never input)</text>
+                  <rect x="100" y="254" width="100" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                  <text x="150" y="274" text-anchor="middle" font-size="12">Stop</text>
+                </svg>
+                <p class="diagram-caption">The missing step is <strong>INPUT colour</strong> before the output box.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card gallery-card">
+          <h3>3) Selection and comparison flowcharts suggested in the scheme</h3>
+          <div class="two-col">
+            <div class="diagram-card">
+              <h4>Discount under 18 flowchart</h4>
+              <svg viewBox="0 0 420 260" role="img" aria-label="Discount flowchart">
+                <defs>
+                  <marker id="arrow-disc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <rect x="35" y="18" width="90" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="80" y="38" text-anchor="middle" font-size="12">Start</text>
+                <polygon points="35,66 165,66 147,106 17,106" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="92" y="90" text-anchor="middle" font-size="12">INPUT age</text>
+                <polygon points="240,52 320,100 240,148 160,100" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="240" y="96" text-anchor="middle" font-size="12">age &lt; 18?</text>
+                <text x="325" y="92" font-size="12">Yes</text>
+                <text x="220" y="160" font-size="12">No</text>
+                <polygon points="335,80 410,80 398,118 323,118" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="366" y="103" text-anchor="middle" font-size="11">OUTPUT Discount</text>
+                <polygon points="190,170 304,170 288,210 174,210" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                <text x="240" y="194" text-anchor="middle" font-size="11">OUTPUT No discount</text>
+                <line x1="80" y1="50" x2="80" y2="66" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-disc)"></line>
+                <line x1="165" y1="86" x2="160" y2="92" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-disc)"></line>
+                <line x1="320" y1="100" x2="323" y2="100" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-disc)"></line>
+                <line x1="240" y1="148" x2="240" y2="170" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-disc)"></line>
+              </svg>
+              <p class="diagram-caption">This is one of the main selection tasks suggested in the scheme.</p>
+            </div>
+
+            <div class="diagram-card">
+              <h4>Computer games preference flowchart</h4>
+              <svg viewBox="0 0 430 280" role="img" aria-label="Computer games preference flowchart">
+                <defs>
+                  <marker id="arrow-games" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <rect x="24" y="16" width="90" height="32" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="69" y="36" text-anchor="middle" font-size="12">Start</text>
+                <polygon points="24,64 182,64 164,108 6,108" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="92" y="89" text-anchor="middle" font-size="12">Ask: like games?</text>
+                <polygon points="246,52 326,100 246,148 166,100" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="246" y="96" text-anchor="middle" font-size="12">Answer yes?</text>
+                <text x="330" y="92" font-size="12">Yes</text>
+                <text x="228" y="160" font-size="12">No</text>
+                <polygon points="332,78 422,78 408,120 318,120" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="370" y="95" text-anchor="middle" font-size="10">INPUT favourite</text>
+                <text x="370" y="108" text-anchor="middle" font-size="10">game</text>
+                <polygon points="176,170 330,170 312,226 158,226" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                <text x="244" y="190" text-anchor="middle" font-size="10">OUTPUT suggest an</text>
+                <text x="244" y="204" text-anchor="middle" font-size="10">introductory game</text>
+                <line x1="69" y1="48" x2="69" y2="64" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-games)"></line>
+                <line x1="182" y1="86" x2="166" y2="95" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-games)"></line>
+                <line x1="326" y1="100" x2="318" y2="100" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-games)"></line>
+                <line x1="246" y1="148" x2="246" y2="170" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-games)"></line>
+              </svg>
+              <p class="diagram-caption">This visual version matches the suggested “games” selection task in the scheme.</p>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div class="diagram-card">
+              <h4>Logical operator action-flowcharts</h4>
+              <svg viewBox="0 0 520 320" role="img" aria-label="Logical operator flowchart examples">
+                <defs>
+                  <marker id="arrow-ops" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <text x="90" y="20" text-anchor="middle" font-size="12" font-weight="bold">Age example</text>
+                <rect x="30" y="30" width="90" height="26" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="75" y="47" text-anchor="middle" font-size="11">Start</text>
+                <polygon points="75,64 130,98 75,132 20,98" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="75" y="95" text-anchor="middle" font-size="11">age &lt; 12?</text>
+                <polygon points="138,72 218,72 206,104 126,104" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="172" y="92" text-anchor="middle" font-size="10">Hands in air</text>
+                <polygon points="36,145 116,145 104,177 24,177" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                <text x="70" y="165" text-anchor="middle" font-size="10">Sit on hands</text>
+
+                <text x="260" y="20" text-anchor="middle" font-size="12" font-weight="bold">Colour example</text>
+                <rect x="210" y="30" width="90" height="26" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="255" y="47" text-anchor="middle" font-size="11">Start</text>
+                <polygon points="255,64 320,98 255,132 190,98" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="255" y="92" text-anchor="middle" font-size="10">colour !=</text>
+                <text x="255" y="105" text-anchor="middle" font-size="10">purple?</text>
+                <polygon points="330,72 408,72 396,104 318,104" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="363" y="92" text-anchor="middle" font-size="10">Stand up</text>
+                <polygon points="216,145 294,145 282,177 204,177" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                <text x="249" y="165" text-anchor="middle" font-size="10">Sit on floor</text>
+
+                <text x="420" y="20" text-anchor="middle" font-size="12" font-weight="bold">Birthday example</text>
+                <rect x="380" y="30" width="80" height="26" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="420" y="47" text-anchor="middle" font-size="11">Start</text>
+                <polygon points="420,64 485,98 420,132 355,98" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="420" y="92" text-anchor="middle" font-size="10">birthday</text>
+                <text x="420" y="105" text-anchor="middle" font-size="10">&gt;= 1 May?</text>
+                <polygon points="446,145 500,145 492,177 438,177" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="469" y="165" text-anchor="middle" font-size="10">Clap</text>
+                <polygon points="360,145 420,145 410,177 350,177" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                <text x="385" y="165" text-anchor="middle" font-size="10">Wait</text>
+              </svg>
+              <p class="diagram-caption">These three mini decision-flowcharts visualise the logical-operator examples suggested in the scheme.</p>
+            </div>
+            <div class="exercise-box">
+              <h4>True / false rephrasing practice</h4>
+              <p>The scheme also asks learners to rewrite open questions into true/false ones.</p>
+              <ul class="line-list">
+                <li><em>Which number is larger, 2 or 3?</em> → <strong>Is 2 &gt; 3?</strong></li>
+                <li><em>How many words did the user input?</em> → <strong>Did the user enter more than one word?</strong></li>
+              </ul>
+              <p class="small-note">This helps students turn broad questions into simple flowchart decisions.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card gallery-card">
+          <h3>4) Sub-routine and correction flowcharts from the scheme</h3>
+          <div class="two-col">
+            <div class="diagram-card">
+              <h4>Incorrect main flowchart with sub-routines</h4>
+              <svg viewBox="0 0 520 360" role="img" aria-label="Incorrect subroutine selection flowchart">
+                <defs>
+                  <marker id="arrow-subfix" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <rect x="30" y="12" width="90" height="30" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="75" y="31" text-anchor="middle" font-size="12">Start</text>
+                <polygon points="20,58 150,58 132,96 2,96" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="78" y="82" text-anchor="middle" font-size="12">OUTPUT “Hello”</text>
+                <polygon points="20,108 150,108 132,146 2,146" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="78" y="131" text-anchor="middle" font-size="12">INPUT number</text>
+                <polygon points="180,94 270,146 180,198 90,146" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="180" y="142" text-anchor="middle" font-size="11">IF number = 0</text>
+                <text x="94" y="213" font-size="12">true</text>
+                <text x="275" y="140" font-size="12">false</text>
+                <rect x="106" y="220" width="102" height="36" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="122" y1="220" x2="122" y2="256" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="192" y1="220" x2="192" y2="256" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="157" y="242" text-anchor="middle" font-size="12">Positive</text>
+                <rect x="315" y="128" width="100" height="36" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="331" y1="128" x2="331" y2="164" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="399" y1="128" x2="399" y2="164" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="365" y="150" text-anchor="middle" font-size="12">Minus</text>
+                <rect x="30" y="286" width="90" height="30" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="75" y="305" text-anchor="middle" font-size="12">Stop</text>
+                <rect x="300" y="16" width="100" height="36" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="316" y1="16" x2="316" y2="52" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="384" y1="16" x2="384" y2="52" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="350" y="38" text-anchor="middle" font-size="12">Minus</text>
+                <polygon points="286,66 414,66 396,104 268,104" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                <text x="340" y="89" text-anchor="middle" font-size="11">OUTPUT “That is less than 0”</text>
+                <rect x="300" y="118" width="100" height="36" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="316" y1="118" x2="316" y2="154" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="384" y1="118" x2="384" y2="154" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="350" y="140" text-anchor="middle" font-size="12">Positive</text>
+                <polygon points="282,168 418,168 400,206 264,206" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="341" y="191" text-anchor="middle" font-size="11">OUTPUT “That is 0 or more”</text>
+                <line x1="75" y1="42" x2="75" y2="58" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-subfix)"></line>
+                <line x1="75" y1="96" x2="75" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-subfix)"></line>
+                <line x1="150" y1="127" x2="116" y2="132" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-subfix)"></line>
+                <line x1="270" y1="146" x2="315" y2="146" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-subfix)"></line>
+                <line x1="180" y1="198" x2="157" y2="220" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-subfix)"></line>
+              </svg>
+              <p class="diagram-caption">The scheme uses this as an error-finding task: the decision is incorrect.</p>
+            </div>
+            <div class="exercise-box">
+              <h4>What should students notice?</h4>
+              <ul class="line-list">
+                <li>The flowchart should output <strong>“Hello”</strong>.</li>
+                <li>If the number is <strong>less than 0</strong>, the <strong>Minus</strong> sub-routine should run.</li>
+                <li>If the number is <strong>0 or more</strong>, the <strong>Positive</strong> sub-routine should run.</li>
+                <li>So the decision should be <strong><code>IF number &lt; 0</code></strong>, not <strong><code>IF number = 0</code></strong>.</li>
+              </ul>
+              <div class="callout">This matches the correction point shown in the scheme of work screenshots.</div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 

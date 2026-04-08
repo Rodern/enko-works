@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form 1 Computational Thinking - Flowcharts Study Workbook</title>
+  <style>
+    :root {
+      --bg: #f5f8f1;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #5d665b;
+      --primary: #5a8f16;
+      --primary-soft: #e7f3d3;
+      --accent: #0f766e;
+      --accent-soft: #ddf6f1;
+      --warn: #b54708;
+      --warn-soft: #fff3e0;
+      --border: #d7dfcf;
+      --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef7e8 0%, var(--bg) 100%);
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(1220px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 2rem 0 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .objective {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 4px solid #9cc65c;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.4rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f7fdf1 100%);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.4rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      margin-bottom: 0.55rem;
+    }
+
+    .hero p,
+    .small-note,
+    .diagram-caption {
+      color: var(--muted);
+    }
+
+    .hero-banner {
+      margin: 1rem 0 0.75rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #f8fcf4;
+    }
+
+    .hero-banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: cover;
+    }
+
+    .hero-banner figcaption {
+      padding: 0.55rem 0.8rem;
+      font-size: 0.92rem;
+      background: #fbfef8;
+    }
+
+    .toolbar,
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1rem 0;
+    }
+
+    button,
+    .quick-links a,
+    .pill {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.68rem 1rem;
+      background: white;
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    button.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .quick-links a {
+      background: var(--primary-soft);
+      color: #34560c;
+      font-size: 0.92rem;
+    }
+
+    button:hover,
+    .quick-links a:hover { filter: brightness(0.98); }
+
+    .progress-wrap { margin-top: 1rem; }
+
+    .progress-bar {
+      height: 12px;
+      width: 100%;
+      background: #e3ebd8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), #7fbd2f);
+      transition: width 0.2s ease;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .top-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .knowledge-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 1.5rem;
+    }
+
+    .card,
+    .objective {
+      padding: 1rem 1.1rem;
+    }
+
+    .mini-checklist,
+    .line-list {
+      padding-left: 1.15rem;
+      margin-bottom: 0;
+    }
+
+    .mini-checklist li,
+    .line-list li { margin-bottom: 0.35rem; }
+
+    .note-box,
+    .response-box {
+      width: 100%;
+      min-height: 92px;
+      border: 1px dashed #a3b98a;
+      border-radius: 12px;
+      padding: 0.75rem;
+      font: inherit;
+      resize: vertical;
+      background-color: #fcfef9;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #fcfef9 0,
+        #fcfef9 27px,
+        #dfe9d0 28px
+      );
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 0.55rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: #f1f7e7; }
+
+    .worksheet-meta {
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #fffefb 0%, #ffffff 100%);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .field {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .field-line {
+      display: block;
+      margin-top: 0.45rem;
+      min-height: 1.6rem;
+      border-bottom: 2px solid #a3b98a;
+    }
+
+    .objective-list {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .objective-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .objective-title { margin: 0; }
+
+    .code {
+      display: inline-block;
+      font-weight: 700;
+      color: #355b09;
+      background: var(--primary-soft);
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .status-label {
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .status-label input {
+      transform: translateY(1px);
+      margin-right: 0.35rem;
+    }
+
+    .objective-grid,
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .subcard,
+    .exercise-box,
+    .diagram-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.9rem;
+      background: #fcfefb;
+    }
+
+    .memorize { background: #f6faef; }
+    .understand { background: #f4fffd; }
+    .demonstrate { background: #fffaf2; }
+    .practice { background: #fff8fb; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 12px;
+      background: #122019;
+      color: #eefbf1;
+      font-size: 0.9rem;
+      overflow: auto;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 0.6rem;
+      padding: 0.7rem;
+      background: var(--accent-soft);
+      border: 1px solid #9fddd5;
+      border-radius: 12px;
+    }
+
+    body.show-all-answers .answer { display: block; }
+
+    .toggle-answer {
+      margin-top: 0.5rem;
+      background: white;
+      color: var(--accent);
+      border-color: #9fddd5;
+    }
+
+    .callout {
+      background: var(--warn-soft);
+      border-left: 4px solid var(--warn);
+      padding: 0.7rem 0.85rem;
+      border-radius: 10px;
+      margin: 0.8rem 0;
+    }
+
+    .diagram-card svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .blank-line {
+      display: inline-block;
+      min-width: 120px;
+      border-bottom: 2px solid #7d8f68;
+      transform: translateY(-2px);
+      margin: 0 0.2rem;
+    }
+
+    .footer-card { margin-bottom: 2rem; }
+
+    @media (max-width: 980px) {
+      .top-grid,
+      .knowledge-grid,
+      .objective-grid,
+      .two-col,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page { size: A4; margin: 12mm; }
+
+      body {
+        background: white;
+        font-size: 11pt;
+      }
+
+      .toolbar,
+      .interactive-only {
+        display: none !important;
+      }
+
+      .top-grid,
+      .knowledge-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .objective-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-card,
+      .card,
+      .objective,
+      .subcard,
+      .worksheet-meta,
+      .diagram-card,
+      .exercise-box {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .answer { display: block !important; }
+
+      .note-box,
+      .response-box {
+        border: 1px solid #888;
+        min-height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <p class="eyebrow">Enko Education • Form 1 • Computational Thinking</p>
+        <h1>Algorithms, Flowcharts &amp; Sub-routines Study Workbook</h1>
+        <p>
+          This page is designed for <strong>Form 1 / Cambridge Stage 7</strong>. It focuses on understanding,
+          following, creating, correcting, and explaining <strong>flowcharts</strong>, especially using
+          <strong>sequence</strong>, <strong>selection</strong>, and <strong>sub-routines</strong>.
+        </p>
+
+        <figure class="hero-banner">
+          <img src="./Copilot_20260407_112435.jpg" alt="Enko Education Computational Thinking poster" />
+          <figcaption>Theme image: <strong>Computational Thinking — Algorithms &amp; Flowcharts</strong>.</figcaption>
+        </figure>
+
+        <div class="quick-links">
+          <a href="#obj-7ct01">7CT.01</a>
+          <a href="#obj-7ct02">7CT.02</a>
+          <a href="#obj-7ct04">7CT.04</a>
+          <a href="#obj-7ct05">7CT.05</a>
+          <a href="#obj-7ct09">7CT.09</a>
+          <a href="#obj-7ct08">7CT.08</a>
+          <a href="#obj-7ct07">7CT.07</a>
+          <a href="#obj-7ct06">7CT.06</a>
+        </div>
+
+        <div class="toolbar interactive-only">
+          <button class="primary" id="printBtn">🖨️ Print / Save PDF</button>
+          <button id="toggleAnswersBtn">👀 Show all answers</button>
+          <button id="resetBtn">♻️ Reset progress</button>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-bar"><span id="progressBar"></span></div>
+          <p id="progressText"><strong>0 / 8 objectives completed</strong></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card worksheet-meta">
+      <h2>📄 Student worksheet details</h2>
+      <p>Use this as a revision page, class worksheet, or homework guide. Read the demonstrations, complete the exercises, and explain your answers clearly.</p>
+      <div class="meta-grid">
+        <div class="field"><strong>Name</strong><span class="field-line"></span></div>
+        <div class="field"><strong>Class</strong><span class="field-line"></span></div>
+        <div class="field"><strong>Date</strong><span class="field-line"></span></div>
+        <div class="field"><strong>Teacher comment</strong><span class="field-line"></span></div>
+      </div>
+    </section>
+
+    <section class="grid top-grid">
+      <article class="card">
+        <h2>✅ Objectives covered on this page</h2>
+        <ul class="mini-checklist">
+          <li><strong>7CT.01</strong> Follow, understand, edit and correct algorithms presented as flowcharts.</li>
+          <li><strong>7CT.02</strong> Know how to create algorithms using flowchart symbols.</li>
+          <li><strong>7CT.04</strong> Understand and use selection statements, limited to <strong>IF, THEN, ELSE</strong>, presented as flowcharts.</li>
+          <li><strong>7CT.05</strong> Predict the outcome of flowcharts that use selection.</li>
+          <li><strong>7CT.09</strong> Select and use appropriate comparison operators in flowcharts: <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>.</li>
+          <li><strong>7CT.08</strong> Select and use appropriate constructs in flowcharts, limited to sequence and selection.</li>
+          <li><strong>7CT.07</strong> Follow, understand, edit and correct algorithms that use sub-routines.</li>
+          <li><strong>7CT.06</strong> Explain the importance of pattern recognition when designing solutions to tasks.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>📌 How to use this workbook</h2>
+        <ol class="line-list">
+          <li>Learn the words in the language and symbols sections first.</li>
+          <li>Study the worked examples and try to explain what each flowchart does.</li>
+          <li>Complete the exercises before revealing the answers.</li>
+          <li>Show your method: follow arrows, label branches, and justify your decisions.</li>
+          <li>Tick each objective when you can complete a similar task by yourself.</li>
+        </ol>
+        <div class="callout">For Form 1, the focus is on <strong>clear flowcharts</strong>, correct symbols, and correct use of <strong>sequence</strong>, <strong>selection</strong>, and <strong>simple sub-routines</strong>.</div>
+        <textarea class="note-box" data-key="form1-summary" placeholder="Write your unit summary here: important symbols, rules, and examples..."></textarea>
+      </article>
+    </section>
+
+    <section class="grid knowledge-grid">
+      <article class="card">
+        <h2>🧠 Language of the unit</h2>
+        <ul class="mini-checklist">
+          <li>flowchart</li>
+          <li>selection</li>
+          <li>logical operator</li>
+          <li>IF, THEN, ELSE</li>
+          <li>pattern recognition</li>
+          <li>sequence</li>
+          <li>sub-routine</li>
+          <li>calling a sub-routine</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>🔷 Flowchart symbols</h2>
+        <table>
+          <tr><th>Shape</th><th>Meaning</th></tr>
+          <tr><td>Oval / rounded box</td><td>Start or Stop</td></tr>
+          <tr><td>Rectangle</td><td>Process / calculation</td></tr>
+          <tr><td>Parallelogram</td><td>Input / output</td></tr>
+          <tr><td>Diamond</td><td>Decision / question</td></tr>
+          <tr><td>Rectangle with double sides</td><td>Sub-routine</td></tr>
+          <tr><td>Arrow</td><td>Shows the direction of flow</td></tr>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>⚖️ Comparison operators</h2>
+        <table>
+          <tr><th>Operator</th><th>Meaning</th></tr>
+          <tr><td><code>&gt;</code></td><td>greater than</td></tr>
+          <tr><td><code>&lt;</code></td><td>less than</td></tr>
+          <tr><td><code>&gt;=</code></td><td>greater than or equal to</td></tr>
+          <tr><td><code>&lt;=</code></td><td>less than or equal to</td></tr>
+          <tr><td><code>==</code></td><td>equal to</td></tr>
+          <tr><td><code>!=</code></td><td>not equal to</td></tr>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>✅ Accurate flowchart checklist</h2>
+        <ul class="mini-checklist">
+          <li>It must have a <strong>Start</strong> and a <strong>Stop</strong>.</li>
+          <li>All inputs and outputs should use a <strong>parallelogram</strong>.</li>
+          <li>All processes should use a <strong>rectangle</strong>.</li>
+          <li>A selection should use a <strong>diamond</strong>.</li>
+          <li>A decision should have <strong>two arrows out</strong> labelled yes/no or true/false.</li>
+          <li>All arrows should clearly show the direction of flow.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card footer-card">
+      <h2>🔀 Flowchart foundations</h2>
+      <div class="two-col">
+        <div>
+          <h3>Sequence, selection, and sub-routines</h3>
+          <ul class="mini-checklist">
+            <li><strong>Sequence</strong>: steps happen in order, one after another.</li>
+            <li><strong>Selection</strong>: the algorithm chooses a path based on a question.</li>
+            <li><strong>Sub-routine</strong>: a named mini-algorithm used from the main algorithm.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Quick warm-up questions</h3>
+          <ol class="line-list">
+            <li>What shape is used for input and output?</li>
+            <li>Why does a decision need a yes/no answer?</li>
+            <li>When would a sub-routine be useful?</li>
+            <li>How can you spot a repeated pattern in an algorithm?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="objective-list">
+      <article class="objective" id="obj-7ct01">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.01</div>
+            <h3 class="objective-title">Follow, understand, edit and correct algorithms that are presented as flowcharts</h3>
+            <div class="tag-row">
+              <span class="tag">follow arrows</span>
+              <span class="tag">spot errors</span>
+              <span class="tag">input/output</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.01"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>Read a flowchart from <strong>Start</strong> to <strong>Stop</strong>.</li>
+              <li>Follow the arrows in the correct order.</li>
+              <li>Each shape tells you what kind of step is happening.</li>
+              <li>If a result is wrong, one step in the chart may need correcting.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>When following a flowchart, ask these questions:</p>
+            <ol class="line-list">
+              <li>What is being input?</li>
+              <li>What process or calculation is done?</li>
+              <li>What is the output?</li>
+              <li>Does the chart really match the task?</li>
+            </ol>
+            <div class="callout">A common error is when the process box uses the wrong operation, such as subtracting when it should multiply.</div>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p><strong>Worked example:</strong> This flowchart takes two inputs and finds the average.</p>
+            <div class="diagram-card">
+              <svg viewBox="0 0 320 420" role="img" aria-label="Average flowchart">
+                <defs>
+                  <marker id="arrow-f1a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <rect x="100" y="10" width="120" height="34" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="160" y="32" text-anchor="middle" font-size="13">Start</text>
+                <polygon points="90,62 230,62 210,104 70,104" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="150" y="88" text-anchor="middle" font-size="13">INPUT first</text>
+                <polygon points="90,118 230,118 210,160 70,160" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="150" y="144" text-anchor="middle" font-size="13">INPUT second</text>
+                <rect x="90" y="176" width="140" height="48" rx="8" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="160" y="196" text-anchor="middle" font-size="12">average =</text>
+                <text x="160" y="212" text-anchor="middle" font-size="12">(first + second) / 2</text>
+                <polygon points="90,242 230,242 210,286 70,286" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="150" y="268" text-anchor="middle" font-size="13">OUTPUT average</text>
+                <rect x="100" y="306" width="120" height="34" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="160" y="328" text-anchor="middle" font-size="13">Stop</text>
+                <line x1="160" y1="44" x2="160" y2="62" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-f1a)"></line>
+                <line x1="150" y1="104" x2="150" y2="118" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-f1a)"></line>
+                <line x1="150" y1="160" x2="150" y2="176" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-f1a)"></line>
+                <line x1="160" y1="224" x2="160" y2="242" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-f1a)"></line>
+                <line x1="150" y1="286" x2="150" y2="306" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-f1a)"></line>
+              </svg>
+              <p class="diagram-caption">Students should be able to explain each shape and say what the chart outputs.</p>
+            </div>
+            <p><strong>Error spotting:</strong> if the process box showed <code>first - second</code>, the flowchart would not be finding an average correctly.</p>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Describe in words what the average flowchart does.</li>
+              <li>Explain how to fix a chart that subtracts when it should multiply.</li>
+              <li>Find a missing input in a flowchart that outputs a favourite colour but never asks for it.</li>
+              <li>Identify the purpose of the rectangle symbol.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-7CT.01" placeholder="Write your corrections and explanations here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-7ct02">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.02</div>
+            <h3 class="objective-title">Know how to create algorithms using flowchart symbols</h3>
+            <div class="tag-row">
+              <span class="tag">symbols</span>
+              <span class="tag">draw accurately</span>
+              <span class="tag">structure</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.02"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>Start and Stop must be clear.</li>
+              <li>Use the correct symbol for each task.</li>
+              <li>Every box must connect to another box using arrows.</li>
+              <li>A decision should have only two clear answers at this level.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>To create a good flowchart, first read the task carefully. Then break it into simple steps:</p>
+            <ol class="line-list">
+              <li>What is the input?</li>
+              <li>What process happens?</li>
+              <li>Is there a decision?</li>
+              <li>What should be output?</li>
+            </ol>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Task: <em>Display a welcome message, ask for age, and output whether the user gets a discount if they are under 18.</em></p>
+            <button class="toggle-answer">Show flowchart order</button>
+            <div class="answer">
+              <p><strong>Flowchart order:</strong> Start → Output “Welcome” → Input age → Decision <code>age &lt; 18?</code> → Yes: Output “Discount” → Stop / No: Output “No discount” → Stop.</p>
+            </div>
+            <p>Notice that this task uses both <strong>sequence</strong> and <strong>selection</strong>.</p>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Draw a flowchart that asks for a user’s name and outputs a welcome message.</li>
+              <li>Turn this description into a flowchart: <em>ask the user if they like computer games; if yes, ask for their favourite game; if no, suggest an introductory game.</em></li>
+              <li>Check your work using the flowchart checklist above.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-7CT.02" placeholder="Plan or describe your flowchart here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-7ct04">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.04</div>
+            <h3 class="objective-title">Understand and use selection statements, limited to IF, THEN, ELSE, presented as flowcharts</h3>
+            <div class="tag-row">
+              <span class="tag">IF</span>
+              <span class="tag">THEN</span>
+              <span class="tag">ELSE</span>
+              <span class="tag">decision</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.04"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li><strong>IF</strong> asks a question.</li>
+              <li><strong>THEN</strong> is the action when the answer is true / yes.</li>
+              <li><strong>ELSE</strong> is the action when the answer is false / no.</li>
+              <li>Selection is shown using a <strong>diamond</strong> in a flowchart.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>A selection flowchart gives a choice. Only one branch is followed at a time.</p>
+            <div class="callout">At this level, the question in the diamond must be something that can be answered with yes/no, true/false.</div>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <div class="diagram-card">
+              <svg viewBox="0 0 620 260" role="img" aria-label="Selection flowchart">
+                <defs>
+                  <marker id="arrow-s7sel" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <rect x="40" y="15" width="100" height="34" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="90" y="37" text-anchor="middle" font-size="13">Start</text>
+                <polygon points="40,68 180,68 160,110 20,110" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="100" y="94" text-anchor="middle" font-size="13">INPUT number 1</text>
+                <polygon points="40,126 180,126 160,168 20,168" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="100" y="152" text-anchor="middle" font-size="13">INPUT number 2</text>
+                <polygon points="260,95 355,150 260,205 165,150" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+                <text x="260" y="147" text-anchor="middle" font-size="12">Is number 1</text>
+                <text x="260" y="162" text-anchor="middle" font-size="12">= number 2?</text>
+                <text x="360" y="142" font-size="12">No</text>
+                <text x="225" y="218" font-size="12">Yes</text>
+                <polygon points="390,125 530,125 510,168 370,168" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+                <text x="450" y="151" text-anchor="middle" font-size="13">OUTPUT “different”</text>
+                <polygon points="190,220 330,220 310,262 170,262" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+                <text x="250" y="246" text-anchor="middle" font-size="13">OUTPUT “same”</text>
+                <rect x="520" y="220" width="85" height="34" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="562" y="242" text-anchor="middle" font-size="13">Stop</text>
+                <line x1="90" y1="49" x2="90" y2="68" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-s7sel)"></line>
+                <line x1="100" y1="110" x2="100" y2="126" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-s7sel)"></line>
+                <line x1="160" y1="150" x2="165" y2="150" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-s7sel)"></line>
+                <line x1="355" y1="150" x2="370" y2="150" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-s7sel)"></line>
+                <line x1="260" y1="205" x2="260" y2="220" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-s7sel)"></line>
+                <path d="M 530 146 L 562 146 L 562 220" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-s7sel)"></path>
+                <path d="M 310 241 L 520 241" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-s7sel)"></path>
+              </svg>
+              <p class="diagram-caption">This selection flowchart uses a question and two different outputs.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Label the two branches of a decision diamond: <strong><span class="blank-line"></span></strong> and <strong><span class="blank-line"></span></strong>.</li>
+              <li>Write a real-life IF, THEN, ELSE statement of your own.</li>
+              <li>Draw a flowchart for: <em>If your favourite colour is red, stand up, otherwise sit down.</em></li>
+            </ul>
+            <button class="toggle-answer">Show one answer</button>
+            <div class="answer">
+              <p>The two branches should be labelled <strong>Yes / No</strong> or <strong>True / False</strong>.</p>
+            </div>
+            <textarea class="response-box" data-key="notes-7CT.04" placeholder="Write your selection examples here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-7ct05">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.05</div>
+            <h3 class="objective-title">Predict the outcome of flowcharts that use selection</h3>
+            <div class="tag-row">
+              <span class="tag">predict output</span>
+              <span class="tag">test data</span>
+              <span class="tag">follow branches</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.05"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>Use the input values given in the question.</li>
+              <li>Check the decision carefully.</li>
+              <li>Follow only the correct branch.</li>
+              <li>Write the final output exactly.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>If a flowchart compares two numbers, the input values decide which path is followed. Students should be able to explain <em>why</em> the output is correct.</p>
+            <table>
+              <tr><th>Inputs</th><th>Possible output</th></tr>
+              <tr><td>10 and 10</td><td>“they are the same”</td></tr>
+              <tr><td>5 and 2</td><td>“they are different”</td></tr>
+              <tr><td>99 and 32</td><td>“they are different”</td></tr>
+            </table>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Using the flowchart above, what is the output for <strong>10 and 10</strong>?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>The condition <code>number 1 == number 2</code> is true, so the output is <strong>“they are the same”</strong>.</p>
+            </div>
+            <p>What about <strong>5 and 2</strong>?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>The numbers are not equal, so the flowchart follows the false / no branch and outputs <strong>“they are different”</strong>.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Predict the output for 12 and 12, then for 8 and 10.</li>
+              <li>Explain why only one output box is followed.</li>
+              <li>Create your own input values that make the chart output “different”.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-7CT.05" placeholder="Write your predicted outputs and reasons here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-7ct09">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.09</div>
+            <h3 class="objective-title">Select and use appropriate comparison operators in flowcharts</h3>
+            <div class="tag-row">
+              <span class="tag">&lt;</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">==</span>
+              <span class="tag">!=</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.09"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li><code>==</code> means equal to.</li>
+              <li><code>!=</code> means not equal to.</li>
+              <li><code>&gt;</code> and <code>&lt;</code> compare bigger and smaller values.</li>
+              <li><code>&gt;=</code> and <code>&lt;=</code> include equality as well.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Choosing the correct operator matters. If the wrong operator is used, the flowchart may follow the wrong branch and give the wrong output.</p>
+            <div class="callout">In algorithms, <code>==</code> is used to test equality. It is not the same as using a single equals sign in mathematics.</div>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Is <code>4 &gt; 5</code> true or false?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer"><p><strong>False</strong></p></div>
+            <p>Which operator makes this true: <code>19 __ 19</code>?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer"><p><strong>==</strong> because both values are equal.</p></div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Fill in the best operator: <code>age __ 12</code> to mean “age is 12 or older”.</li>
+              <li>Write one question using <code>!=</code>.</li>
+              <li>Explain the difference between <code>&lt;</code> and <code>&lt;=</code>.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-7CT.09" placeholder="Write your operators and explanations here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-7ct08">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.08</div>
+            <h3 class="objective-title">Select and use appropriate constructs in algorithms written as flowcharts, limited to sequence and selection</h3>
+            <div class="tag-row">
+              <span class="tag">sequence</span>
+              <span class="tag">selection</span>
+              <span class="tag">choose structure</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.08"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>Use <strong>sequence</strong> when all steps happen in order.</li>
+              <li>Use <strong>selection</strong> when there is a choice or question.</li>
+              <li>Some tasks use both: first sequence, then selection.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Before drawing, decide what kind of structure the problem needs. This makes the flowchart clearer and more accurate.</p>
+            <table>
+              <tr><th>Task</th><th>Construct needed</th></tr>
+              <tr><td>Ask for name and print it</td><td>Sequence</td></tr>
+              <tr><td>Ask if age is under 18, then choose a message</td><td>Selection</td></tr>
+              <tr><td>Input two numbers, compare them, then output result</td><td>Sequence + Selection</td></tr>
+            </table>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Task: <em>Ask for a user’s age. If the age is below 18, output “discount”, otherwise output “standard price”.</em></p>
+            <button class="toggle-answer">Which construct(s) are needed?</button>
+            <div class="answer">
+              <p>This needs <strong>sequence</strong> for the input, then <strong>selection</strong> for the decision and two possible outputs.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Decide whether each new problem needs sequence, selection, or both.</li>
+              <li>Draw a flowchart for a task that uses sequence only.</li>
+              <li>Draw one that uses both sequence and selection.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-7CT.08" placeholder="Classify and describe the correct construct here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-7ct07">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.07</div>
+            <h3 class="objective-title">Follow, understand, edit and correct algorithms that use sub-routines</h3>
+            <div class="tag-row">
+              <span class="tag">sub-routine</span>
+              <span class="tag">call</span>
+              <span class="tag">reuse</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.07"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>A sub-routine is a separate named algorithm.</li>
+              <li>It can be called from the main algorithm.</li>
+              <li>It helps when the same steps might be needed more than once.</li>
+              <li>The same name should be used when defining and calling it.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Sub-routines make algorithms more organised. Instead of writing the same steps many times, the main algorithm can call a named section when needed.</p>
+            <div class="diagram-card">
+              <svg viewBox="0 0 620 250" role="img" aria-label="Sub-routine example">
+                <defs>
+                  <marker id="arrow-sub" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+                  </marker>
+                </defs>
+                <rect x="40" y="20" width="110" height="34" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="95" y="42" text-anchor="middle" font-size="13">Start</text>
+                <rect x="32" y="75" width="126" height="38" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="48" y1="75" x2="48" y2="113" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="142" y1="75" x2="142" y2="113" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="95" y="98" text-anchor="middle" font-size="13">Run Greet</text>
+                <rect x="32" y="132" width="126" height="38" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="48" y1="132" x2="48" y2="170" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="142" y1="132" x2="142" y2="170" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="95" y="155" text-anchor="middle" font-size="13">Run Farewell</text>
+                <rect x="40" y="190" width="110" height="34" rx="8" fill="#e8f4d6" stroke="#5a8f16" stroke-width="2"></rect>
+                <text x="95" y="212" text-anchor="middle" font-size="13">Stop</text>
+
+                <rect x="250" y="60" width="126" height="38" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="266" y1="60" x2="266" y2="98" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="360" y1="60" x2="360" y2="98" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="313" y="83" text-anchor="middle" font-size="13">Greet</text>
+                <polygon points="248,112 378,112 360,154 230,154" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="304" y="138" text-anchor="middle" font-size="13">OUTPUT “Hello”</text>
+
+                <rect x="430" y="120" width="126" height="38" fill="#f6faef" stroke="#5a8f16" stroke-width="2"></rect>
+                <line x1="446" y1="120" x2="446" y2="158" stroke="#5a8f16" stroke-width="2"></line>
+                <line x1="540" y1="120" x2="540" y2="158" stroke="#5a8f16" stroke-width="2"></line>
+                <text x="493" y="143" text-anchor="middle" font-size="13">Farewell</text>
+                <polygon points="428,172 560,172 542,214 410,214" fill="#eefbf8" stroke="#5a8f16" stroke-width="2"></polygon>
+                <text x="485" y="198" text-anchor="middle" font-size="13">OUTPUT “Goodbye”</text>
+
+                <line x1="95" y1="54" x2="95" y2="75" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sub)"></line>
+                <line x1="95" y1="113" x2="95" y2="132" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sub)"></line>
+                <line x1="95" y1="170" x2="95" y2="190" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sub)"></line>
+              </svg>
+              <p class="diagram-caption">The main flowchart calls the sub-routines <strong>Greet</strong> and <strong>Farewell</strong>.</p>
+            </div>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>Why are sub-routines helpful?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>They help when the same steps are repeated. You can write them once and call them from the main algorithm whenever needed.</p>
+            </div>
+            <p>If a flowchart calls the wrong sub-routine or uses the wrong name, what should happen?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>The name or the call should be corrected so the right sub-routine runs at the right point.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Trace the output of a flowchart that calls two sub-routines.</li>
+              <li>Correct a flowchart where the wrong sub-routine is called.</li>
+              <li>Explain the purpose of the sub-routine symbol.</li>
+              <li>Describe one task where a sub-routine would be useful.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-7CT.07" placeholder="Write your sub-routine explanations here..."></textarea>
+          </section>
+        </div>
+      </article>
+
+      <article class="objective" id="obj-7ct06">
+        <div class="objective-header">
+          <div>
+            <div class="code">7CT.06</div>
+            <h3 class="objective-title">Explain the importance of pattern recognition when designing solutions to tasks</h3>
+            <div class="tag-row">
+              <span class="tag">patterns</span>
+              <span class="tag">repetition</span>
+              <span class="tag">design</span>
+            </div>
+          </div>
+          <label class="status-label"><input type="checkbox" class="objective-check" data-key="7CT.06"> Mastered</label>
+        </div>
+
+        <div class="objective-grid">
+          <section class="subcard memorize">
+            <h4>Memorize</h4>
+            <ul class="line-list">
+              <li>A pattern is something that repeats.</li>
+              <li>Pattern recognition helps us spot repeated steps.</li>
+              <li>If steps repeat, they may be turned into a sub-routine.</li>
+              <li>This makes the solution clearer and easier to improve.</li>
+            </ul>
+          </section>
+
+          <section class="subcard understand">
+            <h4>Understand</h4>
+            <p>Look at this repeated structure:</p>
+            <ul class="line-list">
+              <li>Output “Enter the first number”</li>
+              <li>Take a number as input, add 20, and output it</li>
+              <li>Output “Enter the second number”</li>
+              <li>Take a number as input, add 20, and output it</li>
+            </ul>
+            <p>The repeating part is <strong>input number → add 20 → output</strong>. That repeated part could become a sub-routine.</p>
+          </section>
+
+          <section class="subcard demonstrate">
+            <h4>Demonstrate</h4>
+            <p>How can pattern recognition help a programmer?</p>
+            <button class="toggle-answer">Show answer</button>
+            <div class="answer">
+              <p>It helps the programmer notice repeated steps and organise them better, often by using a sub-routine instead of rewriting the same work again and again.</p>
+            </div>
+          </section>
+
+          <section class="subcard practice">
+            <h4>Practice</h4>
+            <ul class="line-list">
+              <li>Find the repeated pattern in a task of your own.</li>
+              <li>Explain how that repeated pattern could become a sub-routine.</li>
+              <li>Write one reason why pattern recognition saves time or improves design.</li>
+            </ul>
+            <textarea class="response-box" data-key="notes-7CT.06" placeholder="Write your pattern recognition ideas here..."></textarea>
+          </section>
+        </div>
+      </article>
+    </section>
+
+    <section class="card footer-card">
+      <h2>📝 Mixed Form 1 mastery practice</h2>
+      <div class="two-col">
+        <div>
+          <ol class="line-list">
+            <li>Read a flowchart and explain what it does.</li>
+            <li>Correct a process box that uses the wrong operation.</li>
+            <li>Draw a simple flowchart using the correct symbols.</li>
+            <li>Use IF, THEN, ELSE in a selection flowchart.</li>
+            <li>Choose the correct comparison operator for a decision.</li>
+            <li>Explain when a sub-routine would be useful.</li>
+            <li>Spot a repeated pattern and suggest a better design.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>How to answer well</h3>
+          <ul class="mini-checklist">
+            <li>Name the correct symbols.</li>
+            <li>Follow the arrows step by step.</li>
+            <li>Use yes/no or true/false clearly.</li>
+            <li>Write the final output exactly.</li>
+            <li>Give a reason for every correction you make.</li>
+          </ul>
+          <textarea class="note-box" data-key="mixed-practice-form1" placeholder="Use this space for extra mixed revision answers..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="card footer-card">
+      <h2>🎯 Final self-check</h2>
+      <div class="two-col">
+        <div>
+          <h3>Before the assessment, I can...</h3>
+          <ul class="mini-checklist">
+            <li>follow and explain a flowchart correctly</li>
+            <li>use the right flowchart symbols</li>
+            <li>create sequence and selection flowcharts</li>
+            <li>predict outputs from selection flowcharts</li>
+            <li>use comparison operators correctly</li>
+            <li>understand and use simple sub-routines</li>
+            <li>spot repeated patterns in a task</li>
+          </ul>
+        </div>
+        <div>
+          <h3>My target for next lesson is...</h3>
+          <textarea class="note-box" data-key="final-reflection-form1" placeholder="Write what you still need to improve and how you will practise it..."></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'enko-form1-flowcharts-v1';
+
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const checks = [...document.querySelectorAll('.objective-check')];
+    const textareas = [...document.querySelectorAll('textarea[data-key]')];
+    const toggleButtons = [...document.querySelectorAll('.toggle-answer')];
+
+    function loadState() {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+      checks.forEach((check) => {
+        check.checked = Boolean(saved[check.dataset.key]);
+        check.addEventListener('change', () => {
+          saved[check.dataset.key] = check.checked;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+          updateProgress();
+        });
+      });
+
+      textareas.forEach((box) => {
+        box.value = saved[box.dataset.key] || '';
+        box.addEventListener('input', () => {
+          saved[box.dataset.key] = box.value;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const completed = checks.filter((check) => check.checked).length;
+      const total = checks.length;
+      const percent = (completed / total) * 100;
+      progressBar.style.width = `${percent}%`;
+      progressText.innerHTML = `<strong>${completed} / ${total} objectives completed</strong>`;
+    }
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const isVisible = answer.style.display === 'block';
+        answer.style.display = isVisible ? 'none' : 'block';
+        button.textContent = isVisible ? 'Show answer' : 'Hide answer';
+      });
+    });
+
+    document.getElementById('toggleAnswersBtn').addEventListener('click', () => {
+      document.body.classList.toggle('show-all-answers');
+      const showing = document.body.classList.contains('show-all-answers');
+      document.getElementById('toggleAnswersBtn').textContent = showing ? '🙈 Hide all answers' : '👀 Show all answers';
+    });
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      if (!confirm('Reset all saved notes and progress for this workbook?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    });
+
+    loadState();
+  </script>
+</body>
+</html>

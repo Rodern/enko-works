@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form 3 - 9CT.05 Binary Search</title>
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --ink: #142033;
+      --muted: #4d5d75;
+      --primary: #165dff;
+      --primary-soft: #e8f0ff;
+      --accent: #0f766e;
+      --warn: #c77700;
+      --border: #cfd9ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 15% 10%, #ffffff 0%, var(--bg) 60%);
+      line-height: 1.55;
+    }
+    .page { max-width: 980px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      margin: 0.9rem 0;
+      box-shadow: 0 8px 20px rgba(18, 39, 79, 0.06);
+    }
+    h1, h2, h3 { margin: 0.3rem 0 0.7rem; line-height: 1.2; }
+    h1 { font-size: 1.6rem; }
+    .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 0.8rem; }
+    .hero figure { margin: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .hero img { width: 100%; height: 100%; max-height: 220px; object-fit: cover; display: block; }
+    .hero figcaption { font-size: 0.88rem; color: var(--muted); padding: 0.45rem 0.7rem; }
+    .pill { display: inline-block; margin-right: 0.35rem; margin-bottom: 0.35rem; border-radius: 999px; border: 1px solid var(--border); background: var(--primary-soft); color: #173f8a; font-weight: 700; font-size: 0.84rem; padding: 0.3rem 0.65rem; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    button, .link { border: 1px solid var(--border); border-radius: 999px; background: #fff; color: var(--ink); padding: 0.55rem 0.9rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .check { display: flex; gap: 0.5rem; margin: 0.45rem 0; }
+    .grid { display: grid; gap: 0.9rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .diagram-wrap { border: 1px solid var(--border); border-radius: 12px; background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%); padding: 0.7rem; overflow-x: auto; }
+    svg { width: 100%; height: auto; min-width: 320px; display: block; }
+    svg line, svg path, svg polygon, svg rect, svg ellipse { vector-effect: non-scaling-stroke; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid var(--border); padding: 0.55rem; text-align: left; }
+    th { background: #f3f7ff; }
+    .answer { display: none; margin-top: 0.6rem; border: 1px solid #9fc6ff; background: #eff6ff; border-radius: 10px; padding: 0.7rem; }
+    body.show-answers .answer { display: block; }
+    .progress { height: 10px; border-radius: 999px; background: #e6edf8; margin-top: 0.7rem; overflow: hidden; }
+    .progress > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), #4ea1ff); transition: width 0.2s ease; }
+    @media (max-width: 820px) { .hero, .grid { grid-template-columns: 1fr; } }
+    @media print {
+      body { background: #fff; }
+      .page { max-width: none; padding: 0; }
+      .card { box-shadow: none; break-inside: avoid; }
+      .toolbar { display: none; }
+      .answer { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card hero">
+      <div>
+        <h1>Form 3 Objective Page: 9CT.05 Binary Search</h1>
+        <p>Binary search finds a target in a <strong>sorted</strong> list by repeatedly checking the middle item and discarding half of the remaining values.</p>
+        <div>
+          <span class="pill">9CT.05</span>
+          <span class="pill">Efficient Search</span>
+          <span class="pill">Sorted Data Required</span>
+        </div>
+      </div>
+      <figure>
+        <img src="Copilot_20260407_112435.jpg" alt="Workbook header image">
+        <figcaption>Dedicated binary search worksheet</figcaption>
+      </figure>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <button id="toggleAnswers" class="primary" type="button">Toggle answers</button>
+        <button id="resetChecks" type="button">Reset checks</button>
+        <a class="link" href="index.html">Back to main Form 3 page</a>
+      </div>
+      <label class="check"><input class="track" type="checkbox"> I can explain why binary search needs sorted data.</label>
+      <label class="check"><input class="track" type="checkbox"> I can trace low, mid, and high values in a worked example.</label>
+      <label class="check"><input class="track" type="checkbox"> I can compare binary and linear search step counts.</label>
+      <div class="progress"><span id="progressBar"></span></div>
+    </section>
+
+    <section class="card">
+      <h2>Flowchart</h2>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 820 330" role="img" aria-label="Binary search flowchart">
+          <defs>
+            <marker id="arrow-bin" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+            </marker>
+          </defs>
+
+          <ellipse cx="70" cy="42" rx="44" ry="20" fill="#e9f2ff" stroke="#165dff" stroke-width="2"></ellipse>
+          <text x="70" y="47" text-anchor="middle" font-size="13">Start</text>
+
+          <rect x="130" y="20" width="188" height="44" rx="8" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></rect>
+          <text x="224" y="46" text-anchor="middle" font-size="12">low = 0, high = n - 1</text>
+
+          <polygon points="350,16 490,16 470,66 330,66" fill="#f2f8ff" stroke="#165dff" stroke-width="2"></polygon>
+          <text x="410" y="45" text-anchor="middle" font-size="12">mid = floor((low+high)/2)</text>
+
+          <polygon points="540,12 650,42 540,72 430,42" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+          <text x="540" y="38" text-anchor="middle" font-size="12">arr[mid]</text>
+          <text x="540" y="52" text-anchor="middle" font-size="12">= target?</text>
+
+          <rect x="678" y="20" width="118" height="44" rx="8" fill="#effaf5" stroke="#0f766e" stroke-width="2"></rect>
+          <text x="737" y="46" text-anchor="middle" font-size="12">OUTPUT index</text>
+
+          <polygon points="540,94 650,124 540,154 430,124" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+          <text x="540" y="120" text-anchor="middle" font-size="12">arr[mid]</text>
+          <text x="540" y="134" text-anchor="middle" font-size="12">&lt; target?</text>
+
+          <rect x="320" y="182" width="175" height="44" rx="8" fill="#f2f8ff" stroke="#165dff" stroke-width="2"></rect>
+          <text x="408" y="209" text-anchor="middle" font-size="12">low = mid + 1</text>
+
+          <rect x="560" y="182" width="175" height="44" rx="8" fill="#f2f8ff" stroke="#165dff" stroke-width="2"></rect>
+          <text x="648" y="209" text-anchor="middle" font-size="12">high = mid - 1</text>
+
+          <polygon points="410,252 540,252 520,304 390,304" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></polygon>
+          <text x="465" y="281" text-anchor="middle" font-size="12">low &lt;= high?</text>
+
+          <rect x="575" y="260" width="120" height="40" rx="8" fill="#fff4f2" stroke="#d92d20" stroke-width="2"></rect>
+          <text x="635" y="285" text-anchor="middle" font-size="12">OUTPUT not found</text>
+
+          <ellipse cx="750" cy="286" rx="42" ry="20" fill="#e9f2ff" stroke="#165dff" stroke-width="2"></ellipse>
+          <text x="750" y="291" text-anchor="middle" font-size="13">Stop</text>
+
+          <line x1="114" y1="42" x2="130" y2="42" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="318" y1="42" x2="330" y2="42" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="490" y1="42" x2="430" y2="42" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="650" y1="42" x2="678" y2="42" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="540" y1="72" x2="540" y2="94" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="430" y1="124" x2="495" y2="203" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="650" y1="124" x2="560" y2="203" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="408" y1="226" x2="445" y2="252" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="648" y1="226" x2="505" y2="252" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <path d="M 390 278 L 340 278 L 340 42 L 350 42" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></path>
+          <line x1="540" y1="278" x2="575" y2="278" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <line x1="695" y1="278" x2="708" y2="286" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></line>
+          <path d="M 796 42 L 796 286 L 792 286" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-bin)"></path>
+        </svg>
+      </div>
+    </section>
+
+    <section class="card grid">
+      <article>
+        <h2>Worked trace</h2>
+        <table>
+          <thead>
+            <tr><th>Step</th><th>Low</th><th>High</th><th>Mid</th><th>Decision</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>0</td><td>14</td><td>7</td><td>Target larger - move low</td></tr>
+            <tr><td>2</td><td>8</td><td>14</td><td>11</td><td>Target smaller - move high</td></tr>
+            <tr><td>3</td><td>8</td><td>10</td><td>9</td><td>Match found</td></tr>
+          </tbody>
+        </table>
+      </article>
+      <article>
+        <h2>Quick compare</h2>
+        <ul>
+          <li>Linear search checks one-by-one and works on unsorted data.</li>
+          <li>Binary search halves the list each step, but only if sorted.</li>
+          <li>For large lists, binary search usually needs far fewer checks.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Practice</h2>
+      <ol>
+        <li>List one reason binary search can fail if the data is unsorted.</li>
+        <li>For 32 sorted items, estimate the maximum checks binary search needs.</li>
+        <li>Suggest one real-life dataset where binary search is suitable.</li>
+      </ol>
+      <div class="answer"><strong>Answer guide:</strong> unsorted data breaks the left/right elimination logic; for 32 items about 5 checks; suitable examples include sorted student IDs or sorted word lists.</div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const KEY = "enko-form3-9ct05";
+      const checks = Array.from(document.querySelectorAll(".track"));
+      const bar = document.getElementById("progressBar");
+
+      function load() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(KEY) || "{}");
+          checks.forEach((box, i) => { box.checked = Boolean(saved["c" + i]); });
+        } catch (err) {}
+        refresh();
+      }
+
+      function save() {
+        const data = {};
+        checks.forEach((box, i) => { data["c" + i] = box.checked; });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      }
+
+      function refresh() {
+        const done = checks.filter((b) => b.checked).length;
+        const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+        bar.style.width = pct + "%";
+      }
+
+      checks.forEach((box) => box.addEventListener("change", function () { save(); refresh(); }));
+      document.getElementById("toggleAnswers").addEventListener("click", function () { document.body.classList.toggle("show-answers"); });
+      document.getElementById("resetChecks").addEventListener("click", function () {
+        checks.forEach((box) => { box.checked = false; });
+        save();
+        refresh();
+      });
+
+      load();
+    })();
+  </script>
+</body>
+</html>

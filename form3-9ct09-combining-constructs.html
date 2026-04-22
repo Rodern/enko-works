@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form 3 - 9CT.09 Combining Constructs</title>
+  <style>
+    :root {
+      --bg: #f6f8fd;
+      --card: #ffffff;
+      --ink: #172033;
+      --muted: #4d5d75;
+      --primary: #3346d3;
+      --primary-soft: #e9edff;
+      --accent: #0f766e;
+      --warn: #c77700;
+      --border: #d2daed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 20% 0%, #ffffff 0%, var(--bg) 62%);
+      line-height: 1.55;
+    }
+    .page { max-width: 980px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem 1.1rem; margin: 0.9rem 0; box-shadow: 0 8px 20px rgba(24, 33, 66, 0.06); }
+    h1, h2, h3 { margin: 0.3rem 0 0.7rem; line-height: 1.2; }
+    h1 { font-size: 1.6rem; }
+    .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 0.8rem; }
+    .hero figure { margin: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .hero img { width: 100%; height: 100%; max-height: 220px; object-fit: cover; display: block; }
+    .hero figcaption { padding: 0.45rem 0.7rem; font-size: 0.88rem; color: var(--muted); }
+    .pill { display: inline-block; margin-right: 0.35rem; margin-bottom: 0.35rem; border-radius: 999px; border: 1px solid var(--border); background: var(--primary-soft); color: #243287; font-weight: 700; font-size: 0.84rem; padding: 0.3rem 0.65rem; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    button, .link { border: 1px solid var(--border); border-radius: 999px; background: #fff; color: var(--ink); padding: 0.55rem 0.9rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+    button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .check { display: flex; gap: 0.5rem; margin: 0.45rem 0; }
+    .grid { display: grid; gap: 0.9rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .diagram-wrap { border: 1px solid var(--border); border-radius: 12px; background: linear-gradient(180deg, #ffffff 0%, #f7f8ff 100%); padding: 0.7rem; overflow-x: auto; }
+    svg { width: 100%; height: auto; min-width: 360px; display: block; }
+    svg line, svg path, svg polygon, svg rect, svg ellipse { vector-effect: non-scaling-stroke; }
+    .answer { display: none; margin-top: 0.6rem; border: 1px solid #a8b6ff; background: #eef2ff; border-radius: 10px; padding: 0.7rem; }
+    body.show-answers .answer { display: block; }
+    .progress { height: 10px; border-radius: 999px; background: #e8ebf7; margin-top: 0.7rem; overflow: hidden; }
+    .progress > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), #8da2ff); transition: width 0.2s ease; }
+    @media (max-width: 820px) { .hero, .grid { grid-template-columns: 1fr; } }
+    @media print {
+      body { background: #fff; }
+      .page { max-width: none; padding: 0; }
+      .card { box-shadow: none; break-inside: avoid; }
+      .toolbar { display: none; }
+      .answer { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card hero">
+      <div>
+        <h1>Form 3 Objective Page: 9CT.09 Combining Constructs</h1>
+        <p>Strong algorithms combine sequence, selection, iteration, and sub-routines into one coherent solution rather than using each construct in isolation.</p>
+        <div>
+          <span class="pill">9CT.09</span>
+          <span class="pill">Sequence + Selection + Iteration</span>
+          <span class="pill">Sub-routine Integration</span>
+        </div>
+      </div>
+      <figure>
+        <img src="Copilot_20260407_112435.jpg" alt="Workbook header image">
+        <figcaption>Combining constructs worksheet</figcaption>
+      </figure>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <button id="toggleAnswers" class="primary" type="button">Toggle answers</button>
+        <button id="resetChecks" type="button">Reset checks</button>
+        <a class="link" href="index.html">Back to main Form 3 page</a>
+      </div>
+      <label class="check"><input class="track" type="checkbox"> I can identify each construct in a full algorithm.</label>
+      <label class="check"><input class="track" type="checkbox"> I can explain why looping and selection often appear together.</label>
+      <label class="check"><input class="track" type="checkbox"> I can improve a mixed-construct algorithm using a sub-routine.</label>
+      <div class="progress"><span id="progressBar"></span></div>
+    </section>
+
+    <section class="card">
+      <h2>Combined flowchart example: Library fine checker</h2>
+      <p>Scenario: process each borrowed book, decide if overdue, and call a sub-routine to compute fine.</p>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 860 380" role="img" aria-label="Combined constructs flowchart">
+          <defs>
+            <marker id="arrow-combo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b6cb7"></path>
+            </marker>
+          </defs>
+
+          <ellipse cx="70" cy="42" rx="44" ry="20" fill="#e9edff" stroke="#3346d3" stroke-width="2"></ellipse>
+          <text x="70" y="47" text-anchor="middle" font-size="13">Start</text>
+
+          <polygon points="130,20 252,20 234,64 112,64" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+          <text x="183" y="46" text-anchor="middle" font-size="12">INPUT totalBooks</text>
+
+          <rect x="278" y="22" width="142" height="40" rx="8" fill="#f2f8ff" stroke="#3346d3" stroke-width="2"></rect>
+          <text x="349" y="47" text-anchor="middle" font-size="12">book = 1</text>
+
+          <polygon points="472,14 584,44 472,74 360,44" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+          <text x="472" y="40" text-anchor="middle" font-size="12">book &lt;= totalBooks?</text>
+
+          <polygon points="130,108 252,108 234,150 112,150" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+          <text x="183" y="133" text-anchor="middle" font-size="12">INPUT daysLate</text>
+
+          <polygon points="352,102 460,132 352,162 244,132" fill="#fff7e8" stroke="#c77700" stroke-width="2"></polygon>
+          <text x="352" y="128" text-anchor="middle" font-size="12">daysLate &gt; 0?</text>
+
+          <rect x="494" y="112" width="188" height="40" rx="8" fill="#fff7e8" stroke="#c77700" stroke-width="2"></rect>
+          <text x="588" y="137" text-anchor="middle" font-size="12">CALL CalculateFine(daysLate)</text>
+
+          <polygon points="494,178 666,178 646,220 474,220" fill="#eefbf8" stroke="#0f766e" stroke-width="2"></polygon>
+          <text x="570" y="203" text-anchor="middle" font-size="12">OUTPUT fine message</text>
+
+          <rect x="240" y="246" width="142" height="40" rx="8" fill="#f2f8ff" stroke="#3346d3" stroke-width="2"></rect>
+          <text x="311" y="271" text-anchor="middle" font-size="12">book = book + 1</text>
+
+          <ellipse cx="770" cy="44" rx="44" ry="20" fill="#e9edff" stroke="#3346d3" stroke-width="2"></ellipse>
+          <text x="770" y="49" text-anchor="middle" font-size="13">Stop</text>
+
+          <rect x="702" y="128" width="132" height="100" rx="10" fill="#f8fbff" stroke="#b4bfeb" stroke-dasharray="5 4" stroke-width="2"></rect>
+          <text x="768" y="148" text-anchor="middle" font-size="12" font-weight="700">Sub-routine</text>
+          <text x="768" y="166" text-anchor="middle" font-size="11">CalculateFine</text>
+          <text x="768" y="184" text-anchor="middle" font-size="11">fine = daysLate * rate</text>
+          <text x="768" y="202" text-anchor="middle" font-size="11">RETURN fine</text>
+
+          <line x1="114" y1="42" x2="130" y2="42" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></line>
+          <line x1="252" y1="42" x2="278" y2="42" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></line>
+          <line x1="420" y1="42" x2="360" y2="42" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></line>
+          <line x1="472" y1="74" x2="183" y2="108" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></line>
+          <line x1="252" y1="129" x2="244" y2="132" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></line>
+          <line x1="460" y1="132" x2="494" y2="132" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></line>
+          <line x1="588" y1="152" x2="588" y2="178" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></line>
+          <path d="M 474 199 L 311 199 L 311 246" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></path>
+          <path d="M 311 286 L 311 318 L 472 318 L 472 74" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></path>
+          <path d="M 584 44 L 726 44" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></path>
+          <path d="M 702 132 L 682 132" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-combo)"></path>
+        </svg>
+      </div>
+    </section>
+
+    <section class="card grid">
+      <article>
+        <h2>Construct map</h2>
+        <ul>
+          <li><strong>Sequence:</strong> input, initialize counter, output.</li>
+          <li><strong>Selection:</strong> daysLate &gt; 0 decides whether to fine.</li>
+          <li><strong>Iteration:</strong> repeat for each book.</li>
+          <li><strong>Sub-routine:</strong> CalculateFine handles reusable fine logic.</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Practice prompts</h2>
+        <ol>
+          <li>Add another selection: if daysLate &gt; 30 then output "manager review".</li>
+          <li>Suggest one extra sub-routine to keep the main algorithm simpler.</li>
+          <li>Explain why this design is easier to test than one long block.</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="answer"><strong>Answer guide:</strong> adding layered decisions supports policy rules; extra sub-routines like <em>FormatMessage</em> improve readability; modular sections are easier to test and debug independently.</div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const KEY = "enko-form3-9ct09";
+      const checks = Array.from(document.querySelectorAll(".track"));
+      const bar = document.getElementById("progressBar");
+
+      function load() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(KEY) || "{}");
+          checks.forEach((box, i) => { box.checked = Boolean(saved["c" + i]); });
+        } catch (err) {}
+        refresh();
+      }
+
+      function save() {
+        const data = {};
+        checks.forEach((box, i) => { data["c" + i] = box.checked; });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      }
+
+      function refresh() {
+        const done = checks.filter((b) => b.checked).length;
+        const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+        bar.style.width = pct + "%";
+      }
+
+      checks.forEach((box) => box.addEventListener("change", function () { save(); refresh(); }));
+      document.getElementById("toggleAnswers").addEventListener("click", function () { document.body.classList.toggle("show-answers"); });
+      document.getElementById("resetChecks").addEventListener("click", function () {
+        checks.forEach((box) => { box.checked = false; });
+        save();
+        refresh();
+      });
+
+      load();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form 3 Unit 9.3 Programming Mastery Workbook</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=JetBrains+Mono:wght@500;700&display=swap");
+    :root {
+      --bg-a:#f7f2e7;--bg-b:#e6eef9;--card:#fff;--ink:#142033;--muted:#47586f;
+      --primary:#0f4db8;--primary-soft:#e6efff;--accent:#10705f;--accent-soft:#e5f8f4;
+      --warm:#c26711;--warm-soft:#fff4e8;--python:#1a6e2e;--python-soft:#e8f9ed;
+      --border:#cfdae8;--radius:18px;--shadow:0 14px 36px rgba(18,36,70,.08);
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Lexend","Trebuchet MS","Segoe UI",sans-serif;color:var(--ink);
+      background:radial-gradient(1000px 500px at 8% -10%,#fff8df 0%,rgba(255,248,223,0) 70%),
+      radial-gradient(900px 520px at 95% 0%,#e5f5ff 0%,rgba(229,245,255,0) 68%),
+      linear-gradient(180deg,var(--bg-a) 0%,var(--bg-b) 100%);line-height:1.6}
+    .container{width:min(1200px,calc(100% - 2rem));margin:0 auto;padding-bottom:2rem}
+    .hero{margin-top:1rem;background:linear-gradient(130deg,#fff 0%,#f7fbff 52%,#fffaf0 100%);
+      border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);box-shadow:var(--shadow);overflow:hidden}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;padding:1.3rem}
+    .eyebrow{margin:0;letter-spacing:.05em;text-transform:uppercase;color:var(--primary);font-weight:800;font-size:.77rem}
+    h1,h2,h3,h4{line-height:1.2;margin-top:0}
+    h1{font-size:clamp(1.6rem,2.8vw,2.55rem);margin-bottom:.7rem}
+    h2{font-size:clamp(1.2rem,2.1vw,1.5rem);margin-bottom:.6rem}
+    h3{font-size:1.04rem;margin-bottom:.4rem}
+    .lede{color:var(--muted);margin-top:.3rem}
+    .hero-banner{margin:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#f6fbff;min-height:100%}
+    .hero-banner img{width:100%;height:100%;min-height:200px;max-height:320px;object-fit:cover;display:block}
+    .hero-banner figcaption{padding:.5rem .7rem;font-size:.9rem;color:var(--muted);background:#fff}
+    .pill-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.75rem}
+    .pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:.28rem .7rem;background:var(--primary-soft);color:#1e3f85;font-weight:700;font-size:.83rem}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.95rem}
+    .btn,a.btn{border:1px solid var(--border);border-radius:999px;padding:.56rem .95rem;background:#fff;color:var(--ink);font-weight:700;text-decoration:none;cursor:pointer;font-family:inherit;font-size:.95rem}
+    .btn.primary{border-color:var(--primary);background:var(--primary);color:#fff}
+    .btn:hover{filter:brightness(.97)}
+    .progress-wrap{margin-top:.95rem}
+    .progress-bar{height:12px;border-radius:999px;background:#e3ebf7;overflow:hidden;border:1px solid #d2dceb}
+    .progress-bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#1561d5,#37a3e6 45%,#1a9b7d 100%);transition:width .24s ease}
+    .progress-text{margin:.45rem 0 0;color:var(--muted);font-size:.93rem}
+    .card{margin-top:1rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:1.1rem 1.15rem}
+    .split{display:grid;gap:1rem;grid-template-columns:1fr 1fr}
+    .split-3{display:grid;gap:.85rem;grid-template-columns:repeat(3,minmax(0,1fr))}
+    .objective-list{display:grid;gap:1.1rem;margin-top:1.1rem}
+    .objective{border:1px solid var(--border);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);padding:1.1rem;opacity:0;transform:translateY(8px);animation:rise .5s ease forwards}
+    .objective:nth-child(1){animation-delay:.02s}.objective:nth-child(2){animation-delay:.08s}
+    .objective:nth-child(3){animation-delay:.14s}.objective:nth-child(4){animation-delay:.20s}
+    .objective:nth-child(5){animation-delay:.26s}.objective:nth-child(6){animation-delay:.32s}
+    .objective:nth-child(7){animation-delay:.38s}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .objective-head{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem;margin-bottom:.65rem}
+    .obj-code{font-family:"JetBrains Mono",Consolas,monospace;display:inline-block;font-size:.87rem;font-weight:700;color:#1f4690;background:var(--primary-soft);border:1px solid #bfd0f2;border-radius:999px;padding:.18rem .56rem;margin-bottom:.3rem}
+    .status-label{font-size:.93rem;white-space:nowrap;font-weight:700}
+    .status-label input{margin-right:.35rem;transform:translateY(1px)}
+    .mastery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin-top:.9rem}
+    .box{border:1px solid var(--border);border-radius:14px;padding:.85rem;background:#fdfefe}
+    .box h4{margin:0 0 .45rem;font-size:.92rem;text-transform:uppercase;letter-spacing:.04em}
+    .memorize{background:#f3f7ff}.understand{background:#f2fcfa}.demonstrate{background:#fff8ef}.practice{background:#fff7fb}
+    .python-section{margin-top:.9rem;border:2px solid #7bc98e;border-radius:14px;background:var(--python-soft);padding:.9rem 1rem}
+    .python-section h3{margin:0 0 .6rem;color:var(--python);display:flex;align-items:center;gap:.45rem}
+    .python-section h3::before{content:"🐍";font-style:normal}
+    .py-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .py-box{border:1px solid #aaddb7;border-radius:12px;background:#fff;padding:.75rem}
+    .py-box h4{margin:0 0 .4rem;font-size:.9rem;color:var(--python);text-transform:uppercase;letter-spacing:.03em}
+    .ref-card{background:#0f1728;border:1px solid #1e3060;border-radius:14px;padding:.9rem 1rem;color:#eaf1ff}
+    .ref-card h3{color:#7ec8f5;margin:0 0 .6rem}
+    .ref-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+    .ref-item{background:#182040;border:1px solid #2a3a6a;border-radius:10px;padding:.65rem .75rem}
+    .ref-item .ref-label{font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#7ec8f5;margin:0 0 .35rem}
+    .ref-item pre{margin:0;padding:0;background:transparent;border:none;color:#d0f5d8;font-size:.84rem}
+    pre{margin:.45rem 0;padding:.75rem;border-radius:12px;font-family:"JetBrains Mono",Consolas,monospace;font-size:.87rem;color:#eaf1ff;background:#0f1728;overflow:auto;white-space:pre-wrap;border:1px solid #1e2e52}
+    .pseudocode{background:#f5f0e8;color:#2a1f08;border:1px solid #d4c28a}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.7rem 0}
+    .compare-side{border-radius:12px;overflow:hidden}
+    .compare-side>.compare-label{font-size:.8rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.35rem .7rem}
+    .compare-side.pseudo>.compare-label{background:#ede8d0;color:#4a3500}
+    .compare-side.python>.compare-label{background:#1a6e2e;color:#d0f5d8}
+    .compare-side.pseudo pre{border-radius:0;margin:0;border:1px solid #d4c28a}
+    .compare-side.python pre{border-radius:0;margin:0;border:1px solid #2a6e3a}
+    .trace-table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.9rem}
+    .trace-table th{background:#eef4ff;font-family:"JetBrains Mono",monospace;font-size:.85rem}
+    .trace-table td,.trace-table th{border:1px solid var(--border);padding:.45rem .55rem;vertical-align:top}
+    .trace-table td.blank{background:#f9fbff;min-width:60px}
+    .checklist{margin:0;padding-left:1.1rem}.checklist li{margin-bottom:.3rem}
+    .figure-grid{display:grid;gap:.85rem;grid-template-columns:repeat(2,minmax(0,1fr));margin:.75rem 0}
+    figure.media-card{margin:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#fbfdff}
+    .media-card img{width:100%;display:block;max-height:280px;object-fit:contain;background:#fff}
+    .media-card figcaption{padding:.5rem .7rem;color:var(--muted);font-size:.89rem;border-top:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse;margin-top:.45rem;font-size:.95rem}
+    th,td{border:1px solid var(--border);padding:.5rem;text-align:left;vertical-align:top}
+    th{background:#eef4ff}
+    .callout{margin:.7rem 0;border-left:4px solid var(--warm);background:var(--warm-soft);padding:.7rem .85rem;border-radius:10px}
+    .python-tip{margin:.7rem 0;border-left:4px solid var(--python);background:var(--python-soft);padding:.7rem .85rem;border-radius:10px;color:#0c3d1a}
+    .lined,textarea.lined{width:100%;min-height:180px;border:1px dashed #aebed8;border-radius:12px;padding:.85rem;font:inherit;font-size:1rem;resize:vertical;color:var(--ink);background-color:#fcfdff;background-image:repeating-linear-gradient(to bottom,#fcfdff 0,#fcfdff 31px,#dce5f5 32px)}
+    textarea.lined-sm{min-height:120px}textarea.lined-lg{min-height:240px}
+    .answer{display:none;margin-top:.65rem;border:1px solid #abd9d0;border-radius:12px;background:var(--accent-soft);padding:.75rem}
+    body.show-answers .answer{display:block}
+    .footer-note{margin:1rem 0 1.8rem;color:var(--muted);font-size:.92rem;text-align:center}
+    .badge{display:inline-block;padding:.2rem .55rem;border-radius:999px;font-size:.8rem;font-weight:700;background:#d0f5d8;color:#0c3d1a;border:1px solid #7bc98e;margin-left:.4rem}
+    @media(max-width:980px){.hero-inner,.split,.split-3,.mastery-grid,.figure-grid,.ref-grid,.py-grid,.compare{grid-template-columns:1fr}}
+    @media print{
+      @page{size:A4;margin:13mm 12mm}
+      body{background:#fff!important;font-family:"Source Serif 4",Georgia,serif;font-size:10.5pt;line-height:1.5;color:#000}
+      .container{width:100%;padding:0}
+      .hero,.card,.objective,.box,.py-box,.ref-card,.media-card,.python-section{box-shadow:none!important;break-inside:avoid;page-break-inside:avoid}
+      .objective{opacity:1!important;transform:none!important;animation:none!important}
+      .toolbar,.interactive-only{display:none!important}
+      .answer{display:block!important}
+      a{text-decoration:none;color:inherit}
+      pre{background:#f0f0f0!important;color:#000!important;border:1px solid #bbb;font-size:9pt}
+      .ref-card{background:#f5f5f5!important;color:#000!important}
+      .ref-item{background:#ebebeb!important;border-color:#ccc}
+      .ref-item pre{color:#1a3a0c!important}.ref-item .ref-label{color:#1a3a6e!important}
+      .python-section{background:#f0faf3!important}.py-box{background:#fff!important}
+      .compare-side.python>.compare-label{background:#1a6e2e!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .lined,textarea.lined{border:1px solid #8fa2bd!important;min-height:200px!important;background-image:repeating-linear-gradient(to bottom,#fff 0,#fff 31px,#c8d5e8 32px)!important}
+      textarea.lined-sm{min-height:140px!important}textarea.lined-lg{min-height:280px!important}
+      .split,.py-grid{grid-template-columns:1fr 1fr}.split-3,.ref-grid{grid-template-columns:repeat(3,1fr)}
+      .mastery-grid{grid-template-columns:1fr 1fr}.compare{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+<header class="container hero">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">Cambridge Form 3 · Unit 9.3 Programming</p>
+      <h1>Mastery Workbook: Algorithms, Python, and Translators</h1>
+      <p class="lede">This workbook covers every Unit 9.3 objective through pseudocode, flowcharts, and working Python code. Every construct you design on paper, you will also write and run in Python. Designed for screen study and A4 paper printing.</p>
+      <div class="pill-row">
+        <span class="pill">9CT.03 Algorithms</span>
+        <span class="pill">9CT.04 Sub-routines / def</span>
+        <span class="pill">9CT.06 Iteration</span>
+        <span class="pill">9CT.09 Combined constructs</span>
+        <span class="pill">9P.03 for loops</span>
+        <span class="pill">9P.04 Lists / Arrays</span>
+        <span class="pill">9P.05 String methods</span>
+        <span class="pill">9CS.04 Translators</span>
+      </div>
+      <div class="toolbar interactive-only">
+        <button class="btn primary" id="printBtn" type="button">Print / Save PDF</button>
+        <button class="btn" id="toggleAnswersBtn" type="button">Show all answer guides</button>
+        <button class="btn" id="resetBtn" type="button">Reset progress</button>
+        <a class="btn" href="index.html">Back to main workbook</a>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><span id="progressBar"></span></div>
+        <p class="progress-text" id="progressText">0 / 7 objectives marked mastered</p>
+      </div>
+    </div>
+    <figure class="hero-banner">
+      <img src="Copilot_20260407_112435.jpg" alt="Computational thinking and Python programming header">
+      <figcaption>Form 3 Unit 9.3 — algorithms, Python code, and translators.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- How to use + vocab -->
+  <section class="card split">
+    <article>
+      <h2>How to Use This Workbook</h2>
+      <ol class="checklist">
+        <li><strong>Memorize</strong> — learn key words and syntax exactly.</li>
+        <li><strong>Understand</strong> — explain the concept in your own words.</li>
+        <li><strong>Demonstrate</strong> — complete tasks before checking answers.</li>
+        <li><strong>Practice</strong> — write full algorithms, then code them in Python.</li>
+        <li>Tick an objective only when you can solve a new problem without help.</li>
+      </ol>
+      <div class="callout"><strong>Cambridge exam style:</strong> show your method with trace tables and use precise vocabulary — sequence, selection, iteration, index, sub-routine, translator.</div>
+    </article>
+    <article>
+      <h2>Core Language Bank</h2>
+      <table>
+        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>Algorithm</td><td>Step-by-step instructions that solve a problem.</td></tr>
+          <tr><td>Pseudocode</td><td>Structured text describing an algorithm, not tied to one language.</td></tr>
+          <tr><td>Iteration</td><td>Repeating instructions in a loop.</td></tr>
+          <tr><td>Count-controlled loop</td><td>A loop that runs an exact number of times.</td></tr>
+          <tr><td>Sub-routine / function</td><td>A named reusable block of code called by its identifier.</td></tr>
+          <tr><td>Array / list</td><td>A named collection of values accessed by position (index).</td></tr>
+          <tr><td>Index</td><td>The numbered position of an element. Starts at 0.</td></tr>
+          <tr><td>String manipulation</td><td>Operations on text: length, upper, lower.</td></tr>
+          <tr><td>Translator</td><td>Software that converts high-level code to machine code.</td></tr>
+          <tr><td>Compiler</td><td>Translates the whole program before running it.</td></tr>
+          <tr><td>Interpreter</td><td>Translates and runs one line at a time.</td></tr>
+        </tbody>
+      </table>
+    </article>
+  </section>
+
+  <!-- Python Quick Reference Card -->
+  <section class="card" id="python-ref">
+    <h2>Python Quick Reference Card <span class="badge">Python 3</span></h2>
+    <p>Every construct you design in pseudocode or a flowchart can be directly coded in Python. Study this card before each objective.</p>
+    <div class="ref-card">
+      <h3>Core Python Syntax at a Glance</h3>
+      <div class="ref-grid">
+        <div class="ref-item">
+          <p class="ref-label">Variables &amp; assignment</p>
+          <pre>name = "Kofi"
+age = 14
+price = 9.99
+is_done = True</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Input &amp; type conversion</p>
+          <pre>name = input("Enter name: ")
+age = int(input("Enter age: "))
+price = float(input("Price: "))</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Output / print</p>
+          <pre>print("Hello")
+print("Age:", age)
+print("Total:", num1 + num2)</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Selection — if / elif / else</p>
+          <pre>if score >= 50:
+    print("Pass")
+elif score >= 40:
+    print("Borderline")
+else:
+    print("Fail")</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Count-controlled loop — for</p>
+          <pre>for i in range(1, 6):
+    print(i)
+# prints 1, 2, 3, 4, 5
+# range(start, stop, step)</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Functions (sub-routines)</p>
+          <pre>def greet(name):
+    print("Hello", name)
+
+greet("Amina")   # call it</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Functions with return</p>
+          <pre>def add(a, b):
+    result = a + b
+    return result
+
+total = add(3, 7)
+print(total)   # 10</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Lists (arrays)</p>
+          <pre>scores = [85, 72, 90, 63]
+print(scores[0])   # 85
+print(scores[2])   # 90
+scores[1] = 75     # update</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Looping over a list</p>
+          <pre>for i in range(0, len(scores)):
+    print(scores[i])
+
+# or directly:
+for s in scores:
+    print(s)</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">String — length</p>
+          <pre>word = "Python"
+print(len(word))   # 6</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">String — upper &amp; lower</p>
+          <pre>s = "Hello"
+print(s.upper())  # HELLO
+print(s.lower())  # hello</pre>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">Combining everything</p>
+          <pre>total = 0
+for i in range(0, 5):
+    n = int(input("Num: "))
+    total += n
+print("Total:", total)
+print("Avg:", total / 5)</pre>
+        </div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:.9rem;"><strong>Python indentation rule:</strong> Python uses 4 spaces to show which lines are inside a loop, function, or if-block. All lines at the same level must align exactly. Indentation errors stop your program from running.</div>
+    <h3 style="margin-top:.9rem;">Pseudocode → Python translation table</h3>
+    <table>
+      <thead><tr><th>Pseudocode / flowchart</th><th>Python equivalent</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>INPUT x</td><td><code>x = input("...")</code></td><td>Returns text; convert with int() or float()</td></tr>
+        <tr><td>OUTPUT / PRINT x</td><td><code>print(x)</code></td><td>Use commas to join: <code>print("Val:", x)</code></td></tr>
+        <tr><td>x ← value</td><td><code>x = value</code></td><td>Arrow becomes equals sign</td></tr>
+        <tr><td>IF … THEN … ELSE … ENDIF</td><td><code>if …: … else: …</code></td><td>Colon required; indent block</td></tr>
+        <tr><td>FOR x = 1 TO 10</td><td><code>for x in range(1, 11):</code></td><td>Stop value is excluded in Python</td></tr>
+        <tr><td>SUBROUTINE name()</td><td><code>def name():</code></td><td>Define before calling; call with name()</td></tr>
+        <tr><td>ENDSUBROUTINE / RETURN</td><td><code>return value</code></td><td>Optional; needed to pass value back</td></tr>
+        <tr><td>array[i]</td><td><code>myList[i]</code></td><td>Index starts at 0 in both</td></tr>
+        <tr><td>LENGTH(s)</td><td><code>len(s)</code></td><td>Works on strings and lists</td></tr>
+        <tr><td>UPPERCASE(s)</td><td><code>s.upper()</code></td><td>Returns new string; does not modify original</td></tr>
+        <tr><td>LOWERCASE(s)</td><td><code>s.lower()</code></td><td>Same pattern as upper()</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- OBJECTIVES -->
+  <section class="objective-list">
+
+    <!-- 9CT.03 -->
+    <article class="objective" id="obj-9ct03">
+      <div class="objective-head">
+        <div><span class="obj-code">9CT.03</span><h2>Create Algorithms Using Flowcharts and Pseudocode</h2></div>
+        <label class="status-label"><input type="checkbox" class="objective-check" data-id="9ct03"> Mastered</label>
+      </div>
+      <p>Learners must move fluently between visual (flowcharts) and structured text (pseudocode) algorithm design, then implement both in Python.</p>
+      <div class="figure-grid">
+        <figure class="media-card"><img src="media/image1.png" alt="Flowchart — add two numbers"><figcaption>Flowchart: input two numbers, output total.</figcaption></figure>
+        <figure class="media-card"><img src="media/image.png" alt="Pseudocode to flowchart example"><figcaption>Pseudocode-to-flowchart conversion example.</figcaption></figure>
+      </div>
+      <div class="mastery-grid">
+        <section class="box memorize">
+          <h4>Memorize — flowchart symbols</h4>
+          <ul class="checklist">
+            <li>Rounded rectangle → Start / Stop</li>
+            <li>Rectangle → Process / calculation</li>
+            <li>Parallelogram → Input / Output</li>
+            <li>Diamond → Decision (yes/no)</li>
+            <li>Arrow → direction of flow</li>
+          </ul>
+        </section>
+        <section class="box understand">
+          <h4>Understand</h4>
+          <p>Pseudocode has no fixed rules but uses consistent structure: one action per line, indentation for blocks. Flowcharts are visual; pseudocode is faster to write. Both describe the <em>same logic</em>. Python then <em>runs</em> that logic.</p>
+        </section>
+        <section class="box demonstrate">
+          <h4>Demonstrate</h4>
+          <p>Convert this problem to pseudocode AND draw a flowchart: ask for 4 numbers, output the largest.</p>
+          <textarea class="lined note" data-key="9ct03-demo" placeholder="Write your pseudocode and describe your flowchart here..."></textarea>
+        </section>
+        <section class="box practice">
+          <h4>Practice</h4>
+          <ol class="checklist">
+            <li>Freya earns pocket money for 4 weeks and buys 5 items. Write pseudocode to output money left.</li>
+            <li>Convert that pseudocode into a flowchart.</li>
+            <li>State one advantage of a flowchart over pseudocode.</li>
+            <li>State one advantage of pseudocode over a flowchart.</li>
+          </ol>
+        </section>
+      </div>
+      <div class="python-section">
+        <h3>Python: From Pseudocode to Code</h3>
+        <div class="compare">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode</div>
+            <pre class="pseudocode">INPUT num1
+INPUT num2
+total ← num1 + num2
+OUTPUT total</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python</div>
+            <pre>num1 = int(input("Enter number 1: "))
+num2 = int(input("Enter number 2: "))
+total = num1 + num2
+print("Total:", total)</pre>
+          </div>
+        </div>
+        <div class="compare" style="margin-top:.7rem;">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode — pocket money</div>
+            <pre class="pseudocode">week ← INPUT("Weekly amount")
+totalMoney ← week * 4
+spent ← 0
+FOR i = 1 TO 5
+  cost ← INPUT("Cost of item")
+  spent ← spent + cost
+NEXT i
+OUTPUT totalMoney - spent</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python</div>
+            <pre>week = float(input("Weekly amount: "))
+total_money = week * 4
+spent = 0
+for i in range(1, 6):
+    cost = float(input("Cost of item " + str(i) + ": "))
+    spent = spent + cost
+print("Money left:", total_money - spent)</pre>
+          </div>
+        </div>
+        <div class="py-grid" style="margin-top:.85rem;">
+          <div class="py-box">
+            <h4>Python practice</h4>
+            <ol class="checklist">
+              <li>Ask for 3 subject marks and print the total and average.</li>
+              <li>Ask for a number; output whether it is positive, negative, or zero using if/elif/else.</li>
+              <li>Ask the user's name and age, then print a greeting message.</li>
+            </ol>
+          </div>
+          <div class="py-box">
+            <h4>Write your Python code here</h4>
+            <textarea class="lined note lined-lg" data-key="9ct03-python" placeholder="# Write your Python programs here&#10;num1 = int(input('Enter number: '))&#10;..."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="answer"><strong>Answer guide:</strong> Python replaces INPUT with input()+int(), OUTPUT with print(), and ← with =. The pocket money Python example uses range(1,6) to loop 5 times, collecting each cost into a running total.</div>
+    </article>
+
+    <!-- 9CT.04 -->
+    <article class="objective" id="obj-9ct04">
+      <div class="objective-head">
+        <div><span class="obj-code">9CT.04</span><h2>Use Predefined Sub-routines (Functions) in Algorithms and Python</h2></div>
+        <label class="status-label"><input type="checkbox" class="objective-check" data-id="9ct04"> Mastered</label>
+      </div>
+      <div class="figure-grid">
+        <figure class="media-card"><img src="media/image-1.png" alt="Sub-routine flowchart"><figcaption>Standalone sub-routine flowchart (Celsius conversion).</figcaption></figure>
+        <figure class="media-card"><img src="media/image-2.png" alt="Main flow calling sub-routine"><figcaption>Main flow calling a sub-routine by its identifier.</figcaption></figure>
+      </div>
+      <div class="mastery-grid">
+        <section class="box memorize">
+          <h4>Memorize</h4>
+          <ul class="checklist">
+            <li>A sub-routine is a named reusable block of steps.</li>
+            <li>You call it by writing its identifier followed by ().</li>
+            <li>After it runs, control returns to the next line in the caller.</li>
+            <li>In Python, sub-routines are written with <strong>def</strong>.</li>
+          </ul>
+        </section>
+        <section class="box understand">
+          <h4>Understand — why use sub-routines?</h4>
+          <ul class="checklist">
+            <li><strong>Reuse:</strong> write once, call many times.</li>
+            <li><strong>Readability:</strong> main algorithm stays short and clear.</li>
+            <li><strong>Maintenance:</strong> fix logic in one place only.</li>
+            <li><strong>Testing:</strong> test each sub-routine independently.</li>
+          </ul>
+          <pre class="pseudocode">SUBROUTINE addition()
+  INPUT firstNumber
+  INPUT secondNumber
+  result ← firstNumber + secondNumber
+  OUTPUT result
+ENDSUBROUTINE</pre>
+        </section>
+        <section class="box demonstrate">
+          <h4>Demonstrate</h4>
+          <p>Write pseudocode for a main program that asks which operation (add, subtract, multiply) and calls the matching sub-routine.</p>
+          <textarea class="lined note" data-key="9ct04-demo" placeholder="Write the main pseudocode and three sub-routines..."></textarea>
+        </section>
+        <section class="box practice">
+          <h4>Practice</h4>
+          <ol class="checklist">
+            <li>Explain three benefits of sub-routines in a program.</li>
+            <li>Identify one problem caused by a badly named sub-routine.</li>
+            <li>Write a sub-routine to convert metres to centimetres.</li>
+            <li>Show a main algorithm that calls it three times.</li>
+          </ol>
+        </section>
+      </div>
+      <div class="python-section">
+        <h3>Python: Functions with <code>def</code></h3>
+        <div class="compare">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode</div>
+            <pre class="pseudocode">SUBROUTINE addition()
+  firstNumber ← INPUT("First number")
+  secondNumber ← INPUT("Second number")
+  result ← firstNumber + secondNumber
+  OUTPUT result
+ENDSUBROUTINE
+
+answer ← INPUT("Add? (yes/no)")
+IF answer = "yes" THEN
+  CALL addition()
+ELSE
+  OUTPUT "Exiting"
+ENDIF</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python</div>
+            <pre>def addition():
+    first = int(input("First number: "))
+    second = int(input("Second number: "))
+    result = first + second
+    print(first, "+", second, "=", result)
+
+answer = input("Add two numbers? (yes/no): ")
+if answer == "yes":
+    addition()
+else:
+    print("Program exiting")</pre>
+          </div>
+        </div>
+        <p style="margin-top:.7rem;">Functions can also <strong>return</strong> values:</p>
+        <div class="compare">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode — with return</div>
+            <pre class="pseudocode">SUBROUTINE calculate_fine(days)
+  fine ← days * 0.50
+  RETURN fine
+ENDSUBROUTINE
+
+d ← INPUT("Days late")
+amount ← calculate_fine(d)
+OUTPUT "Fine: $" + amount</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python — with return</div>
+            <pre>def calculate_fine(days):
+    fine = days * 0.50
+    return fine
+
+d = int(input("Days late: "))
+amount = calculate_fine(d)
+print("Fine: $", amount)</pre>
+          </div>
+        </div>
+        <div class="py-grid" style="margin-top:.85rem;">
+          <div class="py-box">
+            <h4>Python practice</h4>
+            <ol class="checklist">
+              <li>Write a function <code>greet(name)</code> that prints "Good morning, [name]!"</li>
+              <li>Write <code>celsius_to_fahrenheit(c)</code> that returns the result; call it three times.</li>
+              <li>Build a calculator with four functions (add, subtract, multiply, divide) called from a menu.</li>
+              <li>What error occurs if you call a function before defining it?</li>
+            </ol>
+          </div>
+          <div class="py-box">
+            <h4>Write your Python code here</h4>
+            <textarea class="lined note lined-lg" data-key="9ct04-python" placeholder="# def your functions above, then call them below&#10;&#10;def greet(name):&#10;    print('Good morning,', name)&#10;&#10;greet('Kofi')"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="answer"><strong>Answer guide:</strong> Python uses <code>def name(params):</code> followed by indented body. A return statement sends a value back. Calling a function before defining it causes a NameError. The calculator menu uses if/elif to match user input to the correct function.</div>
+    </article>
+
+    <!-- 9CT.06 + 9P.03 -->
+    <article class="objective" id="obj-9ct06-9p03">
+      <div class="objective-head">
+        <div><span class="obj-code">9CT.06 + 9P.03</span><h2>Count-Controlled Iteration — Flowcharts, Pseudocode, and Python <code>for</code> Loops</h2></div>
+        <label class="status-label"><input type="checkbox" class="objective-check" data-id="9ct06-9p03"> Mastered</label>
+      </div>
+      <div class="figure-grid">
+        <figure class="media-card"><img src="media/image-3.png" alt="Count-controlled loop flowchart"><figcaption>Loop flowchart: counter starts at 1, runs while counter ≤ 100.</figcaption></figure>
+        <figure class="media-card"><img src="Copilot_20260407_112435.jpg" alt="Trace table practice"><figcaption>Trace tables are essential for checking loop logic.</figcaption></figure>
+      </div>
+      <div class="mastery-grid">
+        <section class="box memorize">
+          <h4>Memorize</h4>
+          <ul class="checklist">
+            <li>Iteration = repeating instructions.</li>
+            <li>Count-controlled = repeats an exact known number of times.</li>
+            <li>Needs: counter variable, start value, stop value.</li>
+            <li>Python: <code>for x in range(start, stop):</code></li>
+            <li>Stop value is <em>excluded</em> — use stop+1 to include it.</li>
+          </ul>
+        </section>
+        <section class="box understand">
+          <h4>Understand</h4>
+          <p>The loop below runs exactly 100 times. <code>range(1, 101)</code> gives 1, 2, 3 … 100.</p>
+          <pre>for x in range(1, 101):
+    print(x)</pre>
+          <p>With a step: <code>range(0, 51, 5)</code> gives 0, 5, 10 … 50.</p>
+        </section>
+        <section class="box demonstrate">
+          <h4>Demonstrate</h4>
+          <p>Write pseudocode AND Python for: input the cost of 20 items, output the total and average.</p>
+          <textarea class="lined note" data-key="9ct06-demo" placeholder="Write pseudocode first, then the Python version..."></textarea>
+        </section>
+        <section class="box practice">
+          <h4>Practice</h4>
+          <ol class="checklist">
+            <li>Output all numbers from 10 to 50 in steps of 5.</li>
+            <li>Input 8 exam scores; output the highest and the average.</li>
+            <li>Explain what a boundary error means for a loop.</li>
+            <li>Convert the loop flowchart above into pseudocode.</li>
+          </ol>
+        </section>
+      </div>
+      <div class="python-section">
+        <h3>Python: for loops and range()</h3>
+        <div class="compare">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode</div>
+            <pre class="pseudocode">total ← 0
+FOR i = 1 TO 20
+  cost ← INPUT("Enter cost")
+  total ← total + cost
+NEXT i
+average ← total / 20
+OUTPUT "Total: " + total
+OUTPUT "Average: " + average</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python</div>
+            <pre>total = 0
+for i in range(1, 21):
+    cost = float(input("Enter cost " + str(i) + ": "))
+    total = total + cost
+average = total / 20
+print("Total:", total)
+print("Average:", average)</pre>
+          </div>
+        </div>
+        <h4 style="margin-top:.85rem;">Trace Table — track the loop manually</h4>
+        <p>Trace for 3 items: costs 5, 10, 7. Fill in the empty cells:</p>
+        <table class="trace-table">
+          <thead><tr><th>i</th><th>cost entered</th><th>total after this step</th><th>average (after loop)</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>5</td><td class="blank"></td><td rowspan="3" class="blank" style="vertical-align:middle;"></td></tr>
+            <tr><td>2</td><td>10</td><td class="blank"></td></tr>
+            <tr><td>3</td><td>7</td><td class="blank"></td></tr>
+          </tbody>
+        </table>
+        <div class="py-grid" style="margin-top:.85rem;">
+          <div class="py-box">
+            <h4>Python practice</h4>
+            <ol class="checklist">
+              <li>Print all even numbers from 2 to 30.</li>
+              <li>Input 5 temperatures and print the warmest.</li>
+              <li>Print a multiplication table for 7 (7×1 to 7×12).</li>
+              <li>Count how many of 10 entered numbers are above 50.</li>
+            </ol>
+          </div>
+          <div class="py-box">
+            <h4>Write your Python code here</h4>
+            <textarea class="lined note lined-lg" data-key="9ct06-python" placeholder="# Example start:&#10;total = 0&#10;for i in range(1, 6):&#10;    n = int(input('Number: '))&#10;    total += n&#10;print(total)"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="answer"><strong>Answer guide:</strong> range(1, 21) is correct for 20 iterations. Trace: i=1 total=5; i=2 total=15; i=3 total=22; average=22/3≈7.33. Even numbers: range(2,31,2). Times table: for i in range(1,13): print(7,"×",i,"=",7*i).</div>
+    </article>
+
+    <!-- 9P.04 -->
+    <article class="objective" id="obj-9p04">
+      <div class="objective-head">
+        <div><span class="obj-code">9P.04</span><h2>Access Data from an Array Using Python Lists</h2></div>
+        <label class="status-label"><input type="checkbox" class="objective-check" data-id="9p04"> Mastered</label>
+      </div>
+      <div class="figure-grid">
+        <figure class="media-card"><img src="media/image-4.png" alt="Array table with index numbers"><figcaption>An array with 5 values. Each position has an index starting at 0.</figcaption></figure>
+        <figure class="media-card"><img src="Copilot_20260407_112435.jpg" alt="Array indexing practice"><figcaption>Python uses lists — same index rules apply.</figcaption></figure>
+      </div>
+      <div class="mastery-grid">
+        <section class="box memorize">
+          <h4>Memorize</h4>
+          <ul class="checklist">
+            <li>An array stores multiple values under one name.</li>
+            <li>Each value is at an index position.</li>
+            <li>First index is always <strong>0</strong>.</li>
+            <li>Python syntax: <code>myList[index]</code></li>
+            <li>Length: <code>len(myList)</code></li>
+          </ul>
+        </section>
+        <section class="box understand">
+          <h4>Understand</h4>
+          <pre>myArray = [30, 15, 20, 5, 6]
+# index:    0   1   2  3  4
+
+print(myArray[0])          # 30
+print(myArray[3])          # 5
+print(myArray[2] + myArray[3])  # 25</pre>
+          <p>Array indexing quiz:</p>
+          <ul class="checklist">
+            <li>What is at index 1? → <strong>15</strong></li>
+            <li>OUTPUT(array[4]) → <strong>6</strong></li>
+            <li>index 2 + index 3 → <strong>25</strong></li>
+          </ul>
+        </section>
+        <section class="box demonstrate">
+          <h4>Demonstrate</h4>
+          <p>Given: <code>numberArray = [10, 5, 22, 100, 55, 82, 1]</code> and <code>colourArray = ["red", "purple", "blue", "green"]</code></p>
+          <p>Write Python to output the third number with the second colour.</p>
+          <textarea class="lined note" data-key="9p04-demo" placeholder="Write Python code and explain your index choices..."></textarea>
+        </section>
+        <section class="box practice">
+          <h4>Practice</h4>
+          <ol class="checklist">
+            <li>Output the second and last element in one print statement.</li>
+            <li>Add all values in numberArray using a for loop.</li>
+            <li>Find and print the smallest value.</li>
+            <li>Loop through colourArray and print each colour in uppercase.</li>
+          </ol>
+        </section>
+      </div>
+      <div class="python-section">
+        <h3>Python: Lists and indexing</h3>
+        <div class="compare">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode</div>
+            <pre class="pseudocode">DECLARE myArray [1, 4, 5, 3, 15, 64, 27, 54]
+OUTPUT myArray[1]
+OUTPUT myArray[0] + myArray[5]
+FOR x = 0 TO 7
+  OUTPUT myArray[x]
+NEXT x</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python</div>
+            <pre>myArray = [1, 4, 5, 3, 15, 64, 27, 54]
+print(myArray[1])               # 4
+print(myArray[0] + myArray[5])  # 65
+for x in range(0, len(myArray)):
+    print(myArray[x])</pre>
+          </div>
+        </div>
+        <p style="margin-top:.7rem;">Combining two lists in one output:</p>
+        <pre>numberArray = [10, 5, 22, 100, 55, 82, 1]
+colourArray = ["red", "purple", "blue", "green"]
+
+# Third number (index 2) with second colour (index 1):
+print(numberArray[2], colourArray[1])   # 22 purple
+
+# Loop and print each number with a matching colour:
+for i in range(0, len(colourArray)):
+    print("Number:", numberArray[i], "  Colour:", colourArray[i])</pre>
+        <h4 style="margin-top:.85rem;">Array trace exercise</h4>
+        <p>Trace for <code>scores = [85, 72, 90, 63, 78]</code>. Fill the empty cells:</p>
+        <table class="trace-table">
+          <thead><tr><th>i</th><th>scores[i]</th><th>Output printed</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>1</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>2</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>3</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>4</td><td class="blank"></td><td class="blank"></td></tr>
+          </tbody>
+        </table>
+        <div class="py-grid" style="margin-top:.85rem;">
+          <div class="py-box">
+            <h4>Python practice</h4>
+            <ol class="checklist">
+              <li>Create a list of 6 student names and print the 3rd one.</li>
+              <li>Sum all values in <code>[3, 8, 12, 7, 5]</code> using a for loop.</li>
+              <li>Find the largest value in a list without using max().</li>
+              <li>Create a list of 5 temperatures; print each with its index number.</li>
+            </ol>
+          </div>
+          <div class="py-box">
+            <h4>Write your Python code here</h4>
+            <textarea class="lined note lined-lg" data-key="9p04-python" placeholder="scores = [85, 72, 90, 63, 78]&#10;total = 0&#10;for i in range(0, len(scores)):&#10;    total += scores[i]&#10;print('Total:', total)"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="answer"><strong>Answer guide:</strong> Third number = numberArray[2] = 22; second colour = colourArray[1] = "purple". Trace: i=0→85, i=1→72, i=2→90, i=3→63, i=4→78. Max without max(): start largest = scores[0], loop and update if scores[i] &gt; largest.</div>
+    </article>
+
+    <!-- 9P.05 -->
+    <article class="objective" id="obj-9p05">
+      <div class="objective-head">
+        <div><span class="obj-code">9P.05</span><h2>String Manipulation — Length, Uppercase, Lowercase in Python</h2></div>
+        <label class="status-label"><input type="checkbox" class="objective-check" data-id="9p05"> Mastered</label>
+      </div>
+      <div class="mastery-grid">
+        <section class="box memorize">
+          <h4>Memorize — Python string methods</h4>
+          <ul class="checklist">
+            <li>Length: <code>len(string)</code></li>
+            <li>Uppercase: <code>string.upper()</code></li>
+            <li>Lowercase: <code>string.lower()</code></li>
+            <li>These return a <em>new</em> string — store the result to keep it.</li>
+          </ul>
+        </section>
+        <section class="box understand">
+          <h4>Understand — why string manipulation?</h4>
+          <ul class="checklist">
+            <li>Validate a password is long enough.</li>
+            <li>Normalize input so "YES", "Yes", "yes" all match.</li>
+            <li>Format names or labels consistently in output.</li>
+            <li>Compare strings reliably without case issues.</li>
+          </ul>
+        </section>
+        <section class="box demonstrate">
+          <h4>Demonstrate</h4>
+          <p>Given four word variables, write code to find and output the longest word.</p>
+          <textarea class="lined note" data-key="9p05-demo" placeholder="Write your pseudocode and then Python to find the longest word..."></textarea>
+        </section>
+        <section class="box practice">
+          <h4>Practice</h4>
+          <ol class="checklist">
+            <li>Convert user input to lowercase before checking if it equals "yes".</li>
+            <li>Loop through an array of words and print each one with its length.</li>
+            <li>Reject a username shorter than 6 characters.</li>
+            <li>Output the shortest word in a list of 5.</li>
+          </ol>
+        </section>
+      </div>
+      <div class="python-section">
+        <h3>Python: String methods in practice</h3>
+        <div class="compare">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode</div>
+            <pre class="pseudocode">word1 ← "PROGRAMMING"
+word2 ← "MaNiPuLaTiOn"
+OUTPUT LENGTH(word1)
+word2 ← LOWERCASE(word2)
+OUTPUT word2
+OUTPUT UPPERCASE("network")</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python</div>
+            <pre>word1 = "PROGRAMMING"
+word2 = "MaNiPuLaTiOn"
+print(len(word1))        # 11
+word2 = word2.lower()
+print(word2)             # manipulation
+print("network".upper()) # NETWORK</pre>
+          </div>
+        </div>
+        <p style="margin-top:.7rem;">Combining string methods with a loop over a list:</p>
+        <pre>wordArray = ["house", "car", "balloon", "greenhouse"]
+
+for x in range(0, len(wordArray)):
+    print(wordArray[x], "→ length:", len(wordArray[x]))
+
+# Find shortest word
+shortest = wordArray[0]
+for x in range(1, len(wordArray)):
+    if len(wordArray[x]) < len(shortest):
+        shortest = wordArray[x]
+print("Shortest word:", shortest)</pre>
+        <p style="margin-top:.7rem;">Using lowercase for safe comparison:</p>
+        <pre>answer = input("Continue? ").lower()
+if answer == "yes":
+    print("Continuing...")
+else:
+    print("Stopping.")</pre>
+        <div class="py-grid" style="margin-top:.85rem;">
+          <div class="py-box">
+            <h4>Python practice</h4>
+            <ol class="checklist">
+              <li>Ask for a username; keep asking until it is at least 6 characters.</li>
+              <li>Print all words in a list that have more than 4 letters.</li>
+              <li>Take a full name as input and print it in uppercase.</li>
+              <li>Count how many words in a list have an even number of letters.</li>
+            </ol>
+          </div>
+          <div class="py-box">
+            <h4>Write your Python code here</h4>
+            <textarea class="lined note lined-lg" data-key="9p05-python" placeholder="# Validate username length&#10;username = input('Enter username: ')&#10;while len(username) < 6:&#10;    print('Too short! Must be 6+ characters.')&#10;    username = input('Try again: ')&#10;print('Username accepted:', username)"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="answer"><strong>Answer guide:</strong> Longest word: compare len() of each with if/elif chain. Shortest: initialise shortest = wordArray[0], loop and update if current length is smaller. Safe comparison: always .lower() before == check.</div>
+    </article>
+
+    <!-- 9CT.09 -->
+    <article class="objective" id="obj-9ct09">
+      <div class="objective-head">
+        <div><span class="obj-code">9CT.09</span><h2>Combine Sequence, Selection, Iteration, and Sub-routines in Full Programs</h2></div>
+        <label class="status-label"><input type="checkbox" class="objective-check" data-id="9ct09"> Mastered</label>
+      </div>
+      <p>Mastery means selecting the correct construct for each part of a real problem and integrating all four constructs smoothly.</p>
+      <div class="mastery-grid">
+        <section class="box memorize">
+          <h4>Memorize — the four constructs</h4>
+          <ul class="checklist">
+            <li><strong>Sequence:</strong> steps run in order, once.</li>
+            <li><strong>Selection:</strong> if/elif/else — choose a path.</li>
+            <li><strong>Iteration:</strong> for loop — repeat a set number of times.</li>
+            <li><strong>Sub-routine:</strong> def — reusable named block.</li>
+          </ul>
+        </section>
+        <section class="box understand">
+          <h4>Understand — all four together</h4>
+          <pre>total = 0                         # sequence
+for i in range(0, 5):            # iteration
+    mark = int(input("Mark: "))
+    total = total + mark
+    if mark < 50:                 # selection
+        print("Needs improvement")
+average = total / 5              # sequence
+print("Average:", average)</pre>
+          <p>Adding a sub-routine makes feedback reusable:</p>
+          <pre>def feedback(mark):               # sub-routine
+    if mark >= 70:
+        print("Excellent")
+    elif mark >= 50:
+        print("Satisfactory")
+    else:
+        print("Needs improvement")</pre>
+        </section>
+        <section class="box demonstrate">
+          <h4>Demonstrate</h4>
+          <p>Design pseudocode then Python for: process 10 products — input name and price, apply 10% discount if price > 100, output each final price and the overall total.</p>
+          <textarea class="lined note" data-key="9ct09-demo" placeholder="Write pseudocode first, then Python below it..."></textarea>
+        </section>
+        <section class="box practice">
+          <h4>Practice</h4>
+          <ol class="checklist">
+            <li>Label each line in your algorithm: Seq / Sel / Iter / Sub.</li>
+            <li>Refactor the discount calculation into a function.</li>
+            <li>Create a full trace table for one run (3 items).</li>
+            <li>Write three test cases: normal, boundary, invalid input.</li>
+          </ol>
+        </section>
+      </div>
+      <div class="python-section">
+        <h3>Python: Full combined program</h3>
+        <div class="compare">
+          <div class="compare-side pseudo">
+            <div class="compare-label">Pseudocode — all four constructs</div>
+            <pre class="pseudocode">SUBROUTINE apply_discount(price)
+  IF price > 100 THEN
+    price ← price * 0.90
+  ENDIF
+  RETURN price
+ENDSUBROUTINE
+
+grand_total ← 0
+FOR i = 1 TO 10
+  name ← INPUT("Product name")
+  price ← INPUT("Price")
+  final ← CALL apply_discount(price)
+  OUTPUT name + " costs " + final
+  grand_total ← grand_total + final
+NEXT i
+OUTPUT "Grand total: " + grand_total</pre>
+          </div>
+          <div class="compare-side python">
+            <div class="compare-label">Python</div>
+            <pre>def apply_discount(price):         # sub-routine
+    if price > 100:                # selection
+        price = price * 0.90
+    return price
+
+grand_total = 0                    # sequence
+for i in range(1, 11):             # iteration
+    name = input("Product name: ")
+    price = float(input("Price: "))
+    final = apply_discount(price)
+    print(name, "costs", round(final, 2))
+    grand_total = grand_total + final
+
+print("Grand total:", round(grand_total, 2))</pre>
+          </div>
+        </div>
+        <h4 style="margin-top:.85rem;">Trace table — fill in for 3 items</h4>
+        <table class="trace-table">
+          <thead><tr><th>i</th><th>name</th><th>price entered</th><th>price &gt; 100?</th><th>final price</th><th>grand_total</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Pen</td><td>2.50</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>2</td><td>Bag</td><td>120.00</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>3</td><td>Book</td><td>80.00</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+          </tbody>
+        </table>
+        <div class="py-grid" style="margin-top:.85rem;">
+          <div class="py-box">
+            <h4>Python practice</h4>
+            <ol class="checklist">
+              <li>Build a student grade book: input 5 student names and 3 marks each, calculate average per student, print pass/fail (≥50).</li>
+              <li>Write a function <code>grade(avg)</code> returning "A", "B", "C", or "Fail".</li>
+              <li>Extend the grade book to call that function and display the letter grade.</li>
+              <li>Add a count of how many students passed.</li>
+            </ol>
+          </div>
+          <div class="py-box">
+            <h4>Write your Python code here</h4>
+            <textarea class="lined note lined-lg" data-key="9ct09-python" placeholder="def grade(avg):&#10;    if avg >= 70:&#10;        return 'A'&#10;    ...&#10;&#10;passed = 0&#10;for i in range(0, 5):&#10;    name = input('Name: ')&#10;    ..."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="answer"><strong>Answer guide:</strong> Trace: Pen 2.50 → not &gt;100, final=2.50, total=2.50; Bag 120 → discounted=108.00, total=110.50; Book 80 → no discount, total=190.50. Grade: if avg≥70 return 'A', elif ≥60 return 'B', elif ≥50 return 'C', else return 'Fail'.</div>
+    </article>
+
+    <!-- 9CS.04 -->
+    <article class="objective" id="obj-9cs04">
+      <div class="objective-head">
+        <div><span class="obj-code">9CS.04</span><h2>Compilers and Interpreters — How Python Code Runs</h2></div>
+        <label class="status-label"><input type="checkbox" class="objective-check" data-id="9cs04"> Mastered</label>
+      </div>
+      <div class="mastery-grid">
+        <section class="box memorize">
+          <h4>Memorize</h4>
+          <ul class="checklist">
+            <li>Computers only understand binary (0s and 1s).</li>
+            <li>Translators convert high-level code to machine code.</li>
+            <li>Two types: compiler and interpreter.</li>
+            <li>Python IDLE is an interpreter.</li>
+            <li>A compiler produces an executable (.exe) file.</li>
+          </ul>
+        </section>
+        <section class="box understand">
+          <h4>Understand</h4>
+          <p>When you run Python code, the <strong>Python interpreter</strong> reads and executes one line at a time. If it finds a syntax error, it stops — but lines before it have already run.</p>
+          <p>A <strong>compiler</strong> reads every line first, reports all errors at once, then creates a finished executable.</p>
+        </section>
+        <section class="box demonstrate">
+          <h4>Demonstrate</h4>
+          <p>Explain why Python is described as an interpreted language. Give one benefit and one limitation compared to a compiled language.</p>
+          <textarea class="lined note" data-key="9cs04-demo" placeholder="Write your explanation here..."></textarea>
+        </section>
+        <section class="box practice">
+          <h4>Practice</h4>
+          <ol class="checklist">
+            <li>Describe what happens when Python runs a program with an error on line 5 (after correct lines 1–4).</li>
+            <li>Explain why a compiled program can run without the original compiler installed.</li>
+            <li>Give one real-world use case that suits a compiled language.</li>
+            <li>Give one school situation that suits an interpreter.</li>
+          </ol>
+        </section>
+      </div>
+      <div class="split" style="margin-top:.9rem;">
+        <div>
+          <h3>Compiler vs Interpreter — full comparison</h3>
+          <table>
+            <thead><tr><th>Feature</th><th>Compiler</th><th>Interpreter</th></tr></thead>
+            <tbody>
+              <tr><td>Translation approach</td><td>Whole program first</td><td>One line at a time</td></tr>
+              <tr><td>Error reporting</td><td>All errors before run</td><td>Stops at first error</td></tr>
+              <tr><td>Output</td><td>Executable file (.exe)</td><td>No separate file</td></tr>
+              <tr><td>Speed of final program</td><td>Usually faster</td><td>Usually slower</td></tr>
+              <tr><td>Source code protection</td><td>Code not visible in .exe</td><td>Source must be present</td></tr>
+              <tr><td>Debugging experience</td><td>Fix all then recompile</td><td>Immediate line feedback</td></tr>
+              <tr><td>Example</td><td>C++, Java</td><td>Python, JavaScript</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>How Python runs on your computer</h3>
+          <div class="python-tip">When you install Python and use IDLE, you are using the Python <strong>interpreter</strong>. It reads your .py file and translates each statement to machine instructions right as it runs them.</div>
+          <div class="callout" style="margin-top:.6rem;"><strong>Important:</strong> Python programs stop when an error is found. Lines that ran before the error have already had their effect.</div>
+          <h4 style="margin-top:.75rem;">Sort the features — compiler, interpreter, or both?</h4>
+          <table>
+            <thead><tr><th>Feature</th><th>Circle your answer</th></tr></thead>
+            <tbody>
+              <tr><td>Creates an executable file</td><td>Compiler / Interpreter / Both</td></tr>
+              <tr><td>Translates high-level to low-level</td><td>Compiler / Interpreter / Both</td></tr>
+              <tr><td>Reports all errors before running</td><td>Compiler / Interpreter / Both</td></tr>
+              <tr><td>Stops at the first error encountered</td><td>Compiler / Interpreter / Both</td></tr>
+              <tr><td>Checks for syntax errors</td><td>Compiler / Interpreter / Both</td></tr>
+              <tr><td>Used by Python IDLE</td><td>Compiler / Interpreter / Both</td></tr>
+            </tbody>
+          </table>
+          <textarea class="lined note lined-sm" data-key="9cs04-compare" placeholder="Write additional notes on translators..."></textarea>
+        </div>
+      </div>
+      <div class="answer"><strong>Answer guide:</strong> Python is interpreted — runs line by line. Benefit: instant feedback; great for learning. Limitation: slower; source must be present. Answers: Compiler | Both | Compiler | Interpreter | Both | Interpreter.</div>
+    </article>
+
+  </section>
+
+  <!-- Mixed Practice Bank -->
+  <section class="card" id="mixed-practice">
+    <h2>Mixed Python + Algorithm Practice Bank</h2>
+    <p>These tasks combine all Unit 9.3 objectives. Design in pseudocode first, then code in Python.</p>
+    <div class="split">
+      <div>
+        <h3>Core tasks</h3>
+        <ol class="checklist">
+          <li>School canteen: input 5 meal prices, apply 50% student discount, output individual and total cost. Use a function for the discount.</li>
+          <li>Input 10 names into a list, print each in uppercase, then print the longest name.</li>
+          <li>Temperature log: input 7 daily temperatures, find the hottest and coldest, output the difference.</li>
+          <li>Ask for a password; keep asking until it is at least 8 characters. (Extension: also check it contains a digit.)</li>
+          <li>Write <code>is_even(n)</code> that returns True or False. Use it to print all even numbers from a list.</li>
+          <li>Store student names and marks in two parallel lists. Print each name with a letter grade using <code>grade()</code>.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Challenge and exam-style tasks</h3>
+        <ol class="checklist" start="7">
+          <li>5-mark explanation: how does Python's interpreter help a learner find errors compared to a compiler?</li>
+          <li>Full grade book: 5 students, 3 subjects each, average per student, class average, count of passes.</li>
+          <li>Text-based quiz: 5 questions in a list; keep score; display final percentage and grade.</li>
+          <li>Design the grade book in pseudocode. Label every construct. Then convert to Python exactly.</li>
+          <li>Write three test cases (normal, boundary, invalid) for your grade book.</li>
+          <li>Explain why functions make the grade book easier to test and update.</li>
+        </ol>
+      </div>
+    </div>
+    <textarea class="lined note lined-lg" data-key="mixed-practice-notes" placeholder="Write your algorithms, Python code, trace tables and test cases here..."></textarea>
+  </section>
+
+  <!-- Python Coding Pages -->
+  <section class="card">
+    <h2>Python Coding Pages — extra space for writing programs</h2>
+    <p>Use these pages for longer Python programs, re-doing worked examples by memory, or testing your own extensions.</p>
+    <div class="split">
+      <div>
+        <h3>Coding page 1</h3>
+        <textarea class="lined note lined-lg" data-key="code-page-1" placeholder="# Program 1 — write from memory or from scratch&#10;"></textarea>
+      </div>
+      <div>
+        <h3>Coding page 2</h3>
+        <textarea class="lined note lined-lg" data-key="code-page-2" placeholder="# Program 2&#10;"></textarea>
+      </div>
+    </div>
+    <div class="split" style="margin-top:.85rem;">
+      <div>
+        <h3>Coding page 3</h3>
+        <textarea class="lined note lined-lg" data-key="code-page-3" placeholder="# Program 3&#10;"></textarea>
+      </div>
+      <div>
+        <h3>Coding page 4</h3>
+        <textarea class="lined note lined-lg" data-key="code-page-4" placeholder="# Program 4&#10;"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reflection -->
+  <section class="card">
+    <h2>Student Reflection and Teacher Feedback</h2>
+    <div class="split">
+      <div>
+        <h3>Student reflection</h3>
+        <p>Which objective do you feel most confident with? Which needs more practice? What Python error has confused you and how did you resolve it?</p>
+        <textarea class="lined note lined-lg" data-key="student-reflection" placeholder="Write your reflection here..."></textarea>
+      </div>
+      <div>
+        <h3>Teacher feedback and next steps</h3>
+        <textarea class="lined lined-lg" placeholder="Teacher comments, targeted revision tasks, and strengths to build on."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer-note">Unit 9.3 mastery workbook. Algorithms · Python · Translators. Cambridge Form 3.</p>
+</main>
+
+<script>
+  (function () {
+    var KEY = "enko-form3-unit9.3-programming-mastery-v2";
+    var checks = Array.from(document.querySelectorAll(".objective-check"));
+    var notes  = Array.from(document.querySelectorAll(".note"));
+    var bar    = document.getElementById("progressBar");
+    var pText  = document.getElementById("progressText");
+    var printBtn  = document.getElementById("printBtn");
+    var resetBtn  = document.getElementById("resetBtn");
+    var toggleBtn = document.getElementById("toggleAnswersBtn");
+
+    function refreshProgress() {
+      var done  = checks.filter(function(b){ return b.checked; }).length;
+      var total = checks.length;
+      bar.style.width = total ? Math.round((done / total) * 100) + "%" : "0%";
+      pText.textContent = done + " / " + total + " objectives marked mastered";
+    }
+
+    function saveState() {
+      var p = { checks: {}, notes: {}, showAnswers: document.body.classList.contains("show-answers") };
+      checks.forEach(function(b){ p.checks[b.dataset.id] = b.checked; });
+      notes.forEach(function(f){ p.notes[f.dataset.key] = f.value; });
+      localStorage.setItem(KEY, JSON.stringify(p));
+    }
+
+    function loadState() {
+      try {
+        var raw = localStorage.getItem(KEY);
+        if (!raw) { refreshProgress(); return; }
+        var p = JSON.parse(raw);
+        checks.forEach(function(b){ b.checked = Boolean(p.checks && p.checks[b.dataset.id]); });
+        notes.forEach(function(f){ if (p.notes && typeof p.notes[f.dataset.key] === "string") f.value = p.notes[f.dataset.key]; });
+        if (p.showAnswers) { document.body.classList.add("show-answers"); toggleBtn.textContent = "Hide all answer guides"; }
+      } catch(e) {}
+      refreshProgress();
+    }
+
+    checks.forEach(function(b){ b.addEventListener("change", function(){ refreshProgress(); saveState(); }); });
+    notes.forEach(function(f){ f.addEventListener("input", saveState); });
+
+    toggleBtn.addEventListener("click", function(){
+      document.body.classList.toggle("show-answers");
+      toggleBtn.textContent = document.body.classList.contains("show-answers")
+        ? "Hide all answer guides" : "Show all answer guides";
+      saveState();
+    });
+
+    resetBtn.addEventListener("click", function(){
+      if (!window.confirm("Reset all saved progress, notes, and code for this sheet?")) return;
+      checks.forEach(function(b){ b.checked = false; });
+      notes.forEach(function(f){ f.value = ""; });
+      document.body.classList.remove("show-answers");
+      toggleBtn.textContent = "Show all answer guides";
+      localStorage.removeItem(KEY);
+      refreshProgress();
+    });
+
+    printBtn.addEventListener("click", function(){ window.print(); });
+
+    loadState();
+  })();
+</script>
+</body>
+</html>

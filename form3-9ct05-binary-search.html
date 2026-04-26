@@ -55,6 +55,20 @@
     body.show-answers .answer { display: block; }
     .progress { height: 10px; border-radius: 999px; background: #e6edf8; margin-top: 0.7rem; overflow: hidden; }
     .progress > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), #4ea1ff); transition: width 0.2s ease; }
+
+    .python-card { border: 1px solid #9edabf; background: #eefaf2; border-radius: 12px; padding: 0.8rem; }
+    pre { background: #0f1728; color: #eaf1ff; border: 1px solid #1f3158; border-radius: 10px; padding: 0.7rem; overflow: auto; font-family: Consolas, "Courier New", monospace; font-size: 0.88rem; white-space: pre-wrap; }
+    .lined {
+      width: 100%;
+      min-height: 180px;
+      border: 1px dashed #aebed8;
+      border-radius: 12px;
+      padding: 0.8rem;
+      font: inherit;
+      resize: vertical;
+      background: #fcfdff;
+      background-image: repeating-linear-gradient(to bottom, #fcfdff 0, #fcfdff 31px, #dce5f5 32px);
+    }
     @media (max-width: 820px) { .hero, .grid { grid-template-columns: 1fr; } }
     @media print {
       body { background: #fff; }
@@ -62,6 +76,11 @@
       .card { box-shadow: none; break-inside: avoid; }
       .toolbar { display: none; }
       .answer { display: block; }
+      .lined {
+        min-height: 200px;
+        border: 1px solid #8fa2bd;
+        background-image: repeating-linear-gradient(to bottom, #ffffff 0, #ffffff 31px, #c8d5e8 32px);
+      }
     }
   </style>
 </head>
@@ -179,6 +198,39 @@
           <li>For large lists, binary search usually needs far fewer checks.</li>
         </ul>
       </article>
+    </section>
+
+    <section class="card">
+      <h2>Python binary search</h2>
+      <div class="grid">
+        <article class="python-card">
+          <h3>Python implementation</h3>
+<pre>arr = [2, 5, 9, 12, 17, 23, 31, 45]
+target = 23
+low = 0
+high = len(arr) - 1
+
+while low <= high:
+    mid = (low + high) // 2
+    if arr[mid] == target:
+        print("Found at index", mid)
+        break
+    if arr[mid] < target:
+        low = mid + 1
+    else:
+        high = mid - 1</pre>
+        </article>
+        <article class="python-card">
+          <h3>Python practice</h3>
+          <ol>
+            <li>Change the target value and trace low, high, and mid each step.</li>
+            <li>Add an <strong>if not found</strong> message after the loop.</li>
+            <li>Explain why the list must stay sorted before searching.</li>
+          </ol>
+        </article>
+      </div>
+      <h3>Write your Python code and trace</h3>
+      <textarea class="lined" placeholder="Write your binary search code and a trace of low/high/mid values."></textarea>
     </section>
 
     <section class="card">

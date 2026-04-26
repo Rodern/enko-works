@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IG1 IGCSE - Web Authoring Exercises</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --ink: #1a2233;
+      --primary: #006d77;
+      --border: #d4dceb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.5;
+      color: var(--ink);
+      background: radial-gradient(circle at 15% 0%, #ffffff 0%, var(--bg) 62%);
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      margin: 0.8rem 0;
+      box-shadow: 0 8px 20px rgba(16, 33, 64, 0.05);
+    }
+
+    h1, h2 { margin: 0 0 0.6rem; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.1rem; }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin: 0.6rem 0;
+    }
+
+    .line {
+      border: 1px dashed #b2bfd8;
+      border-radius: 8px;
+      padding: 0.45rem;
+      min-height: 42px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    button, .link {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      padding: 0.5rem 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .exercise {
+      border-left: 5px solid var(--primary);
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    li {
+      margin: 0.35rem 0;
+    }
+
+    .check {
+      margin-top: 0.55rem;
+      display: flex;
+      gap: 0.45rem;
+      align-items: flex-start;
+    }
+
+    .progress {
+      height: 10px;
+      border-radius: 999px;
+      background: #e6edf8;
+      overflow: hidden;
+      margin-top: 0.65rem;
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), #26a69a);
+      transition: width 0.2s ease;
+    }
+
+    #progressText {
+      margin: 0.45rem 0 0;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 820px) {
+      .meta { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff; }
+      .page { max-width: none; padding: 0; }
+      .card { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+      .toolbar { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <h1>IG1 Web Authoring Exercises</h1>
+      <div class="meta">
+        <div class="line"><strong>Name:</strong></div>
+        <div class="line"><strong>Class:</strong></div>
+        <div class="line"><strong>Date:</strong></div>
+      </div>
+      <div class="toolbar">
+        <button id="printBtn" class="primary" type="button">Print / Save PDF</button>
+        <button id="resetBtn" type="button">Reset checks</button>
+        <a class="link" href="index.html">Back</a>
+      </div>
+      <div class="progress"><span id="progressBar"></span></div>
+      <p id="progressText"><strong>0 tasks checked</strong></p>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 1: HTML Structure</h2>
+      <ol>
+        <li>Create a page with `<!doctype html>`, `html`, `head`, `title`, and `body`.</li>
+        <li>Add one `h1`, one `h2`, and two `p` elements.</li>
+        <li>Add `header`, `main`, and `footer` elements.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 1</label>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 2: Lists and Links</h2>
+      <ol>
+        <li>Add one ordered list with 5 items.</li>
+        <li>Add one unordered list with 5 items.</li>
+        <li>Add two links: one external and one internal anchor link.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 2</label>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 3: Images and Navigation</h2>
+      <ol>
+        <li>Insert one image with correct `alt` text.</li>
+        <li>Create a navigation bar with at least 4 links.</li>
+        <li>Make links jump to sections in the same page.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 3</label>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 4: Tables</h2>
+      <ol>
+        <li>Create a table with `thead` and `tbody`.</li>
+        <li>Add 5 rows of data and at least 4 columns.</li>
+        <li>Use `th` for headings and `td` for data.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 4</label>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 5: Forms</h2>
+      <ol>
+        <li>Create a form with name, email, age, class, and message fields.</li>
+        <li>Use input types: `text`, `email`, `number`, and `radio` or `checkbox`.</li>
+        <li>Add `label` elements and `required` where needed.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 5</label>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 6: CSS Basics</h2>
+      <ol>
+        <li>Style body, headings, paragraphs, and links.</li>
+        <li>Use classes to style cards and buttons.</li>
+        <li>Add hover styles for links and buttons.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 6</label>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 7: Layout and Responsive Design</h2>
+      <ol>
+        <li>Create a two-column layout using Grid or Flexbox.</li>
+        <li>Add a media query to switch to one column on small screens.</li>
+        <li>Ensure images scale with `max-width: 100%`.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 7</label>
+    </section>
+
+    <section class="card exercise">
+      <h2>Exercise 8: Final Build</h2>
+      <ol>
+        <li>Build one complete webpage using semantic HTML.</li>
+        <li>Include navigation, image, table, and form.</li>
+        <li>Apply responsive CSS styling.</li>
+      </ol>
+      <label class="check"><input class="track" type="checkbox"> Completed Exercise 8</label>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const KEY = "enko-ig1-web-authoring-exercises-v2";
+      const checks = Array.from(document.querySelectorAll(".track"));
+      const bar = document.getElementById("progressBar");
+      const text = document.getElementById("progressText");
+
+      function save() {
+        const state = {};
+        checks.forEach((box, i) => {
+          state["c" + i] = box.checked;
+        });
+        localStorage.setItem(KEY, JSON.stringify(state));
+      }
+
+      function refresh() {
+        const done = checks.filter((b) => b.checked).length;
+        const total = checks.length;
+        const pct = total ? Math.round((done / total) * 100) : 0;
+        bar.style.width = pct + "%";
+        text.innerHTML = "<strong>" + done + " / " + total + " tasks checked</strong>";
+      }
+
+      function load() {
+        try {
+          const state = JSON.parse(localStorage.getItem(KEY) || "{}");
+          checks.forEach((box, i) => {
+            box.checked = Boolean(state["c" + i]);
+          });
+        } catch (err) {}
+        refresh();
+      }
+
+      checks.forEach((box) => {
+        box.addEventListener("change", function () {
+          save();
+          refresh();
+        });
+      });
+
+      document.getElementById("printBtn").addEventListener("click", function () {
+        window.print();
+      });
+
+      document.getElementById("resetBtn").addEventListener("click", function () {
+        checks.forEach((box) => {
+          box.checked = false;
+        });
+        save();
+        refresh();
+      });
+
+      load();
+    })();
+  </script>
+</body>
+</html>
+</attachment></attachments> only exercises, no explanations of each term. just simple tasks. no fluff. just modern and clean design. keep it concise. files name should be ig1-web-authoring-exercises.html basically use previous pages as style references, but keep it cleaner and less text so its easy for me to parse and work with students. do not overdo it. just enough. let's do it. do not include answers too. so remove all answer guides and notes if present. only exercises sections and heading, very clean. no extra chatter just do it. </userRequest>

@@ -165,6 +165,37 @@
       transition: width 0.2s ease;
     }
 
+    .python-card {
+      border: 1px solid #9edabf;
+      background: #eefaf2;
+      border-radius: 12px;
+      padding: 0.8rem;
+    }
+
+    pre {
+      background: #0f1728;
+      color: #eaf1ff;
+      border: 1px solid #1f3158;
+      border-radius: 10px;
+      padding: 0.7rem;
+      overflow: auto;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.88rem;
+      white-space: pre-wrap;
+    }
+
+    .lined {
+      width: 100%;
+      min-height: 180px;
+      border: 1px dashed #aebed8;
+      border-radius: 12px;
+      padding: 0.8rem;
+      font: inherit;
+      resize: vertical;
+      background: #fcfdff;
+      background-image: repeating-linear-gradient(to bottom, #fcfdff 0, #fcfdff 31px, #dce5f5 32px);
+    }
+
     @media (max-width: 820px) {
       .hero, .grid { grid-template-columns: 1fr; }
     }
@@ -176,6 +207,11 @@
       .toolbar { display: none; }
       .answer { display: block; }
       a::after { content: ""; }
+      .lined {
+        min-height: 200px;
+        border: 1px solid #8fa2bd;
+        background-image: repeating-linear-gradient(to bottom, #ffffff 0, #ffffff 31px, #c8d5e8 32px);
+      }
     }
   </style>
 </head>
@@ -270,6 +306,32 @@ END SUB-ROUTINE</pre>
           <path d="M 263 160 L 114 160" fill="none" stroke="#4b6cb7" stroke-width="2.5" marker-end="url(#arrow-sub)"></path>
         </svg>
       </div>
+    </section>
+
+    <section class="card">
+      <h2>Python translation of sub-routines</h2>
+      <div class="grid">
+        <article class="python-card">
+          <h3>Pseudocode to Python</h3>
+<pre>def format_greeting(person_name):
+    message = "Welcome " + person_name
+    return message
+
+name = input("Name: ")
+message = format_greeting(name)
+print(message)</pre>
+        </article>
+        <article class="python-card">
+          <h3>Practice tasks</h3>
+          <ol>
+            <li>Write <strong>add(a, b)</strong> and print the result.</li>
+            <li>Write <strong>c_to_f(c)</strong> that returns Fahrenheit.</li>
+            <li>Create a menu that calls one of two functions based on user choice.</li>
+          </ol>
+        </article>
+      </div>
+      <h3>Write your Python function code</h3>
+      <textarea class="lined" placeholder="Write function definitions and function calls here."></textarea>
     </section>
 
     <section class="card">

@@ -52,6 +52,20 @@
     .orange { background: linear-gradient(90deg, #f59e0b, #ffd281); }
     .w85 { width: 85%; }
     .w12 { width: 12%; }
+
+    .python-card { border: 1px solid #9edabf; background: #eefaf2; border-radius: 12px; padding: 0.8rem; }
+    pre { background: #0f1728; color: #eaf1ff; border: 1px solid #1f3158; border-radius: 10px; padding: 0.7rem; overflow: auto; font-family: Consolas, "Courier New", monospace; font-size: 0.88rem; white-space: pre-wrap; }
+    .lined {
+      width: 100%;
+      min-height: 180px;
+      border: 1px dashed #aebed8;
+      border-radius: 12px;
+      padding: 0.8rem;
+      font: inherit;
+      resize: vertical;
+      background: #fcfdff;
+      background-image: repeating-linear-gradient(to bottom, #fcfdff 0, #fcfdff 31px, #dce5f5 32px);
+    }
     @media (max-width: 820px) { .hero, .grid { grid-template-columns: 1fr; } }
     @media print {
       body { background: #fff; }
@@ -59,6 +73,11 @@
       .card { box-shadow: none; break-inside: avoid; }
       .toolbar { display: none; }
       .answer { display: block; }
+      .lined {
+        min-height: 200px;
+        border: 1px solid #8fa2bd;
+        background-image: repeating-linear-gradient(to bottom, #ffffff 0, #ffffff 31px, #c8d5e8 32px);
+      }
     }
   </style>
 </head>
@@ -148,6 +167,43 @@
           <li>Conclude with evidence (estimated checks, constraints, trade-offs).</li>
         </ol>
       </article>
+    </section>
+
+    <section class="card">
+      <h2>Python evidence for algorithm comparison</h2>
+      <div class="grid">
+        <article class="python-card">
+          <h3>Count linear checks</h3>
+<pre>items = [4, 7, 11, 14, 20, 31, 35, 49]
+target = 31
+checks = 0
+for x in items:
+    checks += 1
+    if x == target:
+        break
+print("Linear checks:", checks)</pre>
+        </article>
+        <article class="python-card">
+          <h3>Count binary checks</h3>
+<pre>items = [4, 7, 11, 14, 20, 31, 35, 49]
+target = 31
+low = 0
+high = len(items) - 1
+checks = 0
+while low <= high:
+    checks += 1
+    mid = (low + high) // 2
+    if items[mid] == target:
+        break
+    if items[mid] < target:
+        low = mid + 1
+    else:
+        high = mid - 1
+print("Binary checks:", checks)</pre>
+        </article>
+      </div>
+      <h3>Write your comparison justification with Python evidence</h3>
+      <textarea class="lined" placeholder="Record your context, measured checks, and final algorithm choice."></textarea>
     </section>
 
     <section class="card">

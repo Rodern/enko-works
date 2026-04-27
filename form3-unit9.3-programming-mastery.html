@@ -131,8 +131,8 @@
 <header class="container hero">
   <div class="hero-inner">
     <div>
-      <p class="eyebrow">Cambridge Form 3 · Unit 9.3 Programming</p>
-      <h1>Mastery Workbook: Algorithms, Python, and Translators</h1>
+      <p class="eyebrow">Computing Form 3 · Unit 9.3 Programming & System Development</p>
+      <h1>Mastery Workbook: Algorithms, Python, Translators & Testing</h1>
       <p class="lede">This workbook covers every Unit 9.3 objective through pseudocode, flowcharts, and working Python code. Every construct you design on paper, you will also write and run in Python. Designed for screen study and A4 paper printing.</p>
       <div class="pill-row">
         <span class="pill">9CT.03 Algorithms</span>
@@ -143,6 +143,10 @@
         <span class="pill">9P.04 Lists / Arrays</span>
         <span class="pill">9P.05 String methods</span>
         <span class="pill">9CS.04 Translators</span>
+        <span class="pill">9CS.01 System design</span>
+        <span class="pill">9P.08/09 Test plans</span>
+        <span class="pill">9P.10/11 Debugging</span>
+        <span class="pill">9P.06/07 Iterative dev</span>
       </div>
       <div class="toolbar interactive-only">
         <button class="btn primary" id="printBtn" type="button">Print / Save PDF</button>
@@ -152,12 +156,12 @@
       </div>
       <div class="progress-wrap">
         <div class="progress-bar"><span id="progressBar"></span></div>
-        <p class="progress-text" id="progressText">0 / 7 objectives marked mastered</p>
+        <p class="progress-text" id="progressText">0 / 8 objectives marked mastered</p>
       </div>
     </div>
     <figure class="hero-banner">
-      <img src="Copilot_20260407_112435.jpg" alt="Computational thinking and Python programming header">
-      <figcaption>Form 3 Unit 9.3 — algorithms, Python code, and translators.</figcaption>
+      <img src="Copilot_20260426_121019.jpg" alt="Computational thinking and Python programming header">
+      <figcaption>Form 3 Unit 9.3 — Programming & System Development</figcaption>
     </figure>
   </div>
 </header>
@@ -176,8 +180,6 @@
         <li>Tick an objective only when you can solve a new problem without help.</li>
       </ol>
       <div class="callout"><strong>Cambridge exam style:</strong> show your method with trace tables and use precise vocabulary — sequence, selection, iteration, index, sub-routine, translator.</div>
-    </article>
-    <article>
       <h2>Core Language Bank</h2>
       <table>
         <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
@@ -191,8 +193,25 @@
           <tr><td>Index</td><td>The numbered position of an element. Starts at 0.</td></tr>
           <tr><td>String manipulation</td><td>Operations on text: length, upper, lower.</td></tr>
           <tr><td>Translator</td><td>Software that converts high-level code to machine code.</td></tr>
+        </tbody>
+      </table>
+    </article>
+    <article>
+      <table>
+        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
           <tr><td>Compiler</td><td>Translates the whole program before running it.</td></tr>
           <tr><td>Interpreter</td><td>Translates and runs one line at a time.</td></tr>
+          <tr><td>Prototype</td><td>An early working version of a program used for testing and improvement.</td></tr>
+          <tr><td>Iterative development</td><td>Continually adding and improving a program through repeated cycles of build → test → review.</td></tr>
+          <tr><td>Test data</td><td>Values used to check a program. Three types: normal (valid), extreme (boundary), invalid (unacceptable).</td></tr>
+          <tr><td>Syntax error</td><td>Breaks the grammar rules of the language (e.g., missing colon, typo in keyword). Program won't run.</td></tr>
+          <tr><td>Logic error</td><td>Program runs but produces the wrong result (e.g., using + instead of ×).</td></tr>
+          <tr><td>Runtime error</td><td>Program crashes while running (e.g., dividing by zero, multiplying a number by a word).</td></tr>
+          <tr><td>Trace table</td><td>A table that tracks variable values line by line to follow and debug an algorithm.</td></tr>
+          <tr><td>Ergonomics</td><td>How well a system fits the physical conditions of use (size, controls, comfort).</td></tr>
+          <tr><td>Accessibility</td><td>How suitable a system is for users with different needs (readable text, colour contrast, audio options).</td></tr>
+          <tr><td>Emerging technology</td><td>New or rapidly developing technology that may change how systems are designed or used.</td></tr>
         </tbody>
       </table>
     </article>
@@ -552,7 +571,7 @@ print("Fine: $", amount)</pre>
       </div>
       <div class="figure-grid">
         <figure class="media-card"><img src="media/image-3.png" alt="Count-controlled loop flowchart"><figcaption>Loop flowchart: counter starts at 1, runs while counter ≤ 100.</figcaption></figure>
-        <figure class="media-card"><img src="Copilot_20260407_112435.jpg" alt="Trace table practice"><figcaption>Trace tables are essential for checking loop logic.</figcaption></figure>
+        <figure class="media-card"><img src="Copilot_20260426_121019.jpg" alt="Trace table practice"><figcaption>Trace tables are essential for checking loop logic.</figcaption></figure>
       </div>
       <div class="mastery-grid">
         <section class="box memorize">
@@ -649,7 +668,7 @@ print("Average:", average)</pre>
       </div>
       <div class="figure-grid">
         <figure class="media-card"><img src="media/image-4.png" alt="Array table with index numbers"><figcaption>An array with 5 values. Each position has an index starting at 0.</figcaption></figure>
-        <figure class="media-card"><img src="Copilot_20260407_112435.jpg" alt="Array indexing practice"><figcaption>Python uses lists — same index rules apply.</figcaption></figure>
+        <figure class="media-card"><img src="Copilot_20260426_121019.jpg" alt="Array indexing practice"><figcaption>Python uses lists — same index rules apply.</figcaption></figure>
       </div>
       <div class="mastery-grid">
         <section class="box memorize">
@@ -1081,66 +1100,223 @@ print("Grand total:", round(grand_total, 2))</pre>
 
       <article class="extension-card">
         <h3>9P.06 Iterative development and prototypes</h3>
-        <p>Build software in small versions: prototype, test, improve, repeat. Each iteration should add one clear feature.</p>
+        <p>Iterative development means <strong>continually adding to and amending</strong> a program until it meets requirements. Each cycle: plan a feature → build it → test it → review and improve.</p>
         <ol class="checklist">
-          <li>Plan Version 1, Version 2, Version 3 of a school canteen ordering app.</li>
-          <li>For each version, state one feature and one test to run.</li>
-          <li>Identify one user feedback comment and show how the next version responds.</li>
+          <li>Plan Version 1, Version 2, Version 3 of a school canteen ordering app — each version adds one new feature.</li>
+          <li>For each version, state: the new feature added, one test you ran, and one thing you changed after testing.</li>
+          <li>Identify one piece of user feedback and show how the next version responds to it.</li>
         </ol>
-        <textarea class="lined note lined-sm" data-key="9p06-extension" placeholder="Iteration plan and prototype notes..."></textarea>
+        <div class="callout"><strong>Reflect on your own iterative process:</strong> How did you approach the problem? Did you split tasks? Was your iterative development planned or natural? What would you do differently next time?</div>
+        <textarea class="lined note lined-sm" data-key="9p06-extension" placeholder="Iteration plan: Version 1 — feature: ..., test: ..., result: ...&#10;Version 2 — feature: ..., improvement from V1: ...&#10;Version 3 — feature: ..., user feedback addressed: ..."></textarea>
       </article>
 
       <article class="extension-card">
         <h3>9P.07 Evaluate the development process</h3>
-        <p>Evaluation checks what worked, what failed, and what should be improved in the next cycle.</p>
+        <p>Evaluation checks how well the development process worked — not just the final program.</p>
         <ol class="checklist">
-          <li>Write 2 strengths and 2 weaknesses of your most recent program.</li>
-          <li>Describe one time-saving practice you will keep using.</li>
-          <li>State one specific improvement target for your next version.</li>
+          <li>Write 2 strengths and 2 weaknesses of how you developed your most recent program.</li>
+          <li>Describe one time-saving practice you will continue using.</li>
+          <li>State one specific improvement for your next project.</li>
         </ol>
-        <textarea class="lined note lined-sm" data-key="9p07-extension" placeholder="Evaluation notes..."></textarea>
+        <p><strong>Reflection questions to answer:</strong></p>
+        <ul class="checklist">
+          <li>Did you always program a solution correctly first time? What did you do when it went wrong?</li>
+          <li>How well did you work as a team (or alone)? Did you split tasks effectively?</li>
+          <li>Did you make use of iterative development deliberately, or did it happen naturally?</li>
+          <li>Was the final solution accessible and ergonomic for its users?</li>
+        </ul>
+        <textarea class="lined note lined-sm" data-key="9p07-extension" placeholder="Evaluation notes — successes, problems encountered, and how they were overcome..."></textarea>
       </article>
     </div>
 
-    <h3 class="section-gap">Testing and debugging objectives (9P.08 to 9P.11)</h3>
+    <h3 class="section-gap">9P.08 + 9P.09 — Developing and applying test plans</h3>
+    <div class="callout">
+      <strong>Key questions to answer before testing:</strong>
+      <ul class="checklist">
+        <li><em>Why is it important to test a program?</em> — To make sure it meets its criteria and does not crash.</li>
+        <li><em>Why do you need a plan to determine how to test a program?</em> — To make sure every element is tested.</li>
+        <li><em>Why do you need to test a program with a range of data?</em> — To make sure all acceptable values are accepted, and that unacceptable values are rejected.</li>
+      </ul>
+    </div>
     <div class="split">
       <div>
-        <h4>9P.08 + 9P.09 Test plans and test data</h4>
-        <p>Use <strong>normal</strong>, <strong>extreme/boundary</strong>, and <strong>invalid</strong> data to check program behavior.</p>
-        <table class="trace-table">
-          <thead><tr><th>Input field</th><th>Normal test</th><th>Boundary test</th><th>Invalid test</th><th>Expected result</th></tr></thead>
+        <h4>Three types of test data</h4>
+        <table>
+          <thead><tr><th>Type</th><th>Definition</th><th>Example (age 10–80)</th></tr></thead>
           <tbody>
-            <tr><td>Mark (0-100)</td><td>67</td><td>0, 100</td><td>-3, 120, "abc"</td><td class="blank"></td></tr>
-            <tr><td>Password length (6+)</td><td>"school99"</td><td>"abc123"</td><td>"a2"</td><td class="blank"></td></tr>
-            <tr><td>Menu option (1-4)</td><td>2</td><td>1, 4</td><td>0, 8, "x"</td><td class="blank"></td></tr>
+            <tr><td><strong>Normal</strong></td><td>Valid values in the expected range</td><td>10, 45, 80</td></tr>
+            <tr><td><strong>Extreme</strong></td><td>Values at the edge of acceptability</td><td>9, 10, 80, 81</td></tr>
+            <tr><td><strong>Invalid</strong></td><td>Values that should be rejected</td><td>8, 100, "twenty", 11.73, -22</td></tr>
+          </tbody>
+        </table>
+        <p>Note: not all programs have extreme values — a yes/no input only has normal and invalid.</p>
+      </div>
+      <div>
+        <h4>Formal test plan format</h4>
+        <p>A test plan records what you tested, the data used, and whether the result was correct.</p>
+        <table class="trace-table">
+          <thead><tr><th>Test no.</th><th>Description</th><th>Input data</th><th>Test type</th><th>Expected result</th><th>Actual result</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Check only a number 10–80 accepted</td><td>10</td><td>Normal</td><td>Accepted</td><td class="blank"></td></tr>
+            <tr><td>2</td><td class="blank"></td><td class="blank"></td><td>Extreme</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>3</td><td class="blank"></td><td class="blank"></td><td>Invalid</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>4</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h4 class="section-gap">Worked example — testing a calculator program</h4>
+    <p>Study this calculator program. It takes two numbers and an operator (+, -, /, *) and outputs the result. There is one flaw — it does not validate that <code>number1</code> is a number.</p>
+    <div class="compare">
+      <div class="compare-side python">
+        <div class="compare-label">Calculator program to test</div>
+        <pre>number1 = int(input("Enter a number: "))
+if number1 &lt; 0 or number1 &gt; 100:
+    print("Invalid")
+else:
+    number2 = int(input("Enter a number: "))
+    symbol = input("Enter + - / or *: ")
+    if symbol == "+":
+        result = number1 + number2
+    elif symbol == "-":
+        result = number1 - number2
+    elif symbol == "/":
+        result = number1 / number2
+    else:
+        result = number1 * number2
+    print(result)</pre>
+      </div>
+      <div class="compare-side pseudo">
+        <div class="compare-label">Sample test data — complete the Actual result column</div>
+        <table class="trace-table">
+          <thead><tr><th>Test no.</th><th>Input data</th><th>Test type</th><th>Expected result</th><th>Actual result</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>10, 20, +</td><td>Normal</td><td>30</td><td class="blank"></td></tr>
+            <tr><td>2</td><td>5, 100, −</td><td>Normal</td><td>−95</td><td class="blank"></td></tr>
+            <tr><td>3</td><td>89, 22, /</td><td>Normal</td><td>≈4.045</td><td class="blank"></td></tr>
+            <tr><td>4</td><td>33, 1, *</td><td>Normal</td><td>33</td><td class="blank"></td></tr>
+            <tr><td>5</td><td>0, 20, +</td><td>Extreme</td><td>20</td><td class="blank"></td></tr>
+            <tr><td>6</td><td>100, 2, *</td><td>Extreme</td><td>200</td><td class="blank"></td></tr>
+            <tr><td>7</td><td>101, 66, −</td><td>Extreme</td><td>Invalid printed</td><td class="blank"></td></tr>
+            <tr><td>8</td><td>"Ten", 20, +</td><td>Invalid</td><td>Error / crash</td><td class="blank"></td></tr>
+            <tr><td>9</td><td>22, "one", −</td><td>Invalid</td><td>Error / crash</td><td class="blank"></td></tr>
+            <tr><td>10</td><td>11, 99, multiply</td><td>Invalid</td><td>11×99 (flaw!)</td><td class="blank"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <ol class="checklist">
+      <li>Run each test and record the actual result. Which tests reveal the program flaw?</li>
+      <li>Write a formal test plan for a password validation program that requires 8+ characters.</li>
+      <li>Swap your test plan with a partner — can they add at least one more test you missed?</li>
+    </ol>
+    <textarea class="lined note lined-lg" data-key="9p08-9p09-testplan" placeholder="Write your own test plans here — use the columns: Test no. | Description | Input data | Test type | Expected result | Actual result..."></textarea>
+
+    <h3 class="section-gap">9P.10 + 9P.11 — Error types and trace-table debugging</h3>
+    <div class="split">
+      <div>
+        <h4>Three types of programming error</h4>
+        <table>
+          <thead><tr><th>Error type</th><th>Meaning</th><th>What happens</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Syntax</strong></td><td>Grammar of the language is broken</td><td>Program won't run at all</td><td><code>pint("Hello")</code> instead of <code>print</code>; missing colon after <code>if</code></td></tr>
+            <tr><td><strong>Logic</strong></td><td>Program runs but produces wrong result</td><td>Wrong output; no crash</td><td>Using <code>+</code> instead of <code>*</code>; variables printed in wrong order</td></tr>
+            <tr><td><strong>Runtime</strong></td><td>Program crashes during execution when set criteria met</td><td>Program stops with an error message</td><td>Dividing by zero; multiplying 3 by "house"</td></tr>
           </tbody>
         </table>
         <ol class="checklist">
-          <li>Add two more rows for your own program and complete expected results.</li>
-          <li>Write one sentence explaining why boundary tests are high-value.</li>
+          <li>Classify each error: (a) <code>for count in rnge(0, 10)</code>  (b) printing <code>smallest</code> when you mean <code>largest</code>  (c) <code>result = total / count</code> where count can be 0.</li>
+          <li>Write one example of each error type from your own experience.</li>
         </ol>
       </div>
       <div>
-        <h4>9P.10 + 9P.11 Error types and trace tables</h4>
-        <p>Debug systematically by identifying error category before fixing code.</p>
-        <table class="trace-table">
-          <thead><tr><th>Error type</th><th>Meaning</th><th>Example</th></tr></thead>
-          <tbody>
-            <tr><td>Syntax error</td><td>Breaks language rules</td><td>Missing colon after <code>if</code></td></tr>
-            <tr><td>Logic error</td><td>Runs but wrong result</td><td>Using <code>&lt;</code> instead of <code>&lt;=</code></td></tr>
-            <tr><td>Runtime error</td><td>Crashes while running</td><td>Divide by zero</td></tr>
-          </tbody>
-        </table>
+        <h4>Spot and fix the syntax errors (5 bugs hidden below)</h4>
+        <div class="callout">Each variable in a trace table gets its own column. Track every change line by line — do not skip ahead.</div>
+        <pre>total == input("Input the first number") * 2
+for count in rnge(0, 100):
+    value 2 = input("Enter the second number")
+    total = total + value2
+average = total / 100
+output("Total is " * total, " average is , value2")</pre>
         <ol class="checklist">
-          <li>Write one new example for each error type from your own coding.</li>
-          <li>Trace this loop and identify the bug: <code>for i in range(1, 5): total = total + marks[i]</code> when list has 4 items.</li>
-          <li>Fix the code and explain the boundary mistake.</li>
+          <li>Find and circle each error, then write the corrected version below.</li>
         </ol>
+        <textarea class="lined note lined-sm" data-key="9p10-syntax-fix" placeholder="# Corrected version:&#10;total = int(input('Input the first number')) * 2&#10;..."></textarea>
       </div>
     </div>
-    <textarea class="lined note lined-lg" data-key="9p08-9p11-extension" placeholder="Write your test plan tables, debugging notes, and corrected code here..."></textarea>
 
-    <h3 class="section-gap">9P.12 Physical devices and data-driven control</h3>
+    <h4 class="section-gap">Trace table exercise — follow the algorithm step by step</h4>
+    <div class="split">
+      <div>
+        <p>Trace the program below with the starting values <code>num1=10, num2=20, num3=15</code>. Fill in every change to <code>total</code> and state the output.</p>
+        <pre>num1 = 10
+num2 = 20
+num3 = 15
+total = 1
+if num1 &gt; num2 and num1 &gt; num3:
+    total = total + num1
+elif num2 &gt; num3:
+    total = (total * 2) + num2
+else:
+    total = total + num3 + num3
+print(total)</pre>
+      </div>
+      <div>
+        <table class="trace-table">
+          <thead><tr><th>num1</th><th>num2</th><th>num3</th><th>total</th><th>output</th></tr></thead>
+          <tbody>
+            <tr><td>10</td><td>20</td><td>15</td><td>1</td><td></td></tr>
+            <tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+          </tbody>
+        </table>
+        <div class="answer"><strong>Answer:</strong> num1 &gt; num2? No (10 &lt; 20). num2 &gt; num3? Yes (20 &gt; 15). So elif runs: total = (1 × 2) + 20 = 22. Output: 22.</div>
+        <ol class="checklist">
+          <li>Trace again with num1=25, num2=10, num3=8. Which branch runs? What is output?</li>
+          <li>Trace again with num1=5, num2=5, num3=15. What is output?</li>
+        </ol>
+        <textarea class="lined note lined-sm" data-key="9p11-trace" placeholder="Trace table 2 and trace table 3 workings..."></textarea>
+      </div>
+    </div>
+
+    <h4 class="section-gap">Logic error debugging — find and fix</h4>
+    <div class="split">
+      <div>
+        <p>This program should output the <strong>smallest</strong> and <strong>largest</strong> from 10 inputs. It has a logic error. Find it, then fix it.</p>
+        <pre>smallest = 100
+largest = 100
+for x in range(0, 10):
+    number = int(input("Enter a number 1–100: "))
+    if number &gt; largest:
+        largest = number
+    elif number &lt; smallest:
+        smallest = number
+print("The largest is", smallest)
+print("The smallest is", largest)</pre>
+      </div>
+      <div>
+        <p>Use the trace data below to identify the error: inputs are 98, 44, 82, 4, 18, 41, 27, 91, 3, 22.</p>
+        <table class="trace-table">
+          <thead><tr><th>x</th><th>number</th><th>smallest</th><th>largest</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>98</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>1</td><td>44</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>2</td><td>82</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>3</td><td>4</td><td class="blank"></td><td class="blank"></td></tr>
+            <tr><td>4</td><td>18</td><td class="blank"></td><td class="blank"></td></tr>
+          </tbody>
+        </table>
+        <div class="answer"><strong>Answer:</strong> Two errors: (1) The print statements are swapped — "The largest is" prints <code>smallest</code> and vice versa. (2) <code>largest</code> is initialised to 100, so values above 100 would never be found. Fix: set <code>largest = -1</code> (or 0) and swap the print labels.</div>
+        <ol class="checklist">
+          <li>Complete the trace table for all 10 inputs and state final values of smallest and largest.</li>
+          <li>Write the corrected version of the program.</li>
+          <li>Write three test cases for the fixed program (normal, extreme, invalid).</li>
+        </ol>
+        <textarea class="lined note lined-sm" data-key="9p11-logic-fix" placeholder="# Corrected program:&#10;smallest = 100&#10;largest = -1  # fix 1&#10;...&#10;print('The largest is', largest)  # fix 2"></textarea>
+      </div>
+    </div>
+    <textarea class="lined note lined-lg" data-key="9p10-9p11-extension" placeholder="Further debugging notes, trace tables, and corrected code..."></textarea>
     <div class="python-tip">Even if hardware is unavailable, you can still design sensor-input algorithms and simulate decisions in Python.</div>
     <div class="split">
       <div>
@@ -1168,6 +1344,88 @@ print(action)</pre>
       </div>
     </div>
     <textarea class="lined note lined-lg" data-key="9p12-extension" placeholder="Write your physical-device algorithm, pseudocode, and Python simulation..."></textarea>
+  </section>
+
+  <!-- 9CS.01 System Design Evaluation -->
+  <section class="card" id="obj-9cs01">
+    <div class="objective-head">
+      <div><span class="obj-code">9CS.01</span><h2>Evaluate and Improve System Design — User Experience, Accessibility, Ergonomics, Emerging Technology</h2></div>
+      <label class="status-label"><input type="checkbox" class="objective-check" data-id="9cs01"> Mastered</label>
+    </div>
+    <p>A prototype is an early working version of a system. After building one, you evaluate it against a range of criteria to decide how to improve it.</p>
+
+    <div class="mastery-grid">
+      <section class="box memorize">
+        <h4>Memorize — four evaluation criteria</h4>
+        <ul class="checklist">
+          <li><strong>User experience (UX):</strong> Is it intuitive? Are there clear instructions? Does it do what the user expects?</li>
+          <li><strong>Accessibility:</strong> Is text readable? Is there an audio option? Does it need specific motor skills? Can colour schemes be changed?</li>
+          <li><strong>Ergonomics:</strong> Does it fit the physical conditions of use? Are controls the right size and position for comfort?</li>
+          <li><strong>Emerging technology:</strong> Could new technologies improve the system? Could AI, voice control, or sensors enhance it?</li>
+        </ul>
+      </section>
+      <section class="box understand">
+        <h4>Understand — why these criteria matter</h4>
+        <ul class="checklist">
+          <li>A system might work technically but fail users if it is hard to read or confusing to operate.</li>
+          <li>Accessibility matters because some users may have visual, motor, or cognitive differences.</li>
+          <li>Ergonomics matters in hardware (keyboard layout, screen height) and software (button size).</li>
+          <li>Emerging technology awareness helps designers future-proof their solutions.</li>
+        </ul>
+        <div class="python-tip">Consider a smartwatch or smartphone app. For each criterion ask: what works well? What could be improved? What would you change?</div>
+      </section>
+      <section class="box demonstrate">
+        <h4>Demonstrate — evaluate a device or system</h4>
+        <p>Choose a device you use regularly (school management system, learning platform, calculator app, physical device). Evaluate it against all four criteria. For each negative point, state a specific improvement.</p>
+        <textarea class="lined note" data-key="9cs01-evaluate" placeholder="Device chosen: ...&#10;&#10;User experience — strength: ... weakness: ... improvement: ...&#10;Accessibility — strength: ... weakness: ... improvement: ...&#10;Ergonomics — strength: ... weakness: ... improvement: ...&#10;Emerging technology — possible enhancement: ..."></textarea>
+      </section>
+      <section class="box practice">
+        <h4>Practice</h4>
+        <ol class="checklist">
+          <li>Explain why some users may find specific colour combinations harder to read.</li>
+          <li>Suggest two ways to improve accessibility in a text-based Python program.</li>
+          <li>Describe one ergonomics issue in a physical computing device and a possible fix.</li>
+          <li>Name one emerging technology and explain how it could improve a classroom tool.</li>
+          <li>Design a simple evaluation checklist (5 criteria, Yes/No/Partially) for your own program.</li>
+        </ol>
+      </section>
+    </div>
+
+    <h3 class="section-gap">Evaluation criteria — deep comparison table</h3>
+    <table>
+      <thead><tr><th>Criterion</th><th>Key questions to ask</th><th>Example positive</th><th>Example negative / improvement needed</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>User experience</strong></td>
+          <td>Is it intuitive? Are instructions clear? Does it do what users expect?</td>
+          <td>Clear menu options with numbered choices</td>
+          <td>No error message when invalid input is entered → add validation and a helpful prompt</td>
+        </tr>
+        <tr>
+          <td><strong>Accessibility</strong></td>
+          <td>Readable text? Colour change option? Audio output? Motor skill requirements?</td>
+          <td>High-contrast text; large font option</td>
+          <td>Red/green only colour coding → unusable for colour-blind users; use shapes or labels too</td>
+        </tr>
+        <tr>
+          <td><strong>Ergonomics</strong></td>
+          <td>Are controls comfortably sized and placed? Does physical use cause strain?</td>
+          <td>Large on-screen buttons for touch interfaces</td>
+          <td>Tiny buttons on a device for young users → enlarge and space out controls</td>
+        </tr>
+        <tr>
+          <td><strong>Emerging technology</strong></td>
+          <td>Could AI, voice, sensors, or connectivity improve the solution?</td>
+          <td>Voice input option added for hands-free use</td>
+          <td>Currently manual data entry → could use sensor to automate readings</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="section-gap">System evaluation task — your own program</h3>
+    <p>Apply all four criteria to a program you have written in this workbook. Use the format: <strong>Criterion | Observation | Score (1–5) | Suggested improvement</strong>.</p>
+    <textarea class="lined note lined-lg" data-key="9cs01-program-eval" placeholder="Program evaluated: ...&#10;&#10;User experience | observation: ... | score: /5 | improvement: ...&#10;Accessibility   | observation: ... | score: /5 | improvement: ...&#10;Ergonomics      | observation: ... | score: /5 | improvement: ...&#10;Emerging tech   | observation: ... | score: /5 | improvement: ..."></textarea>
+    <div class="answer"><strong>Answer guide:</strong> There is no single correct answer — evaluation is qualitative. Strong responses name a specific feature, explain why it helps or hinders a specific type of user, and propose a concrete, feasible improvement. Accessibility: mention colour contrast, font size, or audio alternatives. Ergonomics: physical size, spacing, or placement of controls. Emerging technology: AI, sensors, voice, connectivity.</div>
   </section>
 
   <!-- Mixed Practice Bank -->

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form 3 Unit 9.3 Programming — Exercises Only</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=JetBrains+Mono:wght@500;700&display=swap");
+    :root {
+      --bg-a:#f7f2e7;--bg-b:#e6eef9;--card:#fff;--ink:#142033;--muted:#47586f;
+      --primary:#0f4db8;--primary-soft:#e6efff;--accent:#10705f;--accent-soft:#e5f8f4;
+      --warm:#c26711;--warm-soft:#fff4e8;--python:#1a6e2e;--python-soft:#e8f9ed;
+      --border:#cfdae8;--radius:18px;--shadow:0 14px 36px rgba(18,36,70,.08);
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Lexend","Trebuchet MS","Segoe UI",sans-serif;color:var(--ink);
+      background:radial-gradient(1000px 500px at 8% -10%,#fff8df 0%,rgba(255,248,223,0) 70%),
+      radial-gradient(900px 520px at 95% 0%,#e5f5ff 0%,rgba(229,245,255,0) 68%),
+      linear-gradient(180deg,var(--bg-a) 0%,var(--bg-b) 100%);line-height:1.6}
+    .container{width:min(1200px,calc(100% - 2rem));margin:0 auto;padding-bottom:2rem}
+    .hero{margin-top:1rem;background:linear-gradient(130deg,#fff 0%,#f7fbff 52%,#fffaf0 100%);
+      border:1px solid var(--border);border-radius:calc(var(--radius) + 4px);box-shadow:var(--shadow);overflow:hidden}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;padding:1.3rem}
+    .eyebrow{margin:0;letter-spacing:.05em;text-transform:uppercase;color:var(--primary);font-weight:800;font-size:.77rem}
+    h1,h2,h3,h4{line-height:1.2;margin-top:0}
+    h1{font-size:clamp(1.6rem,2.8vw,2.55rem);margin-bottom:.7rem}
+    h2{font-size:clamp(1.2rem,2.1vw,1.5rem);margin-bottom:.6rem}
+    h3{font-size:1.04rem;margin-bottom:.4rem}
+    .lede{color:var(--muted);margin-top:.3rem}
+    .pill-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.75rem}
+    .pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:.28rem .7rem;background:var(--primary-soft);color:#1e3f85;font-weight:700;font-size:.83rem}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.95rem}
+    .btn,a.btn{border:1px solid var(--border);border-radius:999px;padding:.56rem .95rem;background:#fff;color:var(--ink);font-weight:700;text-decoration:none;cursor:pointer;font-family:inherit;font-size:.95rem}
+    .btn.primary{border-color:var(--primary);background:var(--primary);color:#fff}
+    .btn:hover{filter:brightness(.97)}
+    .card{margin-top:1rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:1.1rem 1.15rem}
+    .split{display:grid;gap:1rem;grid-template-columns:1fr 1fr}
+    .split-3{display:grid;gap:.85rem;grid-template-columns:repeat(3,minmax(0,1fr))}
+    .exercise-card{border:1px solid var(--border);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);padding:1.1rem;margin-bottom:1rem;opacity:0;transform:translateY(8px);animation:rise .5s ease forwards}
+    .exercise-card:nth-child(1){animation-delay:.02s}.exercise-card:nth-child(2){animation-delay:.08s}
+    .exercise-card:nth-child(3){animation-delay:.14s}.exercise-card:nth-child(4){animation-delay:.20s}
+    .exercise-card:nth-child(5){animation-delay:.26s}.exercise-card:nth-child(6){animation-delay:.32s}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .exercise-head{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem;margin-bottom:.65rem}
+    .obj-code{font-family:"JetBrains Mono",Consolas,monospace;display:inline-block;font-size:.87rem;font-weight:700;color:#1f4690;background:var(--primary-soft);border:1px solid #bfd0f2;border-radius:999px;padding:.18rem .56rem;margin-bottom:.3rem}
+    .lined,textarea.lined{width:100%;min-height:120px;border:1px dashed #aebed8;border-radius:12px;padding:.85rem;font:inherit;font-size:1rem;resize:vertical;color:var(--ink);background-color:#fcfdff;background-image:repeating-linear-gradient(to bottom,#fcfdff 0,#fcfdff 31px,#dce5f5 32px)}
+    textarea.lined-sm{min-height:90px}textarea.lined-lg{min-height:180px}
+    .checklist{margin:0;padding-left:1.1rem}.checklist li{margin-bottom:.3rem}
+    .callout{margin:.7rem 0;border-left:4px solid var(--warm);background:var(--warm-soft);padding:.7rem .85rem;border-radius:10px}
+    .python-tip{margin:.7rem 0;border-left:4px solid var(--python);background:var(--python-soft);padding:.7rem .85rem;border-radius:10px;color:#0c3d1a}
+    .footer-note{margin:1rem 0 1.8rem;color:var(--muted);font-size:.92rem;text-align:center}
+    pre{margin:.45rem 0;padding:.75rem;border-radius:12px;font-family:"JetBrains Mono",Consolas,monospace;font-size:.87rem;color:#eaf1ff;background:#0f1728;overflow:auto;white-space:pre-wrap;border:1px solid #1e2e52}
+    table{width:100%;border-collapse:collapse;margin-top:.45rem;font-size:.95rem}
+    th,td{border:1px solid var(--border);padding:.5rem;text-align:left;vertical-align:top}
+    th{background:#eef4ff}
+    .section-gap{margin-top:1rem}
+    @media(max-width:980px){.split,.split-3{grid-template-columns:1fr}}
+    @media print{
+      @page{size:A4;margin:13mm 12mm}
+      body{background:#fff!important;font-family:"Source Serif 4",Georgia,serif;font-size:10.5pt;line-height:1.5;color:#000}
+      .container{width:100%;padding:0}
+      .card,.exercise-card{box-shadow:none!important;break-inside:avoid;page-break-inside:avoid}
+      .exercise-card{opacity:1!important;transform:none!important;animation:none!important}
+      .toolbar,.interactive-only{display:none!important}
+      a{text-decoration:none;color:inherit}
+      pre{background:#f0f0f0!important;color:#000!important;border:1px solid #bbb;font-size:9pt}
+      .lined,textarea.lined{border:1px solid #8fa2bd!important;min-height:150px!important;background-image:repeating-linear-gradient(to bottom,#fff 0,#fff 31px,#c8d5e8 32px)!important}
+      textarea.lined-sm{min-height:100px!important}textarea.lined-lg{min-height:180px!important}
+    }
+  </style>
+</head>
+<body>
+<header class="container hero">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">Computing Form 3 · Unit 9.3 Programming & System Development</p>
+      <h1>Programming Exercises Only — Unit 9.3</h1>
+      <p class="lede">Practical Python programming exercises from the mastery workbook. Write working code for each task.</p>
+      <div class="pill-row">
+        <span class="pill">Sequences</span>
+        <span class="pill">Selection</span>
+        <span class="pill">Functions</span>
+        <span class="pill">Loops</span>
+        <span class="pill">Lists</span>
+        <span class="pill">Strings</span>
+        <span class="pill">Combined Programs</span>
+      </div>
+      <div class="toolbar interactive-only">
+        <button class="btn primary" id="printBtn" type="button">Print / Save PDF</button>
+        <a class="btn" href="form3-unit9.3-programming-mastery.html">Back to main workbook</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- 9CT.03 Python Programs -->
+  <section class="card">
+    <div class="exercise-head">
+      <div><span class="obj-code">9CT.03</span><h2>Programming — Sequence and Selection</h2></div>
+    </div>
+    <div class="exercise-card">
+      <h3>Programs to write</h3>
+      <ol class="checklist">
+        <li>Ask for 3 subject marks and print the total and average.</li>
+        <li>Ask for a number; output whether it is positive, negative, or zero using if/elif/else.</li>
+        <li>Ask the user's name and age, then print a greeting message.</li>
+        <li>Ask for 4 numbers and output the largest.</li>
+        <li>Input the cost of 5 items, apply a discount if total > 100, output final cost.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# Write your Python programs here"></textarea>
+    </div>
+  </section>
+
+  <!-- 9CT.04 Python Programs -->
+  <section class="card">
+    <div class="exercise-head">
+      <div><span class="obj-code">9CT.04</span><h2>Programming — Functions (Sub-routines)</h2></div>
+    </div>
+    <div class="exercise-card">
+      <h3>Programs to write</h3>
+      <ol class="checklist">
+        <li>Write a function <code>greet(name)</code> that prints "Good morning, [name]!"</li>
+        <li>Write <code>celsius_to_fahrenheit(c)</code> that returns the result; call it three times.</li>
+        <li>Write a function to convert metres to centimetres; call it three times.</li>
+        <li>Build a calculator with four functions (add, subtract, multiply, divide) called from a menu.</li>
+        <li>Write a function that takes a name and age, then prints a message about them.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# Write your function definitions and calls here"></textarea>
+    </div>
+  </section>
+
+  <!-- 9CT.06 + 9P.03 Python Programs -->
+  <section class="card">
+    <div class="exercise-head">
+      <div><span class="obj-code">9CT.06 + 9P.03</span><h2>Programming — For Loops</h2></div>
+    </div>
+    <div class="exercise-card">
+      <h3>Programs to write</h3>
+      <ol class="checklist">
+        <li>Print all even numbers from 2 to 30.</li>
+        <li>Input 8 exam scores; output the highest and the average.</li>
+        <li>Print a multiplication table for 7 (7×1 to 7×12).</li>
+        <li>Count how many of 10 entered numbers are above 50.</li>
+        <li>Input the cost of 20 items, output the total and average.</li>
+        <li>Print all numbers from 10 to 50 in steps of 5.</li>
+        <li>Input 5 temperatures and print the warmest.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# Write your Python programs using for loops"></textarea>
+    </div>
+  </section>
+
+  <!-- 9P.04 Python Programs -->
+  <section class="card">
+    <div class="exercise-head">
+      <div><span class="obj-code">9P.04</span><h2>Programming — Lists and Arrays</h2></div>
+    </div>
+    <div class="exercise-card">
+      <h3>Programs to write</h3>
+      <ol class="checklist">
+        <li>Create a list of 6 student names and print the 3rd one.</li>
+        <li>Sum all values in <code>[3, 8, 12, 7, 5]</code> using a for loop.</li>
+        <li>Find the largest value in a list without using max().</li>
+        <li>Create a list of 5 temperatures; print each with its index number.</li>
+        <li>Output the second and last element from a list in one print statement.</li>
+        <li>Loop through a list of colours and print each one in uppercase.</li>
+        <li>Output the third number from one list with the second item from another list.</li>
+        <li>Find and print the smallest value in a list.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# Write your Python programs using lists"></textarea>
+    </div>
+  </section>
+
+  <!-- 9P.05 Python Programs -->
+  <section class="card">
+    <div class="exercise-head">
+      <div><span class="obj-code">9P.05</span><h2>Programming — String Manipulation</h2></div>
+    </div>
+    <div class="exercise-card">
+      <h3>Programs to write</h3>
+      <ol class="checklist">
+        <li>Ask for a username; keep asking until it is at least 6 characters.</li>
+        <li>Print all words in a list that have more than 4 letters.</li>
+        <li>Take a full name as input and print it in uppercase.</li>
+        <li>Count how many words in a list have an even number of letters.</li>
+        <li>Find and output the longest word from a list of four words.</li>
+        <li>Find and output the shortest word in a list of 5 words.</li>
+        <li>Loop through an array of words and print each one with its length.</li>
+        <li>Convert user input to lowercase and check if it equals "yes".</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# Write your Python programs using string methods"></textarea>
+    </div>
+  </section>
+
+  <!-- 9CT.09 Python Programs -->
+  <section class="card">
+    <div class="exercise-head">
+      <div><span class="obj-code">9CT.09</span><h2>Programming — Combined Constructs (Sequence + Selection + Iteration + Functions)</h2></div>
+    </div>
+    <div class="exercise-card">
+      <h3>Programs to write</h3>
+      <ol class="checklist">
+        <li>School canteen: input 5 meal prices, apply 50% student discount, output individual and total cost. Use a function for the discount.</li>
+        <li>Build a student grade book: input 5 student names and 3 marks each, calculate average per student, print pass/fail (≥50).</li>
+        <li>Write a function <code>grade(avg)</code> returning "A", "B", "C", or "Fail". Extend the grade book to use it and add a count of students who passed.</li>
+        <li>Process 10 products: input name and price, apply 10% discount if price > 100, output each final price and overall total.</li>
+        <li>Input 10 names into a list, print each in uppercase, then print the longest name.</li>
+        <li>Text-based quiz: 5 questions in a list; keep score; display final percentage and grade.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# Write your complete programs combining all constructs"></textarea>
+    </div>
+  </section>
+
+  <!-- Extension Programming Exercises -->
+  <section class="card">
+    <h2>Extension Programming Exercises</h2>
+    
+    <div class="exercise-card">
+      <h3>9P.01 — Purpose of Arrays</h3>
+      <ol class="checklist">
+        <li>Write Python that stores 8 marks in a list and prints the highest.</li>
+        <li>Print all marks above the class average.</li>
+        <li>Find and print the average of all marks.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# 9P.01 array programs"></textarea>
+    </div>
+
+    <div class="exercise-card">
+      <h3>9P.02 — Working with Data Types</h3>
+      <ol class="checklist">
+        <li>Write input code that converts age and price to the correct numeric types.</li>
+        <li>Store these values in variables and perform calculations.</li>
+        <li>Demonstrate a bug caused by using string instead of int in calculations.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# 9P.02 data type programs"></textarea>
+    </div>
+
+    <div class="exercise-card">
+      <h3>9P.06 — Build Multiple Versions of a Program</h3>
+      <ol class="checklist">
+        <li>Write Version 1 of a school canteen ordering app with basic menu and order input.</li>
+        <li>Write Version 2 with discount functionality added.</li>
+        <li>Write Version 3 that tracks total orders and shows a receipt.</li>
+      </ol>
+      <textarea class="lined note lined-lg" placeholder="# Version 1&#10;# Version 2&#10;# Version 3"></textarea>
+    </div>
+  </section>
+
+  <!-- Mixed Programming Tasks -->
+  <section class="card">
+    <h2>Core Programming Tasks</h2>
+    <div class="split">
+      <div>
+        <h3>Tasks 1–6</h3>
+        <ol class="checklist">
+          <li>School canteen: input 5 meal prices, apply 50% student discount, output individual and total cost. Use a function for the discount.</li>
+          <li>Input 10 names into a list, print each in uppercase, then print the longest name.</li>
+          <li>Temperature log: input 7 daily temperatures, find the hottest and coldest, output the difference.</li>
+          <li>Ask for a password; keep asking until it is at least 8 characters. (Extension: also check it contains a digit.)</li>
+          <li>Write <code>is_even(n)</code> that returns True or False. Use it to print all even numbers from a list.</li>
+          <li>Store student names and marks in two parallel lists. Print each name with a letter grade using <code>grade()</code>.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Challenge Tasks 7–12</h3>
+        <ol class="checklist" start="7">
+          <li>Full grade book: 5 students, 3 subjects each, calculate average per student, class average, count of passes.</li>
+          <li>Text-based quiz: 5 questions in a list; keep score; display final percentage and grade.</li>
+          <li>Build a shopping cart: input item names and prices, apply discounts, show invoice with total.</li>
+          <li>Input data for 10 people: name, age, salary. Calculate average salary and count how many are over 25.</li>
+          <li>Write a simple encryption program that shifts each letter by 1 position (a→b, b→c, etc.).</li>
+          <li>Build a simple number guessing game that generates a random number and lets the user guess.</li>
+        </ol>
+      </div>
+    </div>
+    <textarea class="lined note lined-lg" placeholder="# Write your complete programs here - one task per section or combine them"></textarea>
+  </section>
+
+  <!-- Blank Coding Pages -->
+  <section class="card">
+    <h2>Extra Coding Pages</h2>
+    <div class="split">
+      <div>
+        <h3>Coding Page 1</h3>
+        <textarea class="lined note lined-lg" placeholder="# Write your programs here"></textarea>
+      </div>
+      <div>
+        <h3>Coding Page 2</h3>
+        <textarea class="lined note lined-lg" placeholder="# Write your programs here"></textarea>
+      </div>
+    </div>
+    <div class="split" style="margin-top:.85rem;">
+      <div>
+        <h3>Coding Page 3</h3>
+        <textarea class="lined note lined-lg" placeholder="# Write your programs here"></textarea>
+      </div>
+      <div>
+        <h3>Coding Page 4</h3>
+        <textarea class="lined note lined-lg" placeholder="# Write your programs here"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer-note">Unit 9.3 programming exercises. Python · Sequences · Selection · Functions · Loops · Lists · Strings · Integrated Programs. Cambridge Form 3.</p>
+</main>
+
+<script>
+  document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
+</script>
+</body>
+</html>
